@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+
+<header class="profile-header">
+    <div class="card-panel heading-div image-styles">
+        <h1 class="center-align">{{ username }}'s Profile</h1>
+        <h2 class="center-align heading-sub-title">Read, Discover, Review</h2>
+        <a href="#" class="btn center-align profile-generate-btn page-btn">Generate Book</a>
+    </div>
+</header>
+
+<section class="profile-section shadow">
+    <h2 class="center-align" >Your bookshelves</h2>
+    <div class="section-containers">
+    
+        </div>
+        <a href="{{ url_for('add_bookcase') }}" class="btn profile-btn page-btn">Create New Bookshelf</a>
+    </div>
+</section>
+
+<section class="profile-section shadow">
+    <div class="section-containers">
+    
+    </div>
+    <a href="#" class="btn profile-btn page-btn">Add New Book</a>
+</section>
+
+
+{% endblock %}
