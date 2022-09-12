@@ -84,3 +84,11 @@ def add_bookcase():
         return redirect(url_for("profile_page"))
 
     return render_template("add_bookcase.html")
+
+
+@app.route("/delete_bookcase/<bookshelf_id>")
+def delete_bookcase(bookshelf_id):
+    bookcase = Bookshelves.query.get_or_404(bookshelf_id)
+    db.session.delete(bookcase)
+    db.session.commit()
+    return redirect(url_for("profile_page"))
