@@ -27,7 +27,7 @@
             <ul class="right hide-on-med-and-down ">
               {% if session.user %}
                 <li><a href= "{{ url_for('profile_page', username=session['user']) }}" class="brown-text text-lighten-1">Profile</a></li>
-                <li><a href="#" class="brown-text text-lighten-1">Bookshelves</a></li>
+                <li><a href="{{ url_for('show_shelves') }}" class="brown-text text-lighten-1">Bookshelves</a></li>
                 <li><a href="{{ url_for('logout') }}" class="brown-text text-lighten-1">Log Out</a></li>
               {% else %}
               <li><a href="{{ url_for('home') }}" class="brown-text text-lighten-1">Home</a></li>
@@ -38,14 +38,13 @@
       
         <!-- mobile navbar -->
         <ul class="sidenav" id="mobile-demo">
-          <li><a href="#" class="brown-text text-lighten-1">Home</a></li>
-          <li><a href="#" class="brown-text text-lighten-1">Search</a></li>
           {% if session.user %}
-            <li><a href="#" class="brown-text text-lighten-1">Profile</a></li>
-            <li><a href="#" class="brown-text text-lighten-1">Bookshelves</a></li>
-            <li><a href="#" class="brown-text text-lighten-1">Log Out</a></li>
-          {% else %}
-            <li><a href="#" class="brown-text text-lighten-1">Login</a></li>
+              <li><a href= "{{ url_for('profile_page', username=session['user']) }}" class="brown-text text-lighten-1">Profile</a></li>
+              <li><a href="{{ url_for('show_shelves') }}" class="brown-text text-lighten-1">Bookshelves</a></li>
+              <li><a href="{{ url_for('logout') }}" class="brown-text text-lighten-1">Log Out</a></li>
+              {% else %}
+                <li><a href="{{ url_for('home') }}" class="brown-text text-lighten-1">Home</a></li>
+                <li><a href="{{ url_for('login') }}" class="brown-text text-lighten-1">Login</a></li>
           {% endif %}
         </ul>
       </nav> 
@@ -77,14 +76,13 @@
                 <div class="col l4 offset-l2 s12">
                   <h5 class="brown-text text-lighten-1">Links</h5>
                   <ul>
-                    <li><a href="#" class="brown-text text-lighten-1">Home</a></li>
-                    <li><a href="#" class="brown-text text-lighten-1">Search</a></li>
                     {% if session.user %}
-                      <li><a href="#" class="brown-text text-lighten-1">Profile</a></li>
-                      <li><a href="#" class="brown-text text-lighten-1">Bookshelves</a></li>
-                      <li><a href="#" class="brown-text text-lighten-1">Log Out</a></li>
+                    <li><a href= "{{ url_for('profile_page', username=session['user']) }}" class="brown-text text-lighten-1">Profile</a></li>
+                    <li><a href="{{ url_for('show_shelves') }}" class="brown-text text-lighten-1">Bookshelves</a></li>
+                    <li><a href="{{ url_for('logout') }}" class="brown-text text-lighten-1">Log Out</a></li>
                     {% else %}
-                      <li><a href="#" class="brown-text text-lighten-1">Login</a></li>
+                      <li><a href="{{ url_for('home') }}" class="brown-text text-lighten-1">Home</a></li>
+                      <li><a href="{{ url_for('login') }}" class="brown-text text-lighten-1">Login</a></li>
                     {% endif %}
                   </ul>
                 </div>
