@@ -92,3 +92,10 @@ def delete_bookcase(bookshelf_id):
     db.session.delete(bookcase)
     db.session.commit()
     return redirect(url_for("profile_page"))
+
+
+@app.route("/add_book", methods=["GET", "POST"])
+def add_book():
+
+    bookshelves = list(Bookshelves.query.order_by(Bookshelves.id).all())
+    return render_template("add_book.html", bookshelves=bookshelves)
