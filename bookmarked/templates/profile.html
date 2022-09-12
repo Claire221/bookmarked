@@ -12,8 +12,28 @@
 <section class="profile-section shadow">
     <h2 class="center-align" >Your bookshelves</h2>
     <div class="section-containers">
-    
+        <div class="row profile-section-row">
+            {% for bookshelf in bookshelves %}
+                <a href="#">
+                    <div class="col s12 m5 l3 ">
+                        <div class="card bookshelf-card image-styles">
+                            <div class="card-content bookshelf-card-content center-align">
+                                <span id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align">{{ bookshelf.bookshelf_name}}</span>
+                                {% if bookshelf.bookshelf_description != '' %}
+                                    <p>{{ bookshelf.bookshelf_description }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="card-btns-container">
+                                <a href="#" class="btn  card-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
+                                <a href="#" class="btn  card-btn page-btn"><i class="fa-solid fa-pencil"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        
         </div>
+    </div>
         <a href="{{ url_for('add_bookcase') }}" class="btn profile-btn page-btn">Create New Bookshelf</a>
     </div>
 </section>
