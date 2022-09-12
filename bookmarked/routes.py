@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from bookmarked import app, db
 from bookmarked.models import Bookshelves, Users
@@ -20,7 +20,8 @@ def register():
 
         user = Users (
             username=request.form.get("username"),
-            password=generate_password_hash(request.form.get("password"))
+            password=request.form.get("password")
+            # password=generate_password_hash(request.form.get("password"),salt_length=1)
         )
 
         db.session.add(user)
@@ -40,11 +41,12 @@ def login():
     if request.method == "POST":
         existing_user = Users.query.filter(Users.username == request.form.get("username").lower()).all()
 
+
         if existing_user:
-            if check_password_hash(existing_user[0].password, request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
-                        flash("Welcome, {}".format(request.form.get("username")))
-                        return redirect(url_for( "profile", username=session["user"]))
+            if existing_user[0].password == request.form.get("password"):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for("profile_page", username=session["user"]))
 
             else:
                 flash("Incorrect Username and/or Password, Please try again")
@@ -56,6 +58,12 @@ def login():
 
     return render_template("login.html")
 
+
+@app.route("/logout")
+def logout():
+    flash("You successfully logged out")
+    session.pop("user")
+    return redirect(url_for("login"))
 
 @app.route("/profile")
 def profile_page():
