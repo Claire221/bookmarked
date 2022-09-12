@@ -1,3 +1,7 @@
+option, select {
+    display: block;
+}
+
 /* Multi use styles */
 html, body, .valign-wrapper {
     height: 100%;
@@ -169,6 +173,24 @@ html, body, .valign-wrapper {
 .shelf-card-title {
     font-size: 1.25rem;
 }
+
+
+/* Add book form styles */
+select,textarea {
+    border: solid 2px rgb(190, 190, 190);
+}
+
+.add-book-btn {
+    font-size: 1.25rem;
+    padding: 2% 0;
+    width: 70%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
 
 /* Materialize styles */
 .input-field .prefix.active {
