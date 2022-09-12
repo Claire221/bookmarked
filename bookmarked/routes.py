@@ -10,7 +10,8 @@ def home():
 
 @app.route("/profile")
 def profile_page():
-    return render_template("profile.html")
+    bookshelves = list(Bookshelves.query.order_by(Bookshelves.id).all())
+    return render_template("profile.html", bookshelves=bookshelves)
 
 
 @app.route("/add_bookcase", methods=["GET", "POST"])
