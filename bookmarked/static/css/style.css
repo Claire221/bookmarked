@@ -89,6 +89,11 @@ html, body, .valign-wrapper {
     min-width: 10%;
 }
 
+/* Login page styles */
+.login-link {
+    color: #43a047 ;
+}
+
 /* Bookshelf Styles */
 .bookshelf-container {
     border: solid 2px black;
