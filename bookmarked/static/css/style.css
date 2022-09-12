@@ -111,6 +111,16 @@ html, body, .valign-wrapper {
     border-radius: 5px;
 }
 
+.bookcase-card-title {
+    font-size: 3rem !important;
+    margin: 7% 0 !important;
+}
+
+.bookshelf-card-description {
+    font-size: 1.2rem;
+    color: black;
+}
+
 .bookshelf-card-content {
     border: 2px solid #000;
     height: 80%;
@@ -122,42 +132,16 @@ html, body, .valign-wrapper {
     margin: 1% auto 3%;
 }
 
-.create-bookshelf-btn {
-    font-size: 1.25rem;
-    width: 30%;
-    margin: 1% auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.shelf-card-title {
-    font-size: 1.25rem;
-}
-
-/* Bookshelf Styles */
-.bookshelf-container {
-    border: solid 2px black;
+.bookshelf-card-btns {
+    width: 90%;
     margin: 0 auto;
-
-}
-
-.bookshelf-card {
-    height: 500px;
-    margin: 2% auto 1%;
-    border-radius: 5px;
-}
-
-.bookshelf-card-content {
-    border: 2px solid #000;
-    height: 80%;
-    width: 80%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 1% auto 3%;
+    justify-content: space-between;
+}
+
+.bookshelf-btn {
+    width: 30%;
+    margin: 0 auto;
 }
 
 .create-bookshelf-btn {
@@ -167,7 +151,7 @@ html, body, .valign-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    border: solid 2px pink;
 }
 
 .shelf-card-title {
