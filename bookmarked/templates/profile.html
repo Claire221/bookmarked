@@ -24,7 +24,7 @@
                                 {% endif %}
                             </div>
                             <div class="card-btns-container">
-                                <a href="#" class="btn  card-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
+                                <a href="{{ url_for('delete_bookcase', bookshelf_id=bookshelf.id) }}" class="btn  card-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
                                 <a href="#" class="btn  card-btn page-btn"><i class="fa-solid fa-pencil"></i></a>
                             </div>
                         </div>
