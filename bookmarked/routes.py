@@ -81,10 +81,16 @@ def add_bookcase():
         )
         db.session.add(bookshelf)
         db.session.commit()
-        return redirect(url_for("profile_page"))
+        return redirect(url_for("show_shelves"))
 
     return render_template("add_bookcase.html")
 
+
+
+@app.route("/bookshelves")
+def show_shelves():
+    bookshelves = list(Bookshelves.query.order_by(Bookshelves.id).all())
+    return render_template("bookcases.html", bookshelves=bookshelves)
 
 @app.route("/delete_bookcase/<bookshelf_id>")
 def delete_bookcase(bookshelf_id):
