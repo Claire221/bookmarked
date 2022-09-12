@@ -16,8 +16,13 @@ def profile_page():
 @app.route("/add_bookcase", methods=["GET", "POST"])
 def add_bookcase():
     if request.method == "POST":
-        bookshelves = Bookshelves(bookshelf_name=request.form.get("bookshelf_name"))
-        db.session.add(bookshelves)
+        bookshelf = Bookshelves(
+            bookshelf_name=request.form.get("bookshelf_name"),
+            bookshelf_description=request.form.get("bookshelf_description")
+        )
+        db.session.add(bookshelf)
         db.session.commit()
-        return redirect(url_for("add_bookcase"))
+        return redirect(url_for("profile_page"))
+
     return render_template("add_bookcase.html")
+
