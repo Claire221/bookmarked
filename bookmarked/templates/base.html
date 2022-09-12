@@ -21,38 +21,34 @@
 <body>
         <!-- main navbar -->
         <nav class="nav-extended grey lighten-5">
-            <div class="nav-wrapper">
-              <a href="#" class="brand-logo brown-text text-lighten-1">Bookmarked</a>
-              <a href="#" data-target="mobile-demo" class="sidenav-trigger brown-text text-lighten-1"><i class="fa-solid fa-bars"></i></a>
-              <ul class="right hide-on-med-and-down ">
-                <li><a href="#" class="brown-text text-lighten-1">Home</a></li>
-                <li><a href="#" class="brown-text text-lighten-1">Search</a></li>
+          <div class="nav-wrapper">
+            <a href="{{ url_for('home') }}" class="brand-logo brown-text text-lighten-1">Bookmakred</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger brown-text text-lighten-1"><i class="fa-solid fa-bars"></i></a>
+            <ul class="right hide-on-med-and-down ">
+              {% if session.user %}
+                <li><a href= "{{ url_for('profile_page', username=session['user']) }}" class="brown-text text-lighten-1">Profile</a></li>
+                <li><a href="#" class="brown-text text-lighten-1">Bookshelves</a></li>
+                <li><a href="{{ url_for('logout') }}" class="brown-text text-lighten-1">Log Out</a></li>
+              {% else %}
+              <li><a href="{{ url_for('home') }}" class="brown-text text-lighten-1">Home</a></li>
                 <li><a href="{{ url_for('login') }}" class="brown-text text-lighten-1">Login</a></li>
-                <li><a href="{{ url_for('profile_page') }}" class="brown-text text-lighten-1">Profile</a></li>
-                <!-- {% if session.user %}
-                  <li><a href="#" class="brown-text text-lighten-1">Profile</a></li>
-                  <li><a href="#" class="brown-text text-lighten-1">Bookshelves</a></li>
-                  <li><a href="#" class="brown-text text-lighten-1">Log Out</a></li>
-                {% else %}
-                  <li><a href="#" class="brown-text text-lighten-1">Login</a></li>
-                {% endif %} -->
-              </ul>
-            </div>
-        
-          <!-- mobile navbar -->
-          <ul class="sidenav" id="mobile-demo">
-            <li><a href="#" class="brown-text text-lighten-1">Home</a></li>
-            <li><a href="#" class="brown-text text-lighten-1">Search</a></li>
-            <li><a href="{{ url_for('profile_page') }}" class="brown-text text-lighten-1">Profile</a></li>
-            <!-- {% if session.user %}
-              <li><a href="#" class="brown-text text-lighten-1">Profile</a></li>
-              <li><a href="#" class="brown-text text-lighten-1">Bookshelves</a></li>
-              <li><a href="#" class="brown-text text-lighten-1">Log Out</a></li>
-            {% else %}
-              <li><a href="#" class="brown-text text-lighten-1">Login</a></li>
-            {% endif %} -->
-          </ul>
-        </nav> 
+              {% endif %}
+            </ul>
+          </div>
+      
+        <!-- mobile navbar -->
+        <ul class="sidenav" id="mobile-demo">
+          <li><a href="#" class="brown-text text-lighten-1">Home</a></li>
+          <li><a href="#" class="brown-text text-lighten-1">Search</a></li>
+          {% if session.user %}
+            <li><a href="#" class="brown-text text-lighten-1">Profile</a></li>
+            <li><a href="#" class="brown-text text-lighten-1">Bookshelves</a></li>
+            <li><a href="#" class="brown-text text-lighten-1">Log Out</a></li>
+          {% else %}
+            <li><a href="#" class="brown-text text-lighten-1">Login</a></li>
+          {% endif %}
+        </ul>
+      </nav> 
 
         <section>
           {% with messages = get_flashed_messages() %}
