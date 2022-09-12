@@ -27,6 +27,7 @@
               <ul class="right hide-on-med-and-down ">
                 <li><a href="#" class="brown-text text-lighten-1">Home</a></li>
                 <li><a href="#" class="brown-text text-lighten-1">Search</a></li>
+                <li><a href="{{ url_for('login') }}" class="brown-text text-lighten-1">Login</a></li>
                 <li><a href="{{ url_for('profile_page') }}" class="brown-text text-lighten-1">Profile</a></li>
                 <!-- {% if session.user %}
                   <li><a href="#" class="brown-text text-lighten-1">Profile</a></li>
@@ -53,7 +54,7 @@
           </ul>
         </nav> 
 
-        <!-- <section>
+        <section>
           {% with messages = get_flashed_messages() %}
             {% if messages %}
               {% for message in messages %}
@@ -63,10 +64,12 @@
               {% endfor %}
             {% endif %}
           {% endwith %}
-        </section> -->
+        </section>
 
     {% block content %}
     {% endblock %}   
+
+
         <!-- footer  -->
         <footer class="page-footer grey lighten-5">
             <div class="container ">
