@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-container">
+
+    <h1 class="form-header center-align">Create a new account</h1>
+
+    <div class="row">
+        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+          <div class="card-panel">
+            <!-- name -->
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="first_name" name="firstName" type="text" minlength="3" max="10" class="validate" required>
+                <label for="first_name">First Name</label>
+              </div>
+              <div class="input-field col s6"> 
+                <input id="last_name" name="lastName" type="text" class="validate" minlength="3" max="20" required>
+                <label for="last_name">Last Name</label>
+              </div>
+            </div>
+            <!-- username and password -->
+            <div class="row">
+              <div class="input-field col s12">
+                  <i class="fa-solid fa-user prefix"></i>
+                  <input placeholder="Username" id="username" name="username" type="text" minlength="5" max="15" class="validate" required>
+                  <label for="username">Username</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="fa-solid fa-key prefix"></i>
+                <input id="password" name="password" type="password" minlength="5" maxlength="15" class="validate" required>
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <!-- email -->
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="fa-solid fa-envelope prefix"></i>
+                <input id="email" name="email" type="email" class="validate" required>
+                <label for="email">Email</label>
+              </div>
+            </div>
+            <!-- register button -->
+            <div class="row">
+              <button type="submit" class="waves-effect waves-light btn brown darken-1 form-btn">
+                Register <i class="fas fa-sign-in-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12 center-align">
+              <p>Already a member? <a href="{{ url_for('login') }}" class="login-link">Login</a></p>
+            </div>
+          </div>
+      </div>
+      <form>
+</div>
+
+{% endblock %}
