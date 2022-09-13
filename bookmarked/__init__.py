@@ -14,7 +14,7 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
 uri = os.environ.get("DB_URL")
-if uri.startswith("postgres://"):
+if uri.startswith("postgres:///"):
     uri = uri.replace("postgres://", "postgresql://", 1)
 app.config["SQLALCHEMY_DATABASE_URI"] = uri  # heroku
 
