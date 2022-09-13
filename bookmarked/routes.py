@@ -1,9 +1,18 @@
+import os
 from flask import flash, render_template, request, redirect, session, url_for
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from bookmarked import app, db, mongo
 from bookmarked.models import Bookshelves, Users
 
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY")
+
+mongo = PyMongo(app)
 
 @app.route("/")
 def home():
@@ -69,8 +78,9 @@ def logout():
 @app.route("/profile")
 def profile_page():
     bookshelves = list(Bookshelves.query.order_by(Bookshelves.id).all())
+    books = mongo.db.books.find()
 
-    return render_template("profile.html", bookshelves=bookshelves)
+    return render_template("profile.html", bookshelves=bookshelves, books=books)
 
 
 @app.route("/add_bookcase", methods=["GET", "POST"])
@@ -103,6 +113,20 @@ def delete_bookcase(bookshelf_id):
 
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
+    if request.method == "POST":
+        book = {
+            "title": request.form.get("book_title"),
+            "author": request.form.get("author"),
+            "genre": request.form.getlist("genre"),
+            "description": request.form.get("book-description"),
+            "createdBy": session["user"],
+            "bookshelf": request.form.get("bookshelf"),
+            "comments": ""
+        }
 
+        print(book)
+        mongo.db.books.insert_one(book)
+        flash("Book Successfully Added")
+        
     bookshelves = list(Bookshelves.query.order_by(Bookshelves.id).all())
     return render_template("add_book.html", bookshelves=bookshelves)
