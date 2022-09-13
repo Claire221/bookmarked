@@ -98,11 +98,21 @@ html, body, .valign-wrapper {
     color: #43a047 ;
 }
 
+/* Profile page styles */
+.profile-btn {
+    font-size: 1.25rem;
+    width: 80%;
+    padding: 1% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1% auto 3%;
+}
+
 /* Bookshelf Styles */
 .bookshelf-container {
     border: solid 2px black;
     margin: 0 auto;
-
 }
 
 .bookshelf-card {
@@ -174,6 +184,40 @@ select,textarea {
     align-items: center;
     margin: 0 auto;
 }
+
+
+/* Book card styles */
+.book-card {
+    margin: 1% auto;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(224, 224, 224);
+}
+
+.book-card-content {
+    height: 60%;
+}
+
+.book-card-btns {
+    width: 90%;
+    margin: 1% auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.book-card-btn {
+    width: 30%;
+    margin: 1% 0;
+}
+
+.card-icon {
+    display: flex;
+    float: right;
+}
+
 
 
 /* Materialize styles */
