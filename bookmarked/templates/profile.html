@@ -38,12 +38,45 @@
     </div>
 </section>
 
+<section>
+    <h2>Not sure what to read?</h2>
+    <h3>Why not let us pick one for you?</h3>
+</section>
+
 <section class="profile-section shadow">
     <div class="section-containers">
-    
+        <h2 class="center-align">Your Books</h2>
+        <div class="row">
+            {% for book in books %}
+            <div class="card col s12 m6 xl4">
+                <div class="card-content profile-card">
+                    <div class="card-titles">
+                        <span id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align">{{ book.title }} <i class="fa-solid fa-chevron-down card-icon "></i></span>
+                        <span id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align">{{ book.author }}</span>
+                        <ul class="card-title activator grey-text text-darken-4 center-align">
+                            {% for genre in book.genre %}
+                                <li>{{ book.genre}}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-reveal">
+                    {% if book.description != '' %}
+                        <span class="card-title activator  grey-text text-darken-4">Book Description<i class="fa-solid fa-x card-icon "></i></span>
+                        <p>{{ book.description }}</p>
+                    {% endif %}
+                </div>
+                <div class="card-btns-container profile-book-btns">
+                    <a href="#" class="btn card-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
+                    <a href="#" class="btn card-btn page-btn"><i class="fa-solid fa-pencil"></i></a>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
     </div>
-    <a href="#" class="btn profile-btn page-btn">Add New Book</a>
+    <a href="{{ url_for('add_book') }}" class="btn profile-btn page-btn">Add New Book</a>
 </section>
+
 
 
 {% endblock %}
