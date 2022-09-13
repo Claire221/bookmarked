@@ -88,7 +88,8 @@ def add_bookcase():
     if request.method == "POST":
         bookshelf = Bookshelves(
             bookshelf_name=request.form.get("bookshelf_name"),
-            bookshelf_description=request.form.get("bookshelf_description")
+            bookshelf_description=request.form.get("bookshelf_description"),
+            created_by=session["user"]
         )
         db.session.add(bookshelf)
         db.session.commit()
@@ -100,6 +101,14 @@ def add_bookcase():
 
 @app.route("/bookshelves")
 def show_shelves():
+    user_id = list(Users.query.order_by(Users.id).all())
+    bookcase_id = list(Bookshelves.query.order_by(Bookshelves.id).all())
+    print(user_id)
+    print(bookcase_id)
+
+    # session_user = session["user"]
+    # print(session_user)
+
     bookshelves = list(Bookshelves.query.order_by(Bookshelves.id).all())
     return render_template("bookcases.html", bookshelves=bookshelves)
 
@@ -121,7 +130,8 @@ def add_book():
             "description": request.form.get("book-description"),
             "createdBy": session["user"],
             "bookshelf": request.form.get("bookshelf"),
-            "comments": ""
+            "comments": "",
+            "created_by": session["user"]
         }
 
         print(book)
