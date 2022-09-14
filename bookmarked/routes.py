@@ -83,7 +83,6 @@ def profile_page():
 
     users_books = []
     books = mongo.db.books.find()
-
             
     for b in books:
         print(b)
@@ -145,3 +144,10 @@ def add_book():
     session_user = session["user"]
     all_bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
     return render_template("add_book.html", bookshelves=all_bookshelves)
+
+#Function to delete book
+@app.route("/delete-book/<book_id>")
+def delete_book(book_id):
+    mongo.db.books.delete_one({"_id": ObjectId(book_id)})
+
+    return redirect(url_for("profile_page"))
