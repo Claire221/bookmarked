@@ -231,3 +231,16 @@ def generate_book():
             genres.append(book["genre"])
 
     return render_template("generate_book.html", bookshelves=bookshelves, authors=authors, books=books, genres=genres)
+
+
+# Function to generate books from Bookshelves 
+@app.route("/generate-book", methods=["GET", "POST"])
+def bookshelf_book():
+    if request.method == "POST":
+        bookshelf_id = request.form.get("bookshelf._id")
+        chosen_bookshelf = mongo.db.bookshelf.find_one({"_id": ObjectId(bookshelf_id)})
+
+        session_user = session["user"]
+        bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
+
+    return render_template("profile.html")
