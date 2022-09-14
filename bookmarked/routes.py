@@ -212,3 +212,22 @@ def edit_book(book_id):
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     return render_template("edit_book.html", book=book, bookshelves=bookshelves)
 
+# Function to generate a book
+@app.route("/generate-book", methods=["GET", "POST"])
+def generate_book():
+    session_user = session["user"]
+    bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
+
+    books = list(mongo.db.books.find())
+    authors = []
+    genres = []
+    
+    for book in books:
+        if book["author"] not in authors:
+            authors.append(book["author"])
+
+    for book in books:
+        if book["genre"] not in genres:
+            genres.append(book["genre"])
+
+    return render_template("generate_book.html", bookshelves=bookshelves, authors=authors, books=books, genres=genres)
