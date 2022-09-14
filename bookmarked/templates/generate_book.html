@@ -7,87 +7,51 @@
     <h3 class="center-align">Why not let someone else decide for you instead"</h3>
 </header>
 
-<div class="container generate-container">
-    <div class="row">
-        <div class="col s12 m6">
-            <div class="card blue-grey darken-1 generate-card">
-                <div class="card-content white-tex">
-                    <span class="card-title center-align">Select Bookshelf</span>
-                    <form method="POST" action="{{ url_for('bookshelf_book') }}">
-                        <div class="input-field">
-                            <select id="bookshelf" name="bookshelf" class="validate">
-                                <option value="" disabled selected>Add to bookcase</option>
-                                {% for bookshelf in bookshelves %}
-                                  <option value="{{ bookshelf.id}}">{{ bookshelf.bookshelf_name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="card-action">
-                            <button type="submit" class="btn bookshelf-btn generate-btn page-btn">Generate from your Bookshelves</button>
-                        </div>
-                    </form>
+    <div class="card blue-grey darken-1 generate-card">
+        <div class="card-content white-tex">
+            <form method="POST" action="{{ url_for('generate_book') }}">
+                <div class="input-field">
+                    <span class="card-title center-align">Select From Bookshelf</span>
+                    <select id="bookshelf" name="bookshelf" class="validate">
+                        <option value="" disabled selected>Select bookcase</option>
+                        {% for bookshelf in bookshelves %}
+                        <option value="{{ bookshelf.id}}">{{ bookshelf.bookshelf_name }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
-            </div>
-        </div>
-        <div class="col s12 m6">
-            <div class="card blue-grey darken-1 generate-card">
-                <div class="card-content white-text">
-                    <span class="card-title center-align">Select Author</span>
-                    <form action="" id="form">
-                        <div class="input-field">
-                            <select id="bookshelf" name="bookshelf" class="validate center-align">
-                                <option value="" disabled selected>Select Author</option>
-                                {% for author in authors %}
-                                <option value="{{ authors.author}}">{{ author }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </form>
+                <div class="input-field">
+                    <span class="card-title center-align">Select By Author</span>
+                    <select id="author" name="author" class="author">
+                        <option value="" disabled selected>Select Author</option>
+                        {% for author in authors %}
+                            <option value="{{ authors.author}}">{{ author }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input-field">
+                    <span class="card-title center-align">Select By Genre</span>
+                    <select id="genre" name="genre" class="validate">
+                        <option value="" disabled selected>Select Genre</option>
+                        {% for genre in genres %}
+                        <option value="{{ genre.genre }}">{{ genre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input-field">
+                    <span class="card-title center-align">Select From All Books</span>
+                    <input id="random" name="random" class="validate" readonly placeholder="??????????????????">
                 </div>
                 <div class="card-action">
-                    <a href="#" class="btn bookshelf-btn generate-btn page-btn">Generate from your Authors</a>
+                    <button type="submit" class="btn bookshelf-btn generate-btn page-btn">Generate from all books</button>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col s12 m6">
-            <div class="card blue-grey darken-1 generate-card">
-                <div class="card-content white-text">
-                    <span class="card-title center-align">Select Genre</span>
-                    <form action="" id="form">
-                        <div class="input-field">
-                            <select id="bookshelf" name="bookshelf" class="validate center-align">
-                                <option value="" disabled selected>Select Genre</option>
-                                {% for genre in genres %}
-                                <option value="{{ genre.genre}}">{{ genre }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </form>
+                <div class="input-field">
+                    <input id="random" name="random" class="validate" readonly placeholder="??????????????????">
                 </div>
                 <div class="card-action">
-                    <a href="#" class="btn genre-btn generate-btn page-btn">Generate from your Genres</a>
+                    <button type="submit" class="btn bookshelf-btn generate-btn page-btn">Generate from all books</button>
                 </div>
-            </div>
-        </div>
-        <div class="col s12 m6">
-            <div class="card blue-grey darken-1 generate-card">
-                <div class="card-content white-text">
-                    <span class="card-title center-align">Randomly Select</span>
-                    <form action="" id="form">
-                        <div class="input-field">
-                            <input id="random" name="random" type="text" class="validate center-align" readonly 
-                                placeholder="??????????????????">
-                        </div>
-                    </form>
-                </div>
-                <div class="card-action">
-                    <a href="#" class="btn random-btn generate-btn page-btn">Randomly Generate</a>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 
-</div>
 {% endblock %}
