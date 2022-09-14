@@ -238,7 +238,7 @@ def generate_book():
 
 
 # Function to generate a book from Bookshelves 
-# @app.route("/g-book", methods=["GET", "POST"])
+# @app.route("/generate-book", methods=["GET", "POST"])
 # def bookshelf_book():
 #     if request.method == "POST":
 #         x = request.form['action']
@@ -260,7 +260,7 @@ def generate_book():
 #             random_number = int(random.random() * len(bookshelf_books))
 #             chosen_book = bookshelf_books[random_number]
 
-#     return render_template("profile.html", bookshelf=chosen_bookshelf, book=chosen_book)
+#     return render_template("generate_book.html", bookshelf=chosen_bookshelf, book=chosen_book)
 
 
 # # Function to generate a book from Bookshelves 
@@ -283,6 +283,6 @@ def generate_book():
 # Function to generate a book from Bookshelves 
 
 @app.route("/generated-book", methods=["GET", "POST"])
-def generate_book():
+def book_generator():
 
     return render_template("generated_book.html")
