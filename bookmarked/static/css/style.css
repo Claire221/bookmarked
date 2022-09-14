@@ -218,7 +218,69 @@ select,textarea {
     float: right;
 }
 
+/* Book generator form styles  */
+/* .generate-container {
+    width: 95%;
+    height: auto;
+    border: solid 2px red;
+    margin: 3% auto !important;
+} */
 
+.generate-card {
+    /* height: 30vh; */
+    border: solid 2px black;
+    border-radius: 5px;
+    margin: 1%;
+
+}
+
+.top-card {
+    margin-top: 4%;
+}
+
+.generate-card-contents {
+    width: 95%;
+    height: 90%;
+    margin: auto;
+    border: solid 2px coral;
+    margin-top: 3%;
+}
+
+.generate-card-contents select {
+    margin: auto;
+
+}
+
+#form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+}
+
+.generate-card select,
+#random {
+    height: 50px;
+    border: solid 2px pink;
+}
+
+#random {
+    background-color: #fff;
+}
+
+#random::placeholder {
+    color: black;
+} 
+
+.generate-btn {
+    width: 100%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
 
 /* Materialize styles */
 .input-field .prefix.active {
