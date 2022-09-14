@@ -79,19 +79,22 @@ def logout():
 def profile_page():
     session_user = session["user"]
 
-    all_bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
+    user_bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
+    bookshelves = list(Bookshelves.query.order_by(Bookshelves.bookshelf_name).all())
 
+    # for bookshelf in user_bookshelves:
+    #     print(user_bookshelves)
+        
     users_books = []
+    bookshelf_names = []
+
     books = mongo.db.books.find()
             
     for b in books:
-        print(b)
         if b["createdBy"] == session_user:
             users_books.append(b)
-
-    print(users_books)
-
-    return render_template("profile.html", bookshelves=all_bookshelves, books=users_books)
+ 
+    return render_template("profile.html", bookshelves=user_bookshelves, books=users_books)
 
 
 @app.route("/add_bookcase", methods=["GET", "POST"])
@@ -151,3 +154,24 @@ def delete_book(book_id):
     mongo.db.books.delete_one({"_id": ObjectId(book_id)})
 
     return redirect(url_for("profile_page"))
+
+
+# Function to sort books into bookcases
+@app.route("/books/<bookcase_id>")
+def sort_books(bookcase_id):
+    session_user = session["user"]
+    bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
+
+    books_list = list(mongo.db.books.find())
+    users_books = []
+    books_title = []
+     
+    for b in books_list:
+        if b["createdBy"] == session_user:
+            users_books.append(b)
+
+    for books in books_list: 
+        if books["bookshelf"] == bookcase_id:
+            books_title.append(books)
+
+    return render_template("books.html", bookshelves=bookshelves, books=books_title)
