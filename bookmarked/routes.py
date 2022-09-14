@@ -78,10 +78,21 @@ def logout():
 @app.route("/profile")
 def profile_page():
     session_user = session["user"]
+
     all_bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
+
+    users_books = []
     books = mongo.db.books.find()
 
-    return render_template("profile.html", bookshelves=all_bookshelves, books=books)
+            
+    for b in books:
+        print(b)
+        if b["createdBy"] == session_user:
+            users_books.append(b)
+
+    print(users_books)
+
+    return render_template("profile.html", bookshelves=all_bookshelves, books=users_books)
 
 
 @app.route("/add_bookcase", methods=["GET", "POST"])
@@ -128,9 +139,9 @@ def add_book():
             "created_by": session["user"]
         }
 
-        print(book)
         mongo.db.books.insert_one(book)
         flash("Book Successfully Added")
         
-    bookshelves = list(Bookshelves.query.order_by(Bookshelves.id).all())
-    return render_template("add_book.html", bookshelves=bookshelves)
+    session_user = session["user"]
+    all_bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
+    return render_template("add_book.html", bookshelves=all_bookshelves)
