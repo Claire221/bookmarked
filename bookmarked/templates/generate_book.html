@@ -15,10 +15,10 @@
                     <span class="card-title center-align">Select Bookshelf</span>
                     <form method="POST" action="{{ url_for('bookshelf_book') }}">
                         <div class="input-field">
-                            <select id="bookshelf" name="bookshelf" class="validate center-align">
-                                <option value="" disabled selected>Select Bookshelf</option>
+                            <select id="bookshelf" name="bookshelf" class="validate">
+                                <option value="" disabled selected>Add to bookcase</option>
                                 {% for bookshelf in bookshelves %}
-                                <option value="{{ bookshelf._id}}">{{ bookshelf.bookshelf_name }}</option>
+                                  <option value="{{ bookshelf.id}}">{{ bookshelf.bookshelf_name }}</option>
                                 {% endfor %}
                             </select>
                         </div>
