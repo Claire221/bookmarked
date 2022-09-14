@@ -39,8 +39,10 @@
 </section>
 
 <section>
-    <h2>Not sure what to read?</h2>
-    <h3>Why not let us pick one for you?</h3>
+    <h2 class="center-align">Generate your next favourite book</h2>
+    <h3 class="center-align">For When you cant decide what book to read next</h3>
+    <a href="{{ url_for('generate_book') }}" class="btn profile-btn page-btn">Generate a Book</a>
+
 </section>
 
 <section class="profile-section shadow">
@@ -75,7 +77,7 @@
                 </div>
                 <div class="card-btns-container profile-book-btns">
                     <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn card-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
-                    <a href="#" class="btn card-btn page-btn"><i class="fa-solid fa-pencil"></i></a>
+                    <a href="{{url_for('edit_book', book_id=book._id  )}}" class="btn card-btn page-btn"><i class="fa-solid fa-pencil"></i></a>
                 </div>
               </div>
             {% endfor %}
