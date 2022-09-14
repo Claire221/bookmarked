@@ -109,7 +109,7 @@ def add_bookcase():
         db.session.commit()
         return redirect(url_for("show_shelves"))
 
-    return render_template("add_bookcase.html")
+    return render_template("add_bookshelf.html")
 
 @app.route("/bookshelves")
 def show_shelves():
@@ -117,7 +117,7 @@ def show_shelves():
     all_bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
 
 
-    return render_template("bookcases.html", bookshelves=all_bookshelves)
+    return render_template("bookshelves.html", bookshelves=all_bookshelves)
 
 @app.route("/delete_bookcase/<bookshelf_id>")
 def delete_bookcase(bookshelf_id):
@@ -175,3 +175,40 @@ def sort_books(bookcase_id):
             books_title.append(books)
 
     return render_template("books.html", bookshelves=bookshelves, books=books_title)
+
+#Function to edit a book
+@app.route("/edit-book/<book_id>", methods=["GET", "POST"] )
+def edit_book(book_id):
+    if request.method == "POST":
+        submit = {
+            "title": request.form.get("book_title"),
+            "author": request.form.get("author"),
+            "genre": request.form.getlist("genre"),
+            "description": request.form.get("book-description"),
+            "createdBy": session["user"],
+            "bookshelf": request.form.get("bookshelf"),
+            "comments": "",
+            "created_by": session["user"]
+        }
+        updated_bookshelf = request.form.get("bookshelf")
+        bookshelves_search = Bookshelves.query.filter(Bookshelves.id == updated_bookshelf)
+
+        print(bookshelves_search)
+        # bookshelf = Bookshelves(
+        #     bookshelf_name=request.form.get("bookshelf_name"),
+        #     bookshelf_description=request.form.get("bookshelf_description"),
+        #     created_by=session["user"]
+        # )
+        # db.session.add(bookshelf)
+        # db.session.commit()
+        # print(updated_bookshelf)
+
+        mongo.db.books.update_one({"_id": ObjectId(book_id)},  {"$set": submit})
+        flash("Book Successfully Updated")
+
+    session_user = session["user"]
+    bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
+
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    return render_template("edit_book.html", book=book, bookshelves=bookshelves)
+
