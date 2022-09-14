@@ -77,10 +77,11 @@ def logout():
 
 @app.route("/profile")
 def profile_page():
-    bookshelves = list(Bookshelves.query.order_by(Bookshelves.id).all())
+    session_user = session["user"]
+    all_bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
     books = mongo.db.books.find()
 
-    return render_template("profile.html", bookshelves=bookshelves, books=books)
+    return render_template("profile.html", bookshelves=all_bookshelves, books=books)
 
 
 @app.route("/add_bookcase", methods=["GET", "POST"])
@@ -97,20 +98,13 @@ def add_bookcase():
 
     return render_template("add_bookcase.html")
 
-
-
 @app.route("/bookshelves")
 def show_shelves():
-    user_id = list(Users.query.order_by(Users.id).all())
-    bookcase_id = list(Bookshelves.query.order_by(Bookshelves.id).all())
-    print(user_id)
-    print(bookcase_id)
+    session_user = session["user"]
+    all_bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
 
-    # session_user = session["user"]
-    # print(session_user)
 
-    bookshelves = list(Bookshelves.query.order_by(Bookshelves.id).all())
-    return render_template("bookcases.html", bookshelves=bookshelves)
+    return render_template("bookcases.html", bookshelves=all_bookshelves)
 
 @app.route("/delete_bookcase/<bookshelf_id>")
 def delete_bookcase(bookshelf_id):
