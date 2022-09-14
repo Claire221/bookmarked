@@ -6,7 +6,7 @@
 <div class="section-containers bookshelf-container shadow">
     <div class="row">
         {% for bookshelf in bookshelves %}
-            <a href="#">
+            <a href="{{ url_for('sort_books', bookcase_id=bookshelf.id) }}">
                 <div class="col s12 m5 l3 ">
                     <div class="card bookshelf-card image-styles">
                         <div class="card-content bookshelf-card-content center-align">
