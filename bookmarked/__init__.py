@@ -3,6 +3,7 @@ import re
 from flask import Flask
 from flask_pymongo import PyMongo
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 if os.path.exists("env.py"):
     import env  # noqa
@@ -23,5 +24,6 @@ else:
 
 db = SQLAlchemy(app)
 mongo = PyMongo(app)
+migrate = Migrate(app, db)
 
 from bookmarked import routes # noqa
