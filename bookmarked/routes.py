@@ -1,4 +1,6 @@
 import os
+import random
+
 from flask import flash, render_template, request, redirect, session, url_for
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -234,13 +236,26 @@ def generate_book():
 
 
 # Function to generate books from Bookshelves 
-@app.route("/generate-book", methods=["GET", "POST"])
+@app.route("/generated-book", methods=["GET", "POST"])
 def bookshelf_book():
     if request.method == "POST":
-        bookshelf_id = request.form.get("bookshelf._id")
-        chosen_bookshelf = mongo.db.bookshelf.find_one({"_id": ObjectId(bookshelf_id)})
+        bookshelf_id = request.form.get("bookshelf")
+        chosen_bookshelf = Bookshelves.query.filter(Bookshelves.id == bookshelf_id)
+        # chosen_bookshelf = Bookshelves.query.filter(Bookshelves.id == request.form.get("bookshelf"))
 
-        session_user = session["user"]
-        bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
+        books = list(mongo.db.books.find())
+        bookshelf_books = []
 
-    return render_template("profile.html")
+        for book in books:
+            if book["bookshelf"] == bookshelf_id:
+                bookshelf_books.append(book)
+
+        random_number = int(random.random() * len(bookshelf_books))
+        chosen_book = bookshelf_books[random_number]
+        # print(len(bookshelf_books))
+        print(chosen_book)
+
+    return render_template("generated_book.html", bookshelf=chosen_bookshelf, book=chosen_book)
+
+        # updated_bookshelf = request.form.get("bookshelf")
+        # bookshelves_search = Bookshelves.query.filter(Bookshelves.id == updated_bookshelf)
