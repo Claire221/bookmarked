@@ -54,9 +54,16 @@
                         <span id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align">{{ book.title }} <i class="fa-solid fa-chevron-down card-icon "></i></span>
                         <span id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align">{{ book.author }}</span>
                         <ul class="card-title activator grey-text text-darken-4 center-align">
-                            {% for genre in book.genre %}
-                                <li>{{ book.genre}}</li>
-                            {% endfor %}
+                            {% for bookshelf in bookshelves %}
+                            {% if bookshelf.id == book.bookshelf %}
+                                <li>Bookshelf: {{ bookshelf.bookshelf_name }}</li>
+                            {% endif %}
+                            <!-- <p>bookshelf name: {{ bookshelf.id }}</p> -->
+                            <!-- <p>book bookshelf: {{ book.bookshelf }}</p> -->
+                            <p>book bookshelf: {{ bookshelf.bookshelf_name  }}</p>
+                        {% endfor %}
+                        </ul>
+                        <ul>
                         </ul>
                     </div>
                 </div>
@@ -67,7 +74,7 @@
                     {% endif %}
                 </div>
                 <div class="card-btns-container profile-book-btns">
-                    <a href="#" class="btn card-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
+                    <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn card-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
                     <a href="#" class="btn card-btn page-btn"><i class="fa-solid fa-pencil"></i></a>
                 </div>
               </div>
