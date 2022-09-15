@@ -140,7 +140,8 @@ def add_book():
             "createdBy": session["user"],
             "bookshelf": request.form.get("bookshelf"),
             "comments": "",
-            "created_by": session["user"]
+            "created_by": session["user"],
+            "colour": request.form.get("colour")
         }
 
         mongo.db.books.insert_one(book)
