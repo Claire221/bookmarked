@@ -5,17 +5,18 @@
     <h1 class="center-align">Your Chosen Bookshelf is : {{ book.bookshelf_name }}</h1>
 {% endfor %}
 
+    {% if book %}
     <div class="container">
         <h3 class="center-align">Your Generated book is: {{ book.title }}</h3>
         <div class="card col s12 m4 xl4 book-card">
             <div class="card-content book-card-content">
                 <div class="card-titles">
-                    <h4 id="shelf-card-title" class="card-title grey-text text-darken-4 center-align">{{ book.title }} </h4>
+                    <h4 id="shelf-card-title" class="card-title grey-text text-darken-4 center-align"></h4>
                     <p id="shelf-card-title" class="grey-text text-darken-4 center-align">{{ book.author }}</p>
                     <p class="grey-text text-darken-4">Book Description</p>
                     {% if book.description %}
                     <p>{{ book.description }}</p>
-                    <!-- <p>{{ books_description }}</p> -->
+                    <p>{{ books_description }}</p>
                     {% else %}
                     <p>No Book Description Entered</p>
                 {% endif %}
@@ -23,6 +24,9 @@
             </div>
         </div>
     </div>
+    {% else %}
+        <p>No books Please make sure you have books on your selected bookshelf!</p>
+    {% endif %}
 
 {% endblock %}
 
