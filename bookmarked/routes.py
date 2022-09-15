@@ -218,12 +218,14 @@ def generate_book():
     genres = []
     
     for book in books:
-        if book["author"] not in authors:
-            authors.append(book["author"])
+        if book["createdBy"] == session_user:
+            if book["author"] not in authors:
+                authors.append(book["author"])
 
     for book in books:
-        if book["genre"] not in genres:
-            genres.append(book["genre"])
+        if book["createdBy"] == session_user:
+            if book["genre"] not in genres:
+                genres.append(book["genre"])
 
     print(authors)
     print(genres)
@@ -287,11 +289,15 @@ def author_book():
 @app.route("/generated-books", methods=["GET", "POST"])
 def random_book():
     if request.method == "POST":
+        session_user = session["user"]
         books = list(mongo.db.books.find())
+        chosen_book = None
 
         if books: 
-                random_number = random.randint(0, len(books) -1)
-                chosen_book = books[random_number]
+            for book in books:
+                if book["createdBy"] == session_user:
+                    random_number = random.randint(0, len(books) -1)
+                    chosen_book = books[random_number]
         else:
             chosen_book = None
 
