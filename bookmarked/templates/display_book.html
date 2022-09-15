@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <section>
+        <div class="book-info-container">
+            <div class="book-info">
+                <h1>Your Book: {{ book.title }}</h1>
+                <h2 class="card-title ">Book Author: {{ book.author }}</h2>
+                <p class=" book-description">Book Description</p>
+                    {% if book.description %}
+                        <p class="book-paragraph">{{ book.description }}</p>
+                    {% else %}
+                        <p  class="book-paragraph">No Book Description Entered</p>
+                    {% endif %}
+                <p class="book-comments">Your Book Comments</p>
+                    {% if book.comments %}
+                    <ul>
+                        {% for comment in book.comments %}
+                            <li class="book-paragraph">{{ comment[0] }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                        <p  class="book-paragraph">No Comments added</p>
+                    {% endif %}
+            </div>
+        </div>
+    </section>
+
+
+<section class="add-comment-section">
+    <h2 class="form-header center-align">Add Book Comment</h2>
+        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_comment', book_id=book._id) }}">
+                </div class="row">
+                    <!-- Book Description -->
+                    <label for="book_comment">Add Book Comment</label>
+                    <textarea name="book_comment" id="" cols="20" rows="20" placeholder="Enter Comment.." class="textarea"></textarea>
+                    <!-- register button -->
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 center-align">
+                        <button type="submit" class="btn waves-effect waves-light review-btn">Add Comment!</button>
+                    </div>
+                </div>
+        <form>
+</section>
+
+{% endblock %}
