@@ -1,0 +1,129 @@
+# Bookmarked - Online Virtual Library Website
+
+
+Bookmarked is a virtual library where users can keep track of all their books, add notes about what they thought of them and organize them all into bookcases. 
+
+I came up with the idea because I love to read and have bookcase full of books but sometimes it can be hard to keep track of them all, and also remember what I liked and disliked about each one so I wanted to build an app that would alow me to organize them all and also have a way for me to leave notes or reviews on each one. 
+
+Because I love to buy books at a rate that is faster than I can read them sometimes I get overwhelmed and cant decide what book to read next, so I created a feature that would take the decision out of your hands. The book generation will allow the user to generate a book from a certain condition such as from a specific author, genre or bookshelf or just generate a book out of all their created books completely taking the decision making away from them and possibly giving them a book they might not have picked for themselves.
+
+
+
+Live site - 
+respnsive image site - https://ui.dev/amiresponsive
+
+## UX
+
+For the website I want the design to be simple and clean so that its easy for the user to navigate. To do this I will use the same fonts and colour scheme throughout the website. 
+
+ 
+### User Stories
+ 
+-	As a user I want to be able to easily add books to my page
+-	As a user I want to be able to easily edit my books
+-	As a user I want to be able to create new bookcases to organize my books
+-	As a user I want to be able to leave comments or notes about books
+-	As a user I want to be able to easily generate a random book to read
+
+
+### Colour Scheme
+    
+Throughout the website I want the theme to be a white background with tones of brown for the navigation and buttons to play on the theme of bookshelves. 
+
+![Color Scheme](/bookmarked/static/img/colour_scheme.JPG)
+
+### Typography
+    
+For the Typography I want to use a font that is lightweight, simple and clean so that its easy to read and understand. 
+
+### Wireframes
+     include screenshots of your wireframes (consider the markdown table format)
+
+## Features
+
+    The aim of my website is to allow people to create an online library of books which they can organize in bookcases. The user will also be able to add notes to their books commention on what they liked or didnt like about them. Another feature of my website is there is a section that allows the user to randomly generate a book for the tiems when they cant decide what to read next.
+
+### Login page
+
+    Each user can create an account which will allow them to create their books and bookshelves. By creating an account it ensurs that the only books and bookshelves that are displayed belong to the user that is logged in.
+
+### Crate books
+
+    Users can create books, they can add titles, authors, tags and descriptions.
+
+### Bookshelves
+
+    Users can create bookshelves to manage and organize their books. 
+
+### Book generation
+
+    For the book generation I went with an option of 3 parameters or just a fully random book.
+
+#### Randomize by bookshelf
+
+    I wanted to give the user the change to randomize a book based on a bookshelf of their choosing, for example if the user has a Fantasy bookshelf they might want to randomly select a Fantasy book, or if they have a bookshelf that contains all the books that they havent read they can randomize a book that is stored on this shelf.
+
+#### Randomzie by Author
+
+    I also wanted to give the user the option to randomize a book based on Author so if they have a favourite author they can randomly get one of their books, Or if they have books by a new Author that they havent read any books from before and are unsure where to start they can just let fate randomly select the book for them
+
+#### By Tags
+
+    When creating books the user has an option to add tags, these are used in the search function of the website so I wanted to have the option of randomizing a book by the tags associated with it. 
+
+#### By all books
+
+    Finally I wanted to add an option for when the user really wants a random book, they dont want it from a specific bookshelf or from a specific genre. The randomize by all books option will take all the books that the user has created and randomly give them a book to read.
+
+### Features Left to Implement
+    have ideas on what you'd like to add in the future? add them here!! assessors LOVE seeing future concepts!
+    
+## Technologies Used
+
+    
+Throughout the project I used a variety of technologies.
+
+- I used HTML and CSS to create and style the website.
+- I used Python to create the interactive elements of the website
+- I used github to create a repository for my project.[Github Website](https://github.com/)
+- I used gitpod as the development environment.[Gitpod Website](https://gitpod.io/)
+- I used Hiroku pages to host the website [Hiroku Website](https://id.heroku.com/)
+- I used MongoDB for one of the databases [MongoDB Website](www.mongodb.com)
+- I used PSQL for one of the databases [PSQL Website](https://www.postgresql.org/)
+- I used Jinja for my templating language [Jinja Website](https://jinja.palletsprojects.com/en/3.1.x/)
+- I used Materialized for some of my styling [Materialize Website](https://materializecss.com/)
+- I used Balsamiq to design my wireframes [Balsamiq Website](https://balsamiq.com/)
+- I used photoshop to edit some of my images [Photoshop Website](https://www.adobe.com/uk/products/photoshop.html)
+
+
+## Testing
+    "For all testing, please refer to the [TESTING.md](TESTING.md) file."
+## Deployment
+    document all necessary steps you did in order to deploy this project (GitHub Pages, Heroku, etc.)
+### Local Deployment
+    document all the necessary steps someone else can take in order to make a local copy of your project, like cloning, forking, etc.
+## Credits
+    explain about any particular places you took inspiration from
+### Content
+    list out any URLs or links where you might've borrowed a snippet of code, or element
+### Media
+    list out any URLs for images/videos/audios you've borrowed from online (Markdown Table works best here!)
+### Acknowledgements
+    list out any acknowledgements you have, if any... tutor support? fellow Slack student help? spouse, loved one, family member, etc.
+​
+​
+​
+TESTING.md file (ideally, separate from the README.md file, but also at root-level same as the readme and index files)
+​
+# Testing
+    "Click to return back to the [README.md](README.md)"
+## Browser Compatibility
+    you must showcase proof with screenshots that you've tested the finished project on various browsers, such as Chrome, Firefox, Edge, Safari, Brave, etc.
+## Code Validation
+    you must showcase proof with screenshots that you've validated any code files, such as HTML, CSS, JS, Python (where applicable)
+## Responsiveness
+    you must showcase proof with screenshots that you've tested the finished project on different device sizes, such as mobile, tablet, desktop.
+## User Story Testing
+    This is simple: copy/paste your User Stories from the README, paste them here, and then simply just take the existing screenshots from "Features" section that align with each User Story, and TADA!
+## Unfixed Bugs
+    list out any unfinished bugs you might have, where applicable... if none, don't just put "I have no bugs"... put something like: "There are no remaining bugs that I am aware of."
