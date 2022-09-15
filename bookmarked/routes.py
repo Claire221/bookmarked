@@ -182,17 +182,22 @@ def sort_books(bookcase_id):
 @app.route("/edit-book/<book_id>", methods=["GET", "POST"] )
 def edit_book(book_id):
     if request.method == "POST":
+        genres = request.form.getlist("genre")
+        genre_list = []
         submit = {
             "title": request.form.get("book_title"),
             "author": request.form.get("author"),
-            "genre": request.form.getlist("genre"),
+            "genre": genre_list,
             "description": request.form.get("book-description"),
             "createdBy": session["user"],
             "bookshelf": request.form.get("bookshelf"),
             "comments": "",
             "created_by": session["user"]
         }
-
+        
+        for genre in genres:
+            genre_list.append(genre)
+            
         mongo.db.books.update_one({"_id": ObjectId(book_id)},  {"$set": submit})
         flash("Book Successfully Updated")
 
@@ -220,6 +225,8 @@ def generate_book():
         if book["genre"] not in genres:
             genres.append(book["genre"])
 
+    print(authors)
+    print(genres)
     return render_template("generate_book.html", bookshelves=bookshelves, authors=authors, books=books, genres=genres)
 
 
@@ -247,7 +254,7 @@ def bookshelf_book():
     return render_template("generated_book.html", bookshelf=chosen_bookshelf, book=chosen_book)
 
 
-# Function to generate a book from all books
+# Function to generate a book from all Authors
 @app.route("/generated-author", methods=["GET", "POST"])
 def author_book():
     if request.method == "POST":
@@ -272,3 +279,20 @@ def author_book():
         print(author_books)
         print(chosen_book)
     return render_template("generated_book.html", author=author, book=chosen_book)
+
+
+# Function to generate a book from all Genres
+
+# Function to generate a book from all Books
+@app.route("/generated-books", methods=["GET", "POST"])
+def random_book():
+    if request.method == "POST":
+        books = list(mongo.db.books.find())
+
+        if books: 
+                random_number = random.randint(0, len(books) -1)
+                chosen_book = books[random_number]
+        else:
+            chosen_book = None
+
+    return render_template("generated_book.html", book=chosen_book)
