@@ -207,6 +207,23 @@ select,textarea {
     margin: 0 auto;
 }
 
+.colour-picker-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: solid 2px red;
+    height: 50px;
+}
+
+.colour-picker {
+
+}
+
+label.colour-picker-label {
+    position: absolute;
+    right: 50px;
+    width: 40%;
+}
 
 /* Book card styles */
 .book-card {
@@ -217,6 +234,10 @@ select,textarea {
     justify-content: center;
     align-items: center;
     background-color: rgb(224, 224, 224);
+}
+
+.book-card-styles {
+    border: solid 2px #1d100b;
 }
 
 .book-card-content {
