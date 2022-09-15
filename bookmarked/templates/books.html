@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
     {% for book in books %}
-        <div class="card col s12 m4 xl4 book-card">
+        <div class="card col s12 m4 xl4 book-card book-card-styles" style="background-color:{{ book.colour }}">
             <div class="card-content book-card-content">
                 <div class="card-titles">
                     <span id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align">{{ book.title }} <i class="fa-solid fa-chevron-down card-icon "></i></span>
@@ -21,7 +21,6 @@
                 <span class="card-title activator  grey-text text-darken-4">Book Description<i class="fa-solid fa-x card-icon "></i></span>
                 {% if book.description %}
                     <p>{{ book.description }}</p>
-                    <!-- <p>{{ books_description }}</p> -->
                     {% else %}
                     <p>No Book Description Entered</p>
                 {% endif %}

@@ -54,7 +54,7 @@
         <div class="row">
             {% if books %}
             {% for book in books %}
-            <div class="card col s12 m6 xl4">
+            <div class="card col s12 m6 xl4 book-card-styles" style="background-color:{{ book.colour}}">
                 <div class="card-content profile-card">
                     <div class="card-titles">
                         <span id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align">{{ book.title }} <i class="fa-solid fa-chevron-down card-icon "></i></span>
@@ -74,9 +74,11 @@
                     </div>
                 </div>
                 <div class="card-reveal">
+                        <span class="card-title activator  grey-text text-darken-4">Book Description<i class="fa-solid fa-x card-icon"></i></span>
                     {% if book.description != '' %}
-                        <span class="card-title activator  grey-text text-darken-4">Book Description<i class="fa-solid fa-x card-icon "></i></span>
                         <p>{{ book.description }}</p>
+                    {% else %}
+                        <p>No Book Description Entered</p>
                     {% endif %}
                 </div>
                 <div class="card-btns-container profile-book-btns">
