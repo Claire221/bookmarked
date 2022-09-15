@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="row">
-              <div class="input-field col s6 m12">
+              <div class="input-field col s6 m6">
                 <select id="bookshelf" name="bookshelf" class="validate">
                     <option value="" disabled selected>Add to bookcase</option>
                     {% for bookshelf in bookshelves %}
@@ -35,6 +35,10 @@
                     {% endfor %}
                 </select>
               </div>
+              <div class="input-field col s6 m6 colour-picker-div">
+                <label class="colour-picker-label" for="colour">Select book colour</label>
+                <input class="colour-picker" type="color" id="colour" name="colour" value="{{ book.colour }}">
+            </div>
             </div>
             <!-- Book Description -->
             <textarea value="{{ book.description }}" name="book-description" id="" cols="20" rows="20" placeholder="Enter description.. (Optional)" class="textarea">{{- book.description -}}</textarea>
