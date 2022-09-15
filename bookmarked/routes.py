@@ -225,7 +225,7 @@ def generate_book():
 
 
 # Function to generate a book from Bookshelves 
-@app.route("/generated-book", methods=["GET", "POST"])
+@app.route("/generated-bookshelf", methods=["GET", "POST"])
 def bookshelf_book():
     if request.method == "POST":
         bookshelf_id = request.form.get("bookshelf")
@@ -247,5 +247,28 @@ def bookshelf_book():
     return render_template("generated_book.html", bookshelf=chosen_bookshelf, book=chosen_book)
 
 
-# Function to generate a book from Bookshelves 
+# Function to generate a book from all books
+@app.route("/generated-author", methods=["GET", "POST"])
+def author_book():
+    if request.method == "POST":
+        author = request.form.get("author")
 
+        books = list(mongo.db.books.find())
+        author_books = []
+
+        for book in books:
+            if book["author"] == author :
+                author_books.append(book)
+
+        if len(author_books) > 0: 
+            random_number = random.randint(0, len(author_books) -1)
+            chosen_book = author_books[random_number]
+        elif len(author_books) == 0:
+            chosen_book = author_books
+        else:
+            chosen_book = None
+        
+        print(author)
+        print(author_books)
+        print(chosen_book)
+    return render_template("generated_book.html", author=author, book=chosen_book)
