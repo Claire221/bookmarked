@@ -179,6 +179,16 @@ def sort_books(bookcase_id):
 
     return render_template("books.html", bookshelves=bookshelves, books=books_title)
 
+
+
+# Function to display books 
+@app.route("/test/<book_id>")
+def display_books(book_id):
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+
+    return render_template("display_book.html", book=book)
+
+
 #Function to edit a book
 @app.route("/edit-book/<book_id>", methods=["GET", "POST"] )
 def edit_book(book_id):
@@ -194,7 +204,7 @@ def edit_book(book_id):
             "bookshelf": request.form.get("bookshelf"),
             "comments": "",
             "created_by": session["user"],
-             "colour": request.form.get("colour")
+            "colour": request.form.get("colour")
         }
         
         for genre in genres:
@@ -205,9 +215,26 @@ def edit_book(book_id):
 
     session_user = session["user"]
     bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+
+    return render_template("edit_book.html", book=book, bookshelves=bookshelves)
+
+
+# Function to add comments to books
+@app.route("/comment/<book_id>", methods=["GET", "POST"])
+def add_comment(book_id):
+    if request.method == "POST":
+        book_comment = {
+            "comments": request.form.getlist("book_comment"),
+        }
+
+        mongo.db.books.update_one({ '_id': ObjectId(book_id) },{ "$push": book_comment })
+        flash("Comment Successfully Added")
 
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    return render_template("edit_book.html", book=book, bookshelves=bookshelves)
+    return render_template("display_book.html", book=book)
+
+
 
 # Function to generate a book
 @app.route("/generate-book", methods=["GET", "POST"])
@@ -304,3 +331,6 @@ def random_book():
             chosen_book = None
 
     return render_template("generated_book.html", book=chosen_book)
+
+
+# Function to search for books
