@@ -241,16 +241,25 @@ select,textarea {
 }
 
 /* Book generator form styles  */
-/* .generate-container {
-    width: 95%;
-    height: auto;
-    border: solid 2px red;
-    margin: 3% auto !important;
-} */
+.generation-header {
+    margin-bottom: 4%;
+}
+
+.generation-h1 {
+    margin: 2% 1%;
+}
+
+.generation-h2 {
+    font-size: 2.5rem;
+}
+
+.generation-h3 {
+    font-size: 2.5rem;
+}
 
 .generate-card {
     /* height: 30vh; */
-    border: solid 2px black;
+    border: solid 2px #6d4c41;
     border-radius: 5px;
     margin: 1%;
 
@@ -258,14 +267,6 @@ select,textarea {
 
 .top-card {
     margin-top: 4%;
-}
-
-.generate-card-contents {
-    width: 95%;
-    height: 90%;
-    margin: auto;
-    border: solid 2px coral;
-    margin-top: 3%;
 }
 
 .generate-card-contents select {
@@ -281,10 +282,14 @@ select,textarea {
     margin: auto;
 }
 
+.generate-select {
+    min-height: 60px;
+}
+
 .generate-card select,
 #random {
     height: 50px;
-    border: solid 2px pink;
+    border: solid 2px #6d4c41;
 }
 
 #random {
@@ -303,8 +308,12 @@ select,textarea {
     align-items: center;
     margin: 0 auto;
 }
+.select-options {
+    color: #fb8c00 !important;
+}
 
 /* Materialize styles */
 .input-field .prefix.active {
     color: #6d4c41;
-  }
+}
+.dropdown-content li > a, .dropdown-content li > span {
