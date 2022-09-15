@@ -224,53 +224,28 @@ def generate_book():
 
 
 
-
 # Function to generate a book from Bookshelves 
-# @app.route("/generate-book", methods=["GET", "POST"])
-# def bookshelf_book():
-#     if request.method == "POST":
-#         x = request.form['action']
-#         random_number = None
-#         chosen_book = None
-
-#         if x == "Submit1":
-#             bookshelf_id = request.form.get("bookshelf")
-#             chosen_bookshelf = Bookshelves.query.filter(Bookshelves.id == bookshelf_id)
-#             # chosen_bookshelf = Bookshelves.query.filter(Bookshelves.id == request.form.get("bookshelf"))
-
-#             books = list(mongo.db.books.find())
-#             bookshelf_books = []
-
-#             for book in books:
-#                 if book["bookshelf"] == bookshelf_id:
-#                     bookshelf_books.append(book)
-
-#             random_number = int(random.random() * len(bookshelf_books))
-#             chosen_book = bookshelf_books[random_number]
-
-#     return render_template("generate_book.html", bookshelf=chosen_bookshelf, book=chosen_book)
-
-
-# # Function to generate a book from Bookshelves 
-# @app.route("/generated-book", methods=["GET", "POST"])
-# def author_book():
-#     if request.method == "POST":
-#         # x = request.form['action']
-#         # if x == "Submit2"
-
-#         return redirect(url_for("profile_page"))
-
-# #author = request.form.get("author")
-
-# #books = mongo.db.books.find()              
-# # for b in books:
-# #     if b["createdBy"] == session_user:
-# #         users_books.append(b)
-
-# # print(author)
-# Function to generate a book from Bookshelves 
-
 @app.route("/generated-book", methods=["GET", "POST"])
-def book_generator():
+def bookshelf_book():
+    if request.method == "POST":
+        bookshelf_id = request.form.get("bookshelf")
+        chosen_bookshelf = Bookshelves.query.filter(Bookshelves.id == bookshelf_id)
+        # chosen_bookshelf = Bookshelves.query.filter(Bookshelves.id == request.form.get("bookshelf"))
 
-    return render_template("generated_book.html")
+        books = list(mongo.db.books.find())
+        bookshelf_books = []
+
+        for book in books:
+            if book["bookshelf"] == bookshelf_id:
+                bookshelf_books.append(book)
+
+        if bookshelf_books: 
+            random_number = random.randint(0, len(bookshelf_books) -1)
+            chosen_book = bookshelf_books[random_number]
+        else:
+            chosen_book = None
+    return render_template("generated_book.html", bookshelf=chosen_bookshelf, book=chosen_book)
+
+
+# Function to generate a book from Bookshelves 
+
