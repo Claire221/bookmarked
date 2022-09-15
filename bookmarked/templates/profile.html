@@ -54,43 +54,39 @@
         <div class="row">
             {% if books %}
             {% for book in books %}
-            <div class="card col s12 m6 xl4 book-card-styles" style="background-color:{{ book.colour}}">
-                <div class="card-content profile-card">
-                    <div class="card-titles">
-                        <span id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align">{{ book.title }} <i class="fa-solid fa-chevron-down card-icon "></i></span>
-                        <span id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align">{{ book.author }}</span>
-                        <ul class="card-title activator grey-text text-darken-4 center-align">
-                            {% for bookshelf in bookshelves %}
-                            {% if bookshelf.id == book.bookshelf %}
-                                <li>Bookshelf: {{ bookshelf.bookshelf_name }}</li>
+            <a href="{{ url_for('display_books', book_id=book._id) }}">
+                <div class="card col s12 m6 xl4 book-card-styles" style="background-color:{{ book.colour}}">
+                    <div class="card-content profile-card">
+                        <div class="card-titles">
+                            <span id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align">{{ book.title }} </span>
+                            <span id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align">{{ book.author }}</span>
+                            <ul class="card-title activator grey-text text-darken-4 center-align">
+                                {% for bookshelf in bookshelves %}
+                                    {% if bookshelf.id == book.bookshelf %}
+                                        <li>Bookshelf: {{ bookshelf.bookshelf_name }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            <span class="card-title activator  grey-text text-darken-4">Book Description</span>
+                            {% if book.description != '' %}
+                                <p>{{ book.description }}</p>
+                            {% else %}
+                                <p>No Book Description Entered</p>
                             {% endif %}
-                            <!-- <p>bookshelf name: {{ bookshelf.id }}</p> -->
-                            <!-- <p>book bookshelf: {{ book.bookshelf }}</p> -->
-                            <p>book bookshelf: {{ bookshelf.bookshelf_name  }}</p>
-                        {% endfor %}
-                        </ul>
-                        <ul>
-                        </ul>
+                        </div>
+                    </div>
+                    <div class="card-btns-container profile-book-btns">
+                        <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn card-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
+                        <a href="{{url_for('add_comment', book_id=book._id  )}}" class="btn book-card-btn page-btn"><i class="fa-solid fa-comment"></i></a>
+                        <a href="{{url_for('edit_book', book_id=book._id  )}}" class="btn card-btn page-btn"><i class="fa-solid fa-pencil"></i></a>
                     </div>
                 </div>
-                <div class="card-reveal">
-                        <span class="card-title activator  grey-text text-darken-4">Book Description<i class="fa-solid fa-x card-icon"></i></span>
-                    {% if book.description != '' %}
-                        <p>{{ book.description }}</p>
-                    {% else %}
-                        <p>No Book Description Entered</p>
-                    {% endif %}
-                </div>
-                <div class="card-btns-container profile-book-btns">
-                    <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn card-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
-                    <a href="{{url_for('edit_book', book_id=book._id  )}}" class="btn card-btn page-btn"><i class="fa-solid fa-pencil"></i></a>
-                </div>
-              </div>
-            {% endfor %}
-            {% else %}
-            <p class="profile-paragraph">You have no saved books</p>
-            {% endif %}
-        </div>
+                {% endfor %}
+                {% else %}
+                <p class="profile-paragraph">You have no saved books</p>
+                {% endif %}
+            </div>
+        </a>
     </div>
     <a href="{{ url_for('add_book') }}" class="btn profile-btn page-btn">Add New Book</a>
 </section>
