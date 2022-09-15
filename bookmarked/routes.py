@@ -193,7 +193,8 @@ def edit_book(book_id):
             "createdBy": session["user"],
             "bookshelf": request.form.get("bookshelf"),
             "comments": "",
-            "created_by": session["user"]
+            "created_by": session["user"],
+             "colour": request.form.get("colour")
         }
         
         for genre in genres:
