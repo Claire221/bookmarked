@@ -96,7 +96,7 @@ def profile_page():
         if b["createdBy"] == session_user:
             users_books.append(b)
  
-    return render_template("profile.html", bookshelves=user_bookshelves, books=users_books)
+    return render_template("profile.html", bookshelves=user_bookshelves, books=users_books, user=session_user)
 
 
 @app.route("/add_bookcase", methods=["GET", "POST"])
@@ -192,18 +192,6 @@ def edit_book(book_id):
             "comments": "",
             "created_by": session["user"]
         }
-        updated_bookshelf = request.form.get("bookshelf")
-        bookshelves_search = Bookshelves.query.filter(Bookshelves.id == updated_bookshelf)
-
-        print(bookshelves_search)
-        # bookshelf = Bookshelves(
-        #     bookshelf_name=request.form.get("bookshelf_name"),
-        #     bookshelf_description=request.form.get("bookshelf_description"),
-        #     created_by=session["user"]
-        # )
-        # db.session.add(bookshelf)
-        # db.session.commit()
-        # print(updated_bookshelf)
 
         mongo.db.books.update_one({"_id": ObjectId(book_id)},  {"$set": submit})
         flash("Book Successfully Updated")
