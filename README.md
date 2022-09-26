@@ -60,11 +60,10 @@ Throughout the website I want the theme to be a white background with tones of b
     - I used HTML and CSS to create and style the website.
     - I used github to create a repository for my project.[Github Website](https://github.com/)
     - I used gitpod as the development environment.[Gitpod Website](https://gitpod.io/)
-    - I used Hiroku for one of my databases [Hiroku Website](https://dashboard.heroku.com/)
+    - I used  MongoDB for one of my databases [MongoDB Website](https://www.mongodb.com/)
     - I used Jinja as a templating language [Jinja Website](https://jinja.palletsprojects.com/en/3.1.x/)
     - I used PSQL for one of the databases [PSQL Website](https://www.postgresql.org/)
-
-    - I used  to host the website [ Website]()
+    - I used Hiroku to host my website [Hiroku Website](https://dashboard.heroku.com/)
 
 ## Testing
     "For all testing, please refer to the [TESTING.md](TESTING.md) file."
