@@ -216,19 +216,19 @@ def edit_book(book_id):
 
 
 # Function to add comments to books
-# @app.route("/comment/<book_id>", methods=["GET", "POST"])
-# def add_comment(book_id):
-#     if request.method == "POST":
-#         comments = request.form.getlist("book_comment")
-#         book_comment = {
-#             "comments": comments
-#         }
+@app.route("/comment/<book_id>", methods=["GET", "POST"])
+def add_comment(book_id):
+    if request.method == "POST":
+        comments = request.form.getlist("book_comment")
+        book_comment = {
+            "comments": comments
+        }
 
-#         mongo.db.books.update_one({ '_id': ObjectId(book_id) },{ "$push": {"comments": book_comment} })
-#         flash("Comment Successfully Added")
+        mongo.db.books.update_one({ '_id': ObjectId(book_id) },{ "$push": {"comments": book_comment} })
+        flash("Comment Successfully Added")
 
-#     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-#     return render_template("display_book.html", book=book)
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    return render_template("display_book.html", book=book)
 
 
 
