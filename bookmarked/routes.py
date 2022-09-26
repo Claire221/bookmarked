@@ -184,7 +184,7 @@ def display_books(book_id):
 
 
 #Function to edit a book
-@app.route("/edit-book/<book_id>", methods=["GET", "POST"] )
+@app.route("/edit-book/<book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
     if request.method == "POST":
         genres = request.form.getlist("genre")
@@ -220,6 +220,7 @@ def edit_book(book_id):
 def add_comment(book_id):
     if request.method == "POST":
         comments = request.form.get("book_comment")
+        mongo.db.books.delete_one({"_id": ObjectId(book_id)})
 
         # book_comment = {
         #     "comments": comments
@@ -232,6 +233,11 @@ def add_comment(book_id):
     return render_template("display_book.html", book=book)
 
 
+@app.route("/comment/<book_id>", methods=["GET", "POST"])
+def delete_comment(book_id):
+    mongo.db.books.update_one({ '_id': ObjectId(book_id) },{ "$pull": {"comments": comment} })
+
+    return render_template("display_book.html", book=book)
 
 # Function to generate a book
 @app.route("/generate-book", methods=["GET", "POST"])
