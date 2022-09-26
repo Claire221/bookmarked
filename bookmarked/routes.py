@@ -17,9 +17,27 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 @app.route("/")
-def home():
-    return render_template("base.html")
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        existing_user = Users.query.filter(Users.username == request.form.get("username").lower()).all()
 
+
+        if existing_user:
+            if existing_user[0].password == request.form.get("password"):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for("profile_page", username=session["user"]))
+
+            else:
+                flash("Incorrect Username and/or Password, Please try again")
+                return redirect(url_for("login"))
+
+        else:
+            flash("Incorrect Username and/or Password, Please try again")
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -47,30 +65,6 @@ def register():
     return render_template("register.html")
 
 
-
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        existing_user = Users.query.filter(Users.username == request.form.get("username").lower()).all()
-
-
-        if existing_user:
-            if existing_user[0].password == request.form.get("password"):
-                session["user"] = request.form.get("username").lower()
-                flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(url_for("profile_page", username=session["user"]))
-
-            else:
-                flash("Incorrect Username and/or Password, Please try again")
-                return redirect(url_for("login"))
-
-        else:
-            flash("Incorrect Username and/or Password, Please try again")
-            return redirect(url_for("login"))
-
-    return render_template("login.html")
-
-
 @app.route("/logout")
 def logout():
     flash("You successfully logged out")
@@ -82,7 +76,7 @@ def profile_page():
     session_user = session["user"]
 
     user_bookshelves = Bookshelves.query.filter(Bookshelves.created_by == session_user).all()
-    bookshelves = list(Bookshelves.query.order_by(Bookshelves.bookshelf_name).all())
+    # bookshelves = list(Bookshelves.query.order_by(Bookshelves.bookshelf_name).all())
 
     # for bookshelf in user_bookshelves:
     #     print(user_bookshelves)
@@ -95,7 +89,7 @@ def profile_page():
     for b in books:
         if b["createdBy"] == session_user:
             users_books.append(b)
- 
+
     return render_template("profile.html", bookshelves=user_bookshelves, books=users_books, user=session_user)
 
 
@@ -139,7 +133,7 @@ def add_book():
             "description": request.form.get("book-description"),
             "createdBy": session["user"],
             "bookshelf": request.form.get("bookshelf"),
-            "comments": "",
+            "comments": [None],
             "created_by": session["user"],
             "colour": request.form.get("colour")
         }
@@ -170,7 +164,7 @@ def sort_books(bookcase_id):
     books_title = []
      
     for b in books_list:
-        if b["createdBy"] == session_user:
+        if ["createdBy"] == session_user:
             users_books.append(b)
 
     for books in books_list: 
@@ -195,6 +189,7 @@ def edit_book(book_id):
     if request.method == "POST":
         genres = request.form.getlist("genre")
         genre_list = []
+        comments = []
         submit = {
             "title": request.form.get("book_title"),
             "author": request.form.get("author"),
@@ -202,7 +197,7 @@ def edit_book(book_id):
             "description": request.form.get("book-description"),
             "createdBy": session["user"],
             "bookshelf": request.form.get("bookshelf"),
-            "comments": "",
+            "comments": comments,
             "created_by": session["user"],
             "colour": request.form.get("colour")
         }
@@ -221,18 +216,19 @@ def edit_book(book_id):
 
 
 # Function to add comments to books
-@app.route("/comment/<book_id>", methods=["GET", "POST"])
-def add_comment(book_id):
-    if request.method == "POST":
-        book_comment = {
-            "comments": request.form.getlist("book_comment"),
-        }
+# @app.route("/comment/<book_id>", methods=["GET", "POST"])
+# def add_comment(book_id):
+#     if request.method == "POST":
+#         comments = request.form.getlist("book_comment")
+#         book_comment = {
+#             "comments": comments
+#         }
 
-        mongo.db.books.update_one({ '_id': ObjectId(book_id) },{ "$push": book_comment })
-        flash("Comment Successfully Added")
+#         mongo.db.books.update_one({ '_id': ObjectId(book_id) },{ "$push": {"comments": book_comment} })
+#         flash("Comment Successfully Added")
 
-    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-    return render_template("display_book.html", book=book)
+#     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+#     return render_template("display_book.html", book=book)
 
 
 
