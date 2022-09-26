@@ -40,19 +40,37 @@ For the design of my app I used wireframes to visulize what I wanted each page t
 
 #### Login Page Wireframes
 
-#### Registration Page Wireframes
+![Login Page Wireframes](bookmarked/documentation/wireframes/login_page_wireframe.png)
+
+#### Signup Page Wireframes
+
+![Signup Page Wireframes](bookmarked/documentation/wireframes/signup_page_wireframe.png)
 
 #### Profile Page Wireframes
 
-#### Create Bookshelf Wireframes
+![Profile Page Wireframes](bookmarked/documentation/wireframes/profile_page_wireframe.png)
 
-#### Create Book Wireframes
+#### Create Bookshelf Page Wireframes
 
-#### Edit Book Wireframes
+![Create Bookshelf Page Wireframes](bookmarked/documentation/wireframes/create_bookshelf_wireframe.png)
 
-#### Add Comment Wireframes
+#### Bookshelf Books Wireframes
+
+![bookshelf Books Wireframes](bookmarked/documentation/wireframes/bookshelf_pages_wireframe.png)
 
 #### Generate Book Wireframes
+
+![Generate Page Wireframes](bookmarked/documentation/wireframes/generate_book_form_wireframe.png)
+
+#### Create Books Page Wireframes
+
+![Create Book Page Wireframes](bookmarked/documentation/wireframes/create_book_wireframe.png)
+
+#### Create Edit Wireframes
+
+#### Display Book Page Wireframes
+
+#### Add Comment Wireframes
 
 #### Display Generated Book Wireframes
      
