@@ -21,12 +21,6 @@
                   <label for="author">Author</label>
               </div>
             </div>
-            <!-- <div class="row">
-                <div class="input-field col s6 m12">
-                  <input value="{{ book.genre }}" id="genre" name="genre" type="text" class="validate">
-                  <label for="genre">Genre and Tags</label>
-                </div>
-            </div> -->
             <div class="row">
               <div class="input-field col s6 m12">
                 {% for genre in book.genre %}
@@ -46,7 +40,7 @@
               </div>
               <div class="input-field col s6 m6 colour-picker-div">
                 <label class="colour-picker-label" for="colour">Select book colour</label>
-                <input class="colour-picker" type="color" id="colour" name="colour" value="{{ book.author }}">
+                <input class="colour-picker" type="color" id="colour" name="colour" value="{{ book.colour }}">
             </div>
             </div>
             <!-- Book Description -->
