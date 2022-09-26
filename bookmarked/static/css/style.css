@@ -278,12 +278,18 @@ label.colour-picker-label {
 }
 
 /* display book styles */
+.display-book-headers {
+    text-align: center;
+    border: solid 2px pink;
+}
+
 .book-info-container {
     width: 100%;
+    margin: 0 auto;
 }
 
 .book-description,
-.book-comments {
+.book-comment-title {
     font-size: 2rem;
     margin-top: 5%;
 }
@@ -293,21 +299,40 @@ label.colour-picker-label {
 }
 
 .book-info {
-    width: 95%;
-    margin: 0 auto;
- 
+    width: 100%;
 }
 
-.book-comment,
+.book-comment-div,
 .add-comment-section {
     width: 95%;
     margin: 0 auto;
 }
 
-.book-comment {
-    border: solid 2px black;
+.add-comment-section {
+    margin: 2% auto;
+    border: solid 2px purple;
 }
 
+.comment-content {
+    width: 95%;
+    border: solid 2px black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1% auto;
+}
+
+.book-comment {
+    width: 90%;
+    margin-left: 1%;
+    font-size: 1.25rem;
+}
+
+.delete-comment-icon {
+    width: 5% ;
+    margin: 0 auto 1%;
+    justify-content: flex-end;
+}
 
 /* Book generator form styles  */
 .generation-header {
