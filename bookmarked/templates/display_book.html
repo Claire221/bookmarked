@@ -37,7 +37,7 @@
                         {% for comment in book.comments %}
                         <div class="comment-content">
                             <p class="book-comment">{{ comment }}</p>
-                            <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn page-btn delete-comment-icon"><i class="fa-solid fa-trash delete-btn"></i></a>
+                            <a href="{{ url_for('delete_comment', book_id=book._id, comment=comment) }}" class="btn page-btn delete-comment-icon"><i class="fa-solid fa-trash delete-btn"></i></a>
                         </div>
                         {% endfor %}
                     </div>
