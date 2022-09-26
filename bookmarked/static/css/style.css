@@ -261,6 +261,27 @@ label.colour-picker-label {
     float: right;
 }
 
+/* display book styles */
+.book-info-container {
+
+}
+
+.book-description,
+.book-comments {
+    font-size: 2rem;
+    margin-top: 5%;
+}
+
+.book-paragraph {
+    font-size: 1.25rem;
+}
+
+.book-info {
+    width: 95%;
+    margin: 0 auto;
+ 
+}
+
 /* Book generator form styles  */
 .generation-header {
     margin-bottom: 4%;
