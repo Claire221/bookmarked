@@ -27,7 +27,11 @@
         <!-- main navbar -->
         <nav class="nav-extended grey lighten-5">
           <div class="nav-wrapper">
-            <a href="{{ url_for('home') }}" class="brand-logo brown-text text-lighten-1">Bookmarked</a>
+            {% if session.user %}
+              <a href="{{ url_for('profile_page', username=session['user']) }}" class="brand-logo brown-text text-lighten-1">Bookmarked</a>
+            {% else %}
+              <a href="{{ url_for('login') }}" class="brand-logo brown-text text-lighten-1">Bookmarked</a>
+            {% endif %}
             <a href="#" data-target="mobile-demo" class="sidenav-trigger brown-text text-lighten-1"><i class="fa-solid fa-bars"></i></a>
             <ul class="right hide-on-med-and-down ">
               {% if session.user %}
@@ -35,7 +39,6 @@
                 <li><a href="{{ url_for('show_shelves') }}" class="brown-text text-lighten-1">Bookshelves</a></li>
                 <li><a href="{{ url_for('logout') }}" class="brown-text text-lighten-1">Log Out</a></li>
               {% else %}
-              <li><a href="{{ url_for('home') }}" class="brown-text text-lighten-1">Home</a></li>
                 <li><a href="{{ url_for('login') }}" class="brown-text text-lighten-1">Login</a></li>
               {% endif %}
             </ul>
@@ -48,7 +51,6 @@
               <li><a href="{{ url_for('show_shelves') }}" class="brown-text text-lighten-1">Bookshelves</a></li>
               <li><a href="{{ url_for('logout') }}" class="brown-text text-lighten-1">Log Out</a></li>
               {% else %}
-                <li><a href="{{ url_for('home') }}" class="brown-text text-lighten-1">Home</a></li>
                 <li><a href="{{ url_for('login') }}" class="brown-text text-lighten-1">Login</a></li>
           {% endif %}
         </ul>
@@ -86,7 +88,6 @@
                     <li><a href="{{ url_for('show_shelves') }}" class="brown-text text-lighten-1">Bookshelves</a></li>
                     <li><a href="{{ url_for('logout') }}" class="brown-text text-lighten-1">Log Out</a></li>
                     {% else %}
-                      <li><a href="{{ url_for('home') }}" class="brown-text text-lighten-1">Home</a></li>
                       <li><a href="{{ url_for('login') }}" class="brown-text text-lighten-1">Login</a></li>
                     {% endif %}
                   </ul>
