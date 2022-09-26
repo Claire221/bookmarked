@@ -112,7 +112,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 3% auto 0;
+    margin: 3% auto 2%;
 }
 
 .top-profile-section {
@@ -131,6 +131,22 @@ body {
     margin: 1% 0;    
 }
 
+.generate-book-section {
+    padding: 3% 0;
+    background-image:  linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(41, 23, 3, 0.5)),
+    url('https://images.unsplash.com/photo-1485322551133-3a4c27a9d925?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+    /* background: url("https://images.unsplash.com/photo-1485322551133-3a4c27a9d925?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"); */
+}
+
+
+.book-card-titles {
+    font-size: 2rem !important;
+    margin-bottom: 4%;
+}
+
+.book-card-info {
+    font-size: 1.25rem;
+}
 /* Bookshelf Styles */
 .bookshelf-container {
     border: solid 2px black;
@@ -263,7 +279,7 @@ label.colour-picker-label {
 
 /* display book styles */
 .book-info-container {
-
+    width: 100%;
 }
 
 .book-description,
@@ -281,6 +297,17 @@ label.colour-picker-label {
     margin: 0 auto;
  
 }
+
+.book-comment,
+.add-comment-section {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.book-comment {
+    border: solid 2px black;
+}
+
 
 /* Book generator form styles  */
 .generation-header {
