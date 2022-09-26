@@ -1,108 +1,99 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Bookmarked - Book Review Website
 
-Welcome USER_NAME,
+Bookmarked is a digital library for users to upload and organize their books. Through the website they will be able to create books and then assign them to bookshelves to organize them. The website also has a feature where users can generate a book for the times they cant decide what to read, They will have the oportunity to generate a book from a specific bookcase, author, genere or out of their whole library. 
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## UX
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+For the website I want the design to be simple so that its easy for the user to navigate. I want to keep the background white and use brown tones throughout the website to play on the idea of it being a digital library. Users will also have the oportunity to select a colour for each of the books they create so their bookshelves can be personalized to their style. 
 
-## Gitpod Reminders
+### User Stories
+ 
+-	As a user I want to be able to easily create books
+-	As a user I want to be able to easily create bookshelves
+-	As a user I want to be able to easily edit books
+-	As a user I want to be able to easily delete books
+-	As a user I want to be able to easily delete bookshelves
+-	As a user I want to be able to add comments to my books
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+### Colour Scheme
+    
+Throughout the website I want the theme to be a white background with tones of brown for the navigation and buttons to play on the theme of bookshelves. 
 
-`python3 -m http.server`
 
-A blue button should appear to click: _Make Public_,
 
-Another blue button should appear to click: _Open Browser_.
+### Typography
+    
+    For the Typography I want to use a font that is lightweight, simple and clean. 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+### Wireframes
+     include screenshots of your wireframes (consider the markdown table format)
+     
+## Features
+    briefly explain the project
+### Existing Features
 
-A blue button should appear to click: _Make Public_,
+#### Create Bookshelf Feature
 
-Another blue button should appear to click: _Open Browser_.
+#### Create Book Feature
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+#### Generate Book From Bookshelves
 
-To log into the Heroku toolbelt CLI:
+#### Generate Book From Authors
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+#### Generate Book From Genres
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+#### Generate Book From Whole Library
 
-------
+#### Add comments to books
 
-## Release History
+#### Edit Books
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### Features Left to Implement
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+    A feature I would like to implement is to attatch an api to the app so that when users create a book it will search the api and bring up the book cover and display that on the bookcase. 
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+## Technologies Used
+    
+    Throughout the project I used a variety of technologies.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+    - I used Balsamiq to design my wireframes [Balsamiq Website](https://balsamiq.com/)
+    - I used HTML and CSS to create and style the website.
+    - I used github to create a repository for my project.[Github Website](https://github.com/)
+    - I used gitpod as the development environment.[Gitpod Website](https://gitpod.io/)
+    - I used Hiroku for one of my databases [Hiroku Website](https://dashboard.heroku.com/)
+    - I used Jinja as a templating language [Jinja Website](https://jinja.palletsprojects.com/en/3.1.x/)
+    - I used PSQL for one of the databases [PSQL Website](https://www.postgresql.org/)
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+    - I used  to host the website [ Website]()
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
+## Testing
+    "For all testing, please refer to the [TESTING.md](TESTING.md) file."
+## Deployment
+    document all necessary steps you did in order to deploy this project (GitHub Pages, Heroku, etc.)
+### Local Deployment
+    document all the necessary steps someone else can take in order to make a local copy of your project, like cloning, forking, etc.
+## Credits
+    explain about any particular places you took inspiration from
+### Content
+    list out any URLs or links where you might've borrowed a snippet of code, or element
+### Media
+    list out any URLs for images/videos/audios you've borrowed from online (Markdown Table works best here!)
+### Acknowledgements
+    list out any acknowledgements you have, if any... tutor support? fellow Slack student help? spouse, loved one, family member, etc.
+​
+​
+​
+TESTING.md file (ideally, separate from the README.md file, but also at root-level same as the readme and index files)
+​
+# Testing
+    "Click to return back to the [README.md](README.md)"
+## Browser Compatibility
+    you must showcase proof with screenshots that you've tested the finished project on various browsers, such as Chrome, Firefox, Edge, Safari, Brave, etc.
+## Code Validation
+    you must showcase proof with screenshots that you've validated any code files, such as HTML, CSS, JS, Python (where applicable)
+## Responsiveness
+    you must showcase proof with screenshots that you've tested the finished project on different device sizes, such as mobile, tablet, desktop.
+## User Story Testing
+    This is simple: copy/paste your User Stories from the README, paste them here, and then simply just take the existing screenshots from "Features" section that align with each User Story, and TADA!
+## Unfixed Bugs
+    list out any unfinished bugs you might have, where applicable... if none, don't just put "I have no bugs"... put something like: "There are no remaining bugs that I am aware of."
