@@ -1,6 +1,8 @@
-# Bookmarked - Book Review Website
+# Bookmarked
 
-Bookmarked is a digital library for users to upload and organize their books. Through the website they will be able to create books and then assign them to bookshelves to organize them. The website also has a feature where users can generate a book for the times they cant decide what to read, They will have the oportunity to generate a book from a specific bookcase, author, genere or out of their whole library. 
+Bookmarked is a digital library for users to upload and organize their books. I decided to create Bookmarked because I personally have a lot of books, too many books to fit on my bookshelves so I end up giving some away or lending them to friends or family to read resulting in me forgetting what books I have owned or read. To fix this I wanted to create a website where I could add all my books so I can keep track of them all even if I don’t physically have them in my possession. I also wanted to create an option to create Bookshelves so that I could organize them such has have Fantasy books grouped together or have a digital TBR (To be read list) to keep track of all the books I want to read in the future. Finally I wanted to have a feature that would generate a book for me, because I buy books at a faster rate than I can read them it can become overwhelming trying to chose which one to read next. I wanted to be able to generate a book from some parameters such as from a specific author or bookshelf or just generate a book based on my whole library. 
+
+View Website - 
 
 ## UX
 
@@ -17,20 +19,111 @@ For the website I want the design to be simple so that its easy for the user to 
 
 ### Colour Scheme
     
-Throughout the website I want the theme to be a white background with tones of brown for the navigation and buttons to play on the theme of bookshelves. 
+Throughout the website I want the theme to be a white background with tones of brown for the navigation and buttons to play on the theme of bookshelves. I also want all of the pages to have the same styling and colours so that they flow together so I will be using the same colouring and styling for components throughout the website. 
 
-
+Main colours used throughout the website
+![colour Scheme](bookmarked/static/img/colour_scheme.jpg)
 
 ### Typography
     
-    For the Typography I want to use a font that is lightweight, simple and clean. 
+For the Typography I want to use a font that is lightweight, simple and clean. I kept the fonts the same throughout the website so that the website matched and looked unified.
+
+![Fonts](bookmarked/static/img/fonts.jpg)
+
+I also used icons throughout my website for some of the different options.
+
+![Icons](bookmarked/static/img/icons.jpg)
 
 ### Wireframes
-     include screenshots of your wireframes (consider the markdown table format)
+
+For the design of my app I used wireframes to visulize what I wanted each page to contain and a rough guide for how I wanted it to be laid out, this ensured that not only did I include all the features I wanted but also that i wasnt trying to design and create the website at the same time. 
+
+#### Login Page Wireframes
+
+#### Registration Page Wireframes
+
+#### Profile Page Wireframes
+
+#### Create Bookshelf Wireframes
+
+#### Create Book Wireframes
+
+#### Edit Book Wireframes
+
+#### Add Comment Wireframes
+
+#### Generate Book Wireframes
+
+#### Display Generated Book Wireframes
      
 ## Features
-    briefly explain the project
+
+For this project I wanted the user to be able to create an online library which they can keep track of all their books and organzie them onto bookshelves. I also wanted a feature where they would be able to generate a book for when they cant decide what to read next.
+
 ### Existing Features
+
+#### Navbar
+
+Since my website doesnt have many pages I wanted the navbar to be kept pretty basic and simple. On the left I have the app name and then on the right is the links to other pages of the website. I added a simple hover effect to each of the links so that the user knows what area they are currently hovering over.
+
+![Navbar](bookmarked/static/img/navbar.jpg)
+
+#### Button Hovers
+
+For all of the buttons I wanted to add a hover and focus effect so that the user knows when they are currently hover overing a button. I didnt want a drastic change, just something simple but noticable. In the end I decided to change the background colour to a slightly lighter shade of brown and also I remove the button box shadow so it gives the visual effect of a button being pressed down
+
+Normal
+![Button Active](bookmarked/static/img/button_normal.jpg)
+
+Active 
+![Button Normal](bookmarked/static/img/button_active.jpg)
+
+
+#### Login page
+
+When you land on the website it takes your directly to the login page which I kept very simple with just a input field for users username and password and a submit button. Underneath the login form there is also a button for users to create an account if they dont already have one.
+
+![Login Page](bookmarked/static/img/login.jpg)
+
+#### Sign up Page
+
+For the form to create an account I kept the design the same as the login form but just added extra fields for the information needed. When you click on a field and it becomes active the icon turns brown so that the user knows what input they are on. 
+
+![Active Input](bookmarked/static/img/active_input.jpg)
+
+If the user clicks out of the feild without all the requirements being met such as it being the right length a red bar underlines the feild notifying the user something is wrong.
+
+![Input Error](bookmarked/static/img/red_bar.jpg)
+
+Once the issue is corrected the underline then turns green signaling that the user is ok to continue. 
+
+![Input Fixed](bookmarked/static/img/green_bar.jpg)
+
+#### Home Page
+
+Personalized welcome message
+
+Users bookshelves
+
+On the users profile its split up into three sections. One of the sections displays the users bookhelves, from here they are able to create new bookshelves, edit their already existing ones or delete an already existing bookshelf. 
+
+![Profile Bookshelves](bookmarked/static/img/bookshelves.jpg)
+
+Generate Book
+
+From their homepage the user also has a section where they can generate a random book to read next. 
+
+![Generate Book](bookmarked/static/img/generate_section.jpg)
+
+Users books
+
+The last section on the users profile displays all of the books the user has inputed into their account.
+
+![Users Books](bookmarked/static/img/user_books.jpg)
+
+#### Bookshelves page
+
+Another way the user can view their bookshelves is to click on the bookshelf link in the navbar, this will quickly redirect them to a page displaying all of their bookshelves
 
 #### Create Bookshelf Feature
 
