@@ -26,8 +26,8 @@
                             <label for="genre">Genre and Tags</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s6 m6">
+                    <div class="row responsive-row">
+                        <div class="input-field col s6 m6 bookshelf-select">
                             <select id="bookshelf" name="bookshelf" class="validate" required>
                                 <option value="" disabled selected>Add to bookcase</option>
                                 {% for bookshelf in bookshelves %}
@@ -36,8 +36,11 @@
                             </select>
                         </div>
                         <div class="input-field col s6 m6 colour-picker-div">
-                            <label class="colour-picker-label" for="colour">Select book colour</label>
-                            <input class="colour-picker" type="color" id="colour" name="colour"value="#fff">
+                            <div class="colour-picker-label-div">
+                                <label class="colour-picker-label " for="colour">Select book colour</label>
+                            </div>
+                            <!-- <label class="colour-picker-label" for="colour">Select book colour</label> -->
+                            <input class="colour-picker" type="color" id="colour" name="colour" value="#FFFFFF">
                         </div>
                     </div>
                     <!-- Book Description -->
