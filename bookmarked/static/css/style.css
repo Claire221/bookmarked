@@ -11,7 +11,6 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-
 .section-containers {
     width: 95%;
     margin: 0 auto;
@@ -104,6 +103,7 @@ body {
     color: #43a047 ;
 }
 
+
 /* Profile page styles */
 .profile-btn {
     font-size: 1.25rem;
@@ -192,7 +192,8 @@ body {
     margin: 0 auto;
 }
 
-.create-bookshelf-btn {
+.create-bookshelf-btn,
+.create-book-btn {
     font-size: 1.25rem;
     width: 30%;
     margin: 1% auto;
@@ -263,9 +264,9 @@ label.colour-picker-label {
     border: solid 2px #1d100b;
 }
 
-.book-card-content {
+/* .book-card-content {
     height: 60%;
-}
+} */
 
 .book-card-btns {
     width: 90%;
@@ -442,4 +443,51 @@ label.colour-picker-label {
 .input-field .prefix.active {
     color: #6d4c41;
 }
-.dropdown-content li > a, .dropdown-content li > span {
+
+/* Media Queries *
+
+/* Signup Page Styles */
+@media only screen and (max-width: 900px) {
+    .responsive-row {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bookshelf-select,
+    .colour-picker-div {
+        min-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .form-container {
+        width: 100vw;
+    }
+
+    .signup-names {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .signup-first-name,
+    .signup-surname {
+        min-width: 100%;
+    }
+
+    .book-card-btns {
+        border: solid 2px coral;
+        width: 100%;
+        margin-bottom: 2px !important;
+    }
+
+    .create-book-btn {
+        width: 80%;
+    }
+
+    .delete-comment-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
