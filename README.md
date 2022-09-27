@@ -68,12 +68,16 @@ For the design of my app I used wireframes to visulize what I wanted each page t
 
 #### Create Edit Wireframes
 
+![Display Book Page Wireframes](bookmarked/documentation/wireframes/display_book_wireframe.png)
+
 #### Display Book Page Wireframes
 
-#### Add Comment Wireframes
+![Display Generated Book Page Wireframes](bookmarked/documentation/wireframes/display_generated_book_wireframe.png)
 
 #### Display Generated Book Wireframes
      
+![Edit Book Page Wireframes](bookmarked/documentation/wireframes/edit_book_wireframe.png)
+
 ## Features
 
 For this project I wanted the user to be able to create an online library which they can keep track of all their books and organzie them onto bookshelves. I also wanted a feature where they would be able to generate a book for when they cant decide what to read next.
@@ -161,7 +165,7 @@ Another way the user can view their bookshelves is to click on the bookshelf lin
 
 ### Features Left to Implement
 
-    A feature I would like to implement is to attatch an api to the app so that when users create a book it will search the api and bring up the book cover and display that on the bookcase. 
+A feature I would like to implement is to attatch an api to the app so that when users create a book it will search the api and bring up the book cover and display that on the bookcase. 
 
 ## Technologies Used
     
@@ -177,33 +181,25 @@ Another way the user can view their bookshelves is to click on the bookshelf lin
     - I used Hiroku to host my website [Hiroku Website](https://dashboard.heroku.com/)
 
 ## Testing
-    "For all testing, please refer to the [TESTING.md](TESTING.md) file."
+I have created a seperate document for the tests I conducted, it can be found Here
+
 ## Deployment
     document all necessary steps you did in order to deploy this project (GitHub Pages, Heroku, etc.)
+
 ### Local Deployment
     document all the necessary steps someone else can take in order to make a local copy of your project, like cloning, forking, etc.
+
 ## Credits
     explain about any particular places you took inspiration from
+
 ### Content
     list out any URLs or links where you might've borrowed a snippet of code, or element
+
 ### Media
     list out any URLs for images/videos/audios you've borrowed from online (Markdown Table works best here!)
+
 ### Acknowledgements
     list out any acknowledgements you have, if any... tutor support? fellow Slack student help? spouse, loved one, family member, etc.
 ​
 ​
-​
-TESTING.md file (ideally, separate from the README.md file, but also at root-level same as the readme and index files)
-​
-# Testing
-    "Click to return back to the [README.md](README.md)"
-## Browser Compatibility
-    you must showcase proof with screenshots that you've tested the finished project on various browsers, such as Chrome, Firefox, Edge, Safari, Brave, etc.
-## Code Validation
-    you must showcase proof with screenshots that you've validated any code files, such as HTML, CSS, JS, Python (where applicable)
-## Responsiveness
-    you must showcase proof with screenshots that you've tested the finished project on different device sizes, such as mobile, tablet, desktop.
-## User Story Testing
-    This is simple: copy/paste your User Stories from the README, paste them here, and then simply just take the existing screenshots from "Features" section that align with each User Story, and TADA!
-## Unfixed Bugs
-    list out any unfinished bugs you might have, where applicable... if none, don't just put "I have no bugs"... put something like: "There are no remaining bugs that I am aware of."
+​​
