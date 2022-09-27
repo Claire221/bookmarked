@@ -220,7 +220,7 @@ def edit_book(book_id):
 def add_comment(book_id):
     if request.method == "POST":
         comments = request.form.get("book_comment")
-        mongo.db.books.delete_one({"_id": ObjectId(book_id)})
+        mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
         # book_comment = {
         #     "comments": comments
@@ -248,6 +248,7 @@ def generate_book():
     books = list(mongo.db.books.find())
     authors = []
     genres = []
+    genre_list =[]
     
     for book in books:
         if book["createdBy"] == session_user:
@@ -259,8 +260,10 @@ def generate_book():
             if book["genre"] not in genres:
                 genres.append(book["genre"])
 
-    print(authors)
-    print(genres)
+    # for g in genres:
+    #     print(g)
+
+
     return render_template("generate_book.html", bookshelves=bookshelves, authors=authors, books=books, genres=genres)
 
 
@@ -309,10 +312,11 @@ def author_book():
         else:
             chosen_book = None
         
+        print("Test")
         print(author)
-        print(author_books)
-        print(chosen_book)
-    return render_template("generated_book.html", author=author, book=chosen_book)
+        # print(author_books)
+        # print(chosen_book)
+    return render_template("generated_book.html", authors=author, book=chosen_book)
 
 
 # Function to generate a book from all Genres
