@@ -6,15 +6,15 @@
     <h1 class="form-header center-align">Create a new account</h1>
 
     <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
+        <form id="signup-form" class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
           <div class="card-panel">
             <!-- name -->
-            <div class="row">
-              <div class="input-field col s6">
+            <div class="row signup-names">
+              <div class="input-field col s6 signup-first-name">
                 <input id="first_name" name="firstName" type="text" minlength="3" max="10" class="validate" required>
                 <label for="first_name">First Name</label>
               </div>
-              <div class="input-field col s6"> 
+              <div class="input-field col s6 signup-surname"> 
                 <input id="last_name" name="lastName" type="text" class="validate" minlength="3" max="20" required>
                 <label for="last_name">Last Name</label>
               </div>

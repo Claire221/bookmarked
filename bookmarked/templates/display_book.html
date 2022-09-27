@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <section class="display-book-headers">
-        <h1>Your Book: {{ book.title }}</h1>
+    <section class="display-book-headers image-styles">
+        <h1 class="display-book-title">Your Book: {{ book.title }}</h1>
         <h2 class="card-title ">Book Author: {{ book.author }}</h2>
-        <p class=" book-description">Book Description</p>
+        <p class="book-description">Book Description:</p>
             {% if book.description %}
-                <p class="book-paragraph">{{ book.description }}</p>
+                <p class="book-description-paragraph">{{ book.description }}</p>
             {% else %}
-                <p  class="book-paragraph">No Book Description Entered</p>
+                <p  class="book-description-paragraph">No Book Description Entered</p>
             {% endif %}
     </section>
     <section class="add-comment-section">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 center-align">
-                            <button type="" class="btn waves-effect waves-light review-btn">Add Comment!</button>
+                            <button type="" class="btn waves-effect waves-light review-btn page-btn">Add Comment!</button>
                         </div>
                     </div>
             <form>
@@ -35,10 +35,12 @@
                     {% if book.comments %}
                     <div class="book-comment-div">
                         {% for comment in book.comments %}
-                        <div class="comment-content">
-                            <p class="book-comment">{{ comment }}</p>
-                            <a href="{{ url_for('delete_comment', book_id=book._id, comment=comment) }}" class="btn page-btn delete-comment-icon"><i class="fa-solid fa-trash delete-btn"></i></a>
-                        </div>
+                            {% if comment != None %}
+                                <div class="comment-content shadow">
+                                    <p class="book-comment ">{{ comment }}</p>
+                                    <a href="{{ url_for('delete_comment', book_id=book._id, comment=comment) }}" class="btn page-btn delete-comment-icon"><i class="fa-solid fa-trash delete-btn"></i></a>
+                                </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                     {% else %}
