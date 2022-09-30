@@ -14,7 +14,7 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 
-if os.environ.get("DEVELOPMENT") == "True":
+if os.environ.get("DEVELOPMENT"):
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")  # local
 else:
     uri = os.environ.get("DATABASE_URL")
@@ -23,7 +23,7 @@ else:
     app.config["SQLALCHEMY_DATABASE_URI"] = uri  # heroku
 
 db = SQLAlchemy(app)
-mongo = PyMongo(app)
 migrate = Migrate(app, db)
+mongo = PyMongo(app)
 
-from bookmarked import routes # noqa
+from bookmarked import routes  # noqa
