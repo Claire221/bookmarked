@@ -60,18 +60,10 @@
                             <div class="book-card-titles">
                                 <span id="shelf-card-title" class="card-title activator book-card-titles grey-text text-darken-4 center-align">{{ book.title }} </span>
                                 <span id="shelf-card-title" class="card-title activator book-card-titles grey-text text-darken-4 center-align">{{ book.author }}</span>
-                            </div>
-                            <div class="book-card-info">
-                                <span class="card-title activator  grey-text text-darken-4">Book Information</span>
-                                {% if book.description != '' %}
-                                    <p class="black-text">Book Description: {{ book.description }}</p>
-                                {% else %}
-                                    <p class="black-text">No Book Description Entered</p>
-                                {% endif %}
                                 {% if book.bookshelf != 0 %}
-                                    <p class="black-text">Bookshelf : {{ book.bookshelf }}</p>
+                                    <span class="card-title book-card-titles grey-text text-darken-4 center-align">Bookshelf : {{ book.bookshelf }}</span>
                                 {% else %}
-                                <p class="black-text">Book isnt on a Bookshelf</p>
+                                    <span class="card-title book-card-titles grey-text text-darken-4 center-align">Book isnt on a Bookshelf</span>
                                 {% endif %}
                             </div>
                         </div>
