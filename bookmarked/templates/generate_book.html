@@ -60,7 +60,7 @@
                             <select id="genre" name="genre" class="validate generate-select">
                                 <option value="" disabled selected>Select Tag</option>
                                 {% for genre in genres %}
-                                <option value="{{ genre[0] }}">{{ genre[0] }}</option>
+                                    <option value="{{ genre }}">{{ genre }}</option>
                                 {% endfor %}
                             </select>
                         </div>
