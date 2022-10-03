@@ -2,7 +2,9 @@
 
 Bookmarked is a digital library for users to upload and organize their books. I decided to create Bookmarked because I personally have a lot of books, too many books to fit on my bookshelves so I end up giving some away or lending them to friends or family to read resulting in me forgetting what books I have owned or read. To fix this I wanted to create a website where I could add all my books so I can keep track of them all even if I don’t physically have them in my possession. I also wanted to create an option to create Bookshelves so that I could organize them such has have Fantasy books grouped together or have a digital TBR (To be read list) to keep track of all the books I want to read in the future. Finally I wanted to have a feature that would generate a book for me, because I buy books at a faster rate than I can read them it can become overwhelming trying to chose which one to read next. I wanted to be able to generate a book from some parameters such as from a specific author or bookshelf or just generate a book based on my whole library. 
 
-View Website - 
+![Responsive Image](bookmarked/static/img/responsive.jpg)
+
+View Website - https://bookmarked-app.herokuapp.com/
 
 ## UX
 
@@ -147,21 +149,38 @@ The last section on the users profile displays all of the books the user has inp
 
 Another way the user can view their bookshelves is to click on the bookshelf link in the navbar, this will quickly redirect them to a page displaying all of their bookshelves
 
+![Bookshelf Books](bookmarked/static/img/bookshelf.jpg)
+
 #### Create Bookshelf Feature
+
+To allow users to organize their books they have the option to create bookshelves which they can then assign books to. For example they might want to create a Fantasy books and which they can then store all of their fantasy books on.
+
+![Create Bookshelf](bookmarked/static/img/create_bookshelf.jpg)
 
 #### Create Book Feature
 
-#### Generate Book From Bookshelves
+Being an online library it only makes sense that users wil be able to add books to their profiles. As part of the add book form users will be able to give their books a title and author as well as adding tags, assigning it to a bookshelf, selecting a book colour and adding in a book description. 
 
-#### Generate Book From Authors
+![Add Bookshelf](bookmarked/static/img/add_book.jpg)
 
-#### Generate Book From Genres
 
-#### Generate Book From Whole Library
+#### Generate Book
+
+A feature I was keen to include was a book generation option, sometimes it can be overwhelming trying to decide what book to read next when you have multiple unread books so I wanted to create a feature to take the decision making away. Users will be able given the option to generate a book from on of their bookshelves, a specific author, a by tag or randomly out of their entire library.
+
+![Generate Book](bookmarked/static/img/generate_book.jpg)
 
 #### Add comments to books
 
+I wanted to give the user the option to add comments or notes to their books where they could comment on if they liked it or not or just add notes that they can refer back to in the future.
+
+![Book Comment](bookmarked/static/img/book_comment.jpg)
+
 #### Edit Books
+
+The last feature I implemented was to allow the user to edit a book they have created, they might want to edit it if they made a typo or they want to change the book colour for example so instead of them having to delete the whole book and remake it I added in an edit button. The edit form auto fills in with the existing information allowing the user to just edit the content they want to. 
+
+![Book Comment](bookmarked/static/img/edit_book.jpg)
 
 ### Features Left to Implement
 
@@ -169,28 +188,26 @@ A feature I would like to implement is to attatch an api to the app so that when
 
 ## Technologies Used
     
-    Throughout the project I used a variety of technologies.
+Throughout the project I used a variety of technologies.
 
-    - I used Balsamiq to design my wireframes [Balsamiq Website](https://balsamiq.com/)
-    - I used HTML and CSS to create and style the website.
-    - I used github to create a repository for my project.[Github Website](https://github.com/)
-    - I used gitpod as the development environment.[Gitpod Website](https://gitpod.io/)
-    - I used  MongoDB for one of my databases [MongoDB Website](https://www.mongodb.com/)
-    - I used Jinja as a templating language [Jinja Website](https://jinja.palletsprojects.com/en/3.1.x/)
-    - I used PSQL for one of the databases [PSQL Website](https://www.postgresql.org/)
-    - I used Hiroku to host my website [Hiroku Website](https://dashboard.heroku.com/)
+- I used Balsamiq to design my wireframes [Balsamiq Website](https://balsamiq.com/)
+- I used HTML and CSS to create and style the website.
+- I used github to create a repository for my project.[Github Website](https://github.com/)
+- I used gitpod as the development environment.[Gitpod Website](https://gitpod.io/)
+- I used  MongoDB for one of my databases [MongoDB Website](https://www.mongodb.com/)
+- I used Jinja as a templating language [Jinja Website](https://jinja.palletsprojects.com/en/3.1.x/)
+- I used PSQL for one of the databases [PSQL Website](https://www.postgresql.org/)
+- I used Hiroku to host my website [Hiroku Website](https://dashboard.heroku.com/)
 
 ## Testing
-I have created a seperate document for the tests I conducted, it can be found Here
+
+I have created a seperate document for the tests I conducted, it can be found [Here](TESTING.md)
 
 ## Deployment
     document all necessary steps you did in order to deploy this project (GitHub Pages, Heroku, etc.)
 
 ### Local Deployment
     document all the necessary steps someone else can take in order to make a local copy of your project, like cloning, forking, etc.
-
-## Credits
-    explain about any particular places you took inspiration from
 
 ### Content
     list out any URLs or links where you might've borrowed a snippet of code, or element
