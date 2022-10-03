@@ -22,9 +22,8 @@
             </div>
             <div class="row">
               <div class="input-field col s6 m12">
-                {% for genre in book.genre %}
-                  <input value="{{ genre }}" id="genre" name="genre" type="text" class="validate">
-                {% endfor %}
+                <input value="{{ book.genre }}" id="genre" name="genre" type="text" class="validate">
+
                 <label for="genre">Genre and Tags</label>
               </div>
           </div>
