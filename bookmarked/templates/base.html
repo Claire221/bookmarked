@@ -82,26 +82,26 @@
             <div class="container ">
               <div class="row">
                 <div class="col l6 s12">
-                  <h5 class="brown-text text-lighten-1">Footer Content</h5>
-                  <p class="brown-text text-lighten-1">You can use rows and columns here to organize your footer content.</p>
+                  <h5 class="brown-text text-lighten-1">Bookmarked</h5>
+                  <p class="brown-text text-lighten-1">Your digital bookshelf</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
                   <h5 class="brown-text text-lighten-1">Links</h5>
                   <ul>
-                    {% if session.user %}
-                    <li><a href= "{{ url_for('profile_page', username=session['user']) }}" class="brown-text text-lighten-1">Profile</a></li>
-                    <li><a href="{{ url_for('show_shelves') }}" class="brown-text text-lighten-1">Bookshelves</a></li>
-                    <li><a href="{{ url_for('logout') }}" class="brown-text text-lighten-1">Log Out</a></li>
-                    {% else %}
-                      <li><a href="{{ url_for('login') }}" class="brown-text text-lighten-1">Login</a></li>
-                    {% endif %}
+                        {% if session.user %}
+                          <li><a href= "{{ url_for('profile_page', username=session['user']) }}" class="brown-text text-lighten-1">Profile</a></li>
+                          <li><a href="{{ url_for('show_shelves') }}" class="brown-text text-lighten-1">Bookshelves</a></li>
+                          <li><a href="{{ url_for('logout') }}" class="brown-text text-lighten-1">Log Out</a></li>
+                        {% else %}
+                          <li><a href="{{ url_for('login') }}" class="brown-text text-lighten-1">Login</a></li>
+                        {% endif %}
                   </ul>
                 </div>
               </div>
             </div>
             <div class="footer-copyright">
               <div class="container brown-text text-lighten-1">
-              © 2014 Copyright Text
+              © 2022 Copyright Text
               </div>
             </div>
           </footer>
