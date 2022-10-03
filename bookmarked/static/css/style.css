@@ -533,4 +533,8 @@ h1.generated-book-title {
     .create-bookshelf-btn {
         width: 80%;
     }
+
+    .page-footer {
+        text-align: center;
+    }
 }
