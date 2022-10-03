@@ -1,10 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 
-<header class="profile-header">
-    <div class="card-panel heading-div image-styles">
+<header>
+    <div class="card-panel image-styles profile-header">
         <h1 class="center-align">{{ user }}'s Profile</h1>
         <h2 class="center-align heading-sub-title">Read, Discover, Review</h2>
+        <div class="search-bar">
+            <form method="POST" action="{{ url_for('search_book') }}">
+                <div class="input-field">
+                  <input id="search" type="search" type="submit" name="search">
+                  <label class="label-icon" for="search">Search</label>
+                </div>
+              </form>
+        </div>
     </div>
 </header>
 
