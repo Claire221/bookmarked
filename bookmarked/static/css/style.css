@@ -529,4 +529,8 @@ h1.generated-book-title {
     .generated-info {
         font-size: 1.5rem;
     }
+
+    .create-bookshelf-btn {
+        width: 80%;
+    }
 }
