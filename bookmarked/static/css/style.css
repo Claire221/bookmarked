@@ -531,9 +531,13 @@ h1.generated-book-title {
     }
     
     .generated-book-card {
-        height: 60vh;
+        min-height: 60vh;
     }
     
+    .generated-content {
+        padding: 2%;
+    }
+
     .generated-title {
         font-size: 2rem;
 
