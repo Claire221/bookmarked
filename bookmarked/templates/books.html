@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1 class="center-align">{{ book_shelf }} Books</h1>
+{% for shelf in bookshelves %}
+    <h1 class="center-align">{{ shelf.bookshelf_name}} Books</h1>
+{% endfor %}
 <div class="container">
     <div class="row">
     {% for book in books %}
