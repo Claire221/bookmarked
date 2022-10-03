@@ -61,43 +61,6 @@ body {
 }
 
 
-/* home page styles */
-.heading-div {
-    min-height: 70vh;
-    background: url("https://images.unsplash.com/photo-1535905748047-14b2415c77d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1150&q=80");
-    margin: 0 0 2% 0;
-
-    color: #fff;
-    margin-bottom: 0;
-}
-
-.heading-title {
-    font-size: 3.25rem;
-    margin: 4%;
-}
-
-.heading-sub-title{
-    font-size: 2rem;
-}
-
-.search-bar-container {
-    width: 30%;
-    margin: 5% auto 2%;
-    background-color: #fff;
-    border-radius: 10px;
-}
-
-.homepage-btn-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.homepage-btn {
-    margin: 3% 1%;
-    min-width: 10%;
-}
-
 /* Login page styles */
 .login-link {
     color: #43a047 ;
@@ -105,6 +68,18 @@ body {
 
 
 /* Profile page styles */
+.profile-header {
+    min-height: 70vh;
+    background: url("https://images.unsplash.com/photo-1535905748047-14b2415c77d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1150&q=80");
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    margin-bottom: 0;
+}
+
 .profile-btn {
     font-size: 1.25rem;
     width: 60%;
@@ -510,8 +485,11 @@ h1.generated-book-title {
         min-width: 100%;
     }
 
+    .profile-header {
+        min-height: 50vh;
+    }
+
     .book-card-btns {
-        border: solid 2px coral;
         width: 100%;
         margin-bottom: 2px !important;
     }
