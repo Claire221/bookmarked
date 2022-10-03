@@ -3,27 +3,27 @@
 
     {% if bookshelf %}
     {% for shelf in bookshelf %}
-        <h1 class="center-align">Your Chosen Bookshelf is : {{ shelf.bookshelf_name }} </h1>
+        <h1 class="center-align generated-book-title">Your Chosen Bookshelf is : {{ shelf.bookshelf_name }} </h1>
     {% endfor %}
     {% elif authors %}
-    <h1 class="center-align">Your Chosen Author is : {{ authors }}!</h1>
+        <h1 class="center-align generated-book-title">Your Chosen Author is : {{ authors }}!</h1>
     {% else %}
-    <h1 class="center-align">You chose to generate a book from all your books!</h1>
+        <h1 class="center-align generated-book-title">You chose to generate a book from all your books!</h1>
     {% endif %}
 
     {% if book %}
-    <div class="container">
-        <div class="card col s12 m4 xl4 book-card">
-            <h4 id="shelf-card-title" class="card-title grey-text text-darken-4 center-align">Your Generated book is: {{ book.title }}</h4>
-            <div class="card-content book-card-content">
+    <div class="container generated-book-card shadow">
+        <div class="col s12 m4 xl4 ">
+            <h4 id="shelf-card-title" class="card-title grey-text text-darken-4 center-align generated-title">Your Generated book is: {{ book.title }}</h4>
+            <div class="card-content book-card-content generated-content">
                 <div class="card-titles">
-                    <p id="shelf-card-title" class="grey-text text-darken-4 center-align">{{ book.author }}</p>
-                    <p class="grey-text text-darken-4">Book Description</p>
+                    <p id="shelf-card-title" class="grey-text text-darken-4 center-align generated-author">Book Author: {{ book.author }}</p>
+                    <p class="grey-text text-darken-4 generated-info">Book Description</p>
                     {% if book.description %}
-                    <p>{{ book.description }}</p>
-                    <p>{{ books_description }}</p>
+                        <p class="grey-text text-darken-4 generated-info">{{ book.description }}</p>
+                        <p class="grey-text text-darken-4 generated-info">{{ books_description }}</p>
                     {% else %}
-                    <p>No Book Description Entered</p>
+                        <p class="grey-text text-darken-4 generated-info">No Book Description Entered</p>
                 {% endif %}
                 </div>
             </div>
