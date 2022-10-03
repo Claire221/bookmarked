@@ -80,6 +80,17 @@ body {
     margin-bottom: 0;
 }
 
+.search-bar {
+    background-color: rgba(109, 76, 65, 0.5);
+    width: 30%;
+    border-radius: 10px;
+    border: solid 2px #3e2723;
+}
+
+.search-bar-text {
+    font-size: 1.25rem;
+}
+
 .profile-btn {
     font-size: 1.25rem;
     width: 60%;
