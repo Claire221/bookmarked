@@ -126,10 +126,12 @@ def delete_bookcase(bookshelf_id):
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
     if request.method == "POST":
+        genres = request.form.get("genre")
+        genre = genres.split(", ")
         book = {
             "title": request.form.get("book_title"),
             "author": request.form.get("author"),
-            "genre": request.form.getlist("genre"),
+            "genre": genre,
             "description": request.form.get("book-description"),
             "createdBy": session["user"],
             "bookshelf": request.form.get("bookshelf"),
@@ -201,13 +203,23 @@ def edit_book(book_id):
     Function to edit a book
     """
     if request.method == "POST":
-        genres = request.form.getlist("genre")
+        book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+        current_genres = []
+
+        for b in book:
+            current_genres.append(b["genre"])
+        
+        print("test")
+        print(current_genres)
+        genres = request.form.get("genre")
+        genre = genres.split(", ")
         genre_list = []
+
         comments = []
         submit = {
             "title": request.form.get("book_title"),
             "author": request.form.get("author"),
-            "genre": genre_list,
+            "genre": genre,
             "description": request.form.get("book-description"),
             "createdBy": session["user"],
             "bookshelf": request.form.get("bookshelf"),
@@ -215,9 +227,6 @@ def edit_book(book_id):
             "created_by": session["user"],
             "colour": request.form.get("colour")
         }
-
-        for genre in genres:
-            genre_list.append(genre)
 
         mongo.db.books.update_one(
             {"_id": ObjectId(book_id)},
@@ -280,7 +289,7 @@ def generate_book():
     authors = []
     genres = []
     genre_list = []
-
+    x = []
     for book in books:
         if book["createdBy"] == session_user:
             if book["author"] not in authors:
@@ -291,11 +300,13 @@ def generate_book():
             if book["genre"] not in genres:
                 genres.extend(book["genre"])
 
-    print(genre_list)
+    for genre in genres:
+        if genre.capitalize() not in genre_list:
+            genre_list.append(genre.capitalize())
 
     return render_template(
         "generate_book.html", bookshelves=bookshelves,
-        authors=authors, books=books, genres=genres)
+        authors=authors, books=books, genres=genre_list)
 
 
 @app.route("/generated-bookshelf", methods=["GET", "POST"])
@@ -307,8 +318,6 @@ def bookshelf_book():
         bookshelf_id = request.form.get("bookshelf")
         chosen_bookshelf = Bookshelves.query.filter(
             Bookshelves.id == bookshelf_id)
-        # chosen_bookshelf = Bookshelves.query.filter(
-        #     Bookshelves.id == request.form.get("bookshelf"))
 
         books = list(mongo.db.books.find())
         bookshelf_books = []
@@ -350,10 +359,6 @@ def author_book():
         else:
             chosen_book = None
 
-        print("Test")
-        print(author)
-        # print(author_books)
-        # print(chosen_book)
     return render_template(
         "generated_book.html", authors=author, book=chosen_book)
 
@@ -382,3 +387,36 @@ def random_book():
 
 
 # Function to search for books
+@app.route("/search-book", methods=["GET", "POST"])
+def search_book():
+    """
+    Function to search books
+    """
+    if request.method == "POST":
+        session_user = session["user"]
+        search = request.form.get("search")
+
+        all_books = list(mongo.db.books.find())
+        users_books = []
+        searched_books = []
+
+        for book in all_books:
+            if book["createdBy"] == session_user:
+                # print(book["title"])
+                if search in book["title"]:
+                    print(book["title"])
+
+        # for book in users_books:
+        #     if any(search in book for s in search):
+        #         searched_books.append(book)
+        for book in users_books:
+        #     print("First Test")
+            print(book)
+            print(type(book))
+        #     print("Second Test")
+        #     print(search)
+            if search in book:
+                searched_books.append(book)
+
+
+    return render_template("search-page.html", searched_books=searched_books, search=search)
