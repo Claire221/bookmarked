@@ -435,8 +435,43 @@ label.colour-picker-label {
     align-items: center;
     margin: 0 auto;
 }
+
 .select-options {
     color: #fb8c00 !important;
+}
+
+/* Generated book styles */
+h1.generated-book-title {
+    font-size: 3.5rem ; 
+}
+
+.generated-book-card {
+    margin: 3% auto;
+    background:#fff;
+    border: solid 2px #6d4c41;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3% 0;
+}
+
+.generated-title {
+    font-size: 2.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.generated-author {
+    font-size: 2rem;
+    margin: 1% 0 3%;
+    padding: 0;
+}
+
+.generated-info {
+    font-size: 1.5rem;
+    margin: 1% 0;
+    padding: 0;
 }
 
 /* Materialize styles */
@@ -489,5 +524,27 @@ label.colour-picker-label {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    h1.generated-book-title {
+        font-size: 3rem ; 
+    }
+    
+    .generated-book-card {
+        height: 60vh;
+    }
+    
+    .generated-title {
+        font-size: 2rem;
+
+    }
+    
+    .generated-author {
+        font-size: 1.5rem;
+        margin: 2% 0 5%;
+    }
+    
+    .generated-info {
+        font-size: 1.5rem;
     }
 }
