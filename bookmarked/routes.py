@@ -163,8 +163,9 @@ def sort_books(bookcase_id):
     Function to sort books into bookcases
     """
     session_user = session["user"]
-    bookshelves = Bookshelves.query.filter(
-        Bookshelves.created_by == session_user).all()
+    bookshelf = Bookshelves.query.filter(
+        Bookshelves.id == bookcase_id)
+
 
     books_list = list(mongo.db.books.find())
     users_books = []
@@ -178,8 +179,9 @@ def sort_books(bookcase_id):
         if books["bookshelf"] == bookcase_id:
             books_title.append(books)
 
+
     return render_template(
-        "books.html", bookshelves=bookshelves,
+        "books.html", bookshelves=bookshelf,
         books=books_title)
 
 
