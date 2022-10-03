@@ -5,7 +5,7 @@
     <h1 class="center-align">{{ shelf.bookshelf_name}}</h1>
 {% endfor %}
 <div class="container">
-    <div class="row">
+    <div class="row book-card-row">
     {% for book in books %}
         <div class="card col s12 m4 xl4 book-card book-card-styles" style="background-color:{{ book.colour }}">
             <div class="card-content book-card-content">
