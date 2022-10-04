@@ -2,11 +2,13 @@
 {% block content %}
 
     {% if bookshelf %}
-    {% for shelf in bookshelf %}
-        <h1 class="center-align generated-book-title">Your Chosen Bookshelf is : {{ shelf.bookshelf_name }} </h1>
-    {% endfor %}
+        {% for shelf in bookshelf %}
+            <h1 class="center-align generated-book-title">Your Chosen Bookshelf is : {{ shelf.bookshelf_name }} </h1>
+        {% endfor %}
     {% elif authors %}
         <h1 class="center-align generated-book-title">Your Chosen Author is : {{ authors }}!</h1>
+    {% elif tag %}
+        <h1 class="center-align generated-book-title">Your Chosen Tag is : {{ tag }}!</h1>
     {% else %}
         <h1 class="center-align generated-book-title">You chose to generate a book from all your books!</h1>
     {% endif %}
