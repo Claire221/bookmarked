@@ -204,17 +204,8 @@ def edit_book(book_id):
     """
     if request.method == "POST":
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-        current_genres = []
-
-        for b in book:
-            current_genres.append(b["genre"])
-        
-        print("test")
-        print(current_genres)
         genres = request.form.get("genre")
         genre = genres.split(", ")
-        genre_list = []
-
         comments = []
         submit = {
             "title": request.form.get("book_title"),
@@ -233,14 +224,16 @@ def edit_book(book_id):
             {"$set": submit}
         )
         flash("Book Successfully Updated")
-
+    
     session_user = session["user"]
     bookshelves = Bookshelves.query.filter(
         Bookshelves.created_by == session_user).all()
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
+    book_genres = " ".join(str(book) for book in book["genre"])
+
     return render_template(
-        "edit_book.html", book=book, bookshelves=bookshelves)
+        "edit_book.html", book=book, bookshelves=bookshelves, current_genres=book_genres)
 
 
 @app.route("/comment/<book_id>", methods=["GET", "POST"])
