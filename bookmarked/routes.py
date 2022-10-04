@@ -358,6 +358,32 @@ def author_book():
 
 # Function to generate a book from all Genres
 
+@app.route("/generated-tag", methods=["GET", "POST"])
+def tag_book():
+    """
+    Function to generate a book from all Authors
+    """
+    if request.method == "POST":
+        tag = request.form.get("genre").lower()
+        chosen_tag = tag.capitalize()
+        books = list(mongo.db.books.find())
+        genre_books = []
+
+        for b in books:
+            if tag in b["genre"]:
+                genre_books.append(b)
+
+        if len(genre_books) > 0:
+            random_number = random.randint(0, len(genre_books) - 1)
+            chosen_book = genre_books[random_number]
+        elif len(genre_books) == 0:
+            chosen_book = genre_books
+        else:
+            chosen_book = None
+
+    return render_template(
+        "generated_book.html", book=chosen_book, tag=chosen_tag)
+
 @app.route("/generated-books", methods=["GET", "POST"])
 def random_book():
     """
