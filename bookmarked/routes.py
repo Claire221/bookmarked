@@ -259,14 +259,24 @@ def add_comment(book_id):
     return render_template("display_book.html", book=book)
 
 
-@app.route("/comment/<book_id>", methods=["GET", "POST"])
-def delete_comment(book_id):
+@app.route("/delete_comment/<book_id>/<comment>")
+def delete_comment(book_id, comment):
+    """
+    Function to delete comments
+    """
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+
     mongo.db.books.update_one(
         {'_id': ObjectId(book_id)},
         {"$pull": {"comments": comment}}
     )
-    print(comment)
+    
+    updated_comments = []
+
+
+    session_user = session["user"]
     return render_template("display_book.html", book=book)
+
 
 
 @app.route("/generate-book", methods=["GET", "POST"])
