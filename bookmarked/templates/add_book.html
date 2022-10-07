@@ -22,13 +22,13 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s6 m12">
-                            <input id="genre" name="genre" type="text" class="validate" required>
+                            <input id="genre" name="genre" type="text" class="validate">
                             <label for="genre">Genre and Tags</label>
                         </div>
                     </div>
                     <div class="row responsive-row">
                         <div class="input-field col s6 m6 bookshelf-select">
-                            <select id="bookshelf" name="bookshelf" class="validate" required>
+                            <select id="bookshelf" name="bookshelf" class="validate">
                                 <option value="" disabled selected>Add to bookcase</option>
                                 {% for bookshelf in bookshelves %}
                                 <option value="{{ bookshelf.id}}">{{ bookshelf.bookshelf_name }}</option>
