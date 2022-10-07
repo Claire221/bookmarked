@@ -84,15 +84,6 @@ def profile_page():
 
     for shelf in user_bookshelves:
         bookshelves.append(shelf)
-    # for shelf in user_bookshelves:
-    #     print("Test")
-    #     print(shelf.id)
-    #     for books in users_books:
-    #         print("Test2")
-    #         print(books["bookshelf"])
-            # if books["bookshelf"] == shelf.id:
-            #     print(books["bookshelf"])
-            #     bookshelf_name = user_bookshelves.bookshelf_name
 
     return render_template(
         "profile.html", bookshelves=user_bookshelves,
@@ -126,6 +117,11 @@ def show_shelves():
 @app.route("/delete_bookcase/<bookshelf_id>")
 def delete_bookcase(bookshelf_id):
     bookcase = Bookshelves.query.get_or_404(bookshelf_id)
+
+    if not bookcase.created_by == session["user"]:
+        flash("You dont have permission to delete this bookcase")
+        return redirect(url_for("profile_page"))
+
     db.session.delete(bookcase)
     db.session.commit()
     return redirect(url_for("profile_page"))
@@ -133,6 +129,7 @@ def delete_bookcase(bookshelf_id):
 
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
+
     if request.method == "POST":
         genres = request.form.get("genre")
         genre = genres.split(", ")
@@ -212,7 +209,7 @@ def edit_book(book_id):
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     if not book["created_by"] == session["user"]:
         flash("You dont have permission to edit this book")
-        return redirect(url_for("display_books", book_id=book_id))
+        return redirect(url_for("profile_page", book_id=book_id))
     if request.method == "POST":
         genres = request.form.get("genre")
         genre = genres.split(", ")
@@ -257,10 +254,6 @@ def add_comment(book_id):
         comments = request.form.get("book_comment")
         mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
-        # book_comment = {
-        #     "comments": comments
-        # }
-
         mongo.db.books.update_one(
             {'_id': ObjectId(book_id)},
             {"$push": {"comments": comments}}
@@ -277,6 +270,9 @@ def delete_comment(book_id, comment):
     Function to delete comments
     """
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    if not book["created_by"] == session["user"]:
+        flash("You dont have permission to edit this book")
+        return redirect(url_for("profile_page", book_id=book_id))
 
     mongo.db.books.update_one(
         {'_id': ObjectId(book_id)},
