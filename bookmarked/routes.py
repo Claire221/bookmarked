@@ -71,20 +71,28 @@ def profile_page():
 
     user_bookshelves = Bookshelves.query.filter(
         Bookshelves.created_by == session_user).all()
-    # bookshelves = list(
-    #     Bookshelves.query.order_by(Bookshelves.bookshelf_name).all())
 
-    # for bookshelf in user_bookshelves:
-    #     print(user_bookshelves)
-
-    users_books = []
-    bookshelf_names = []
+    bookshelf_name = None
+    bookshelves = []
     books = mongo.db.books.find()
+    users_books = []
 
     if books:
         for b in books:
             if b["createdBy"] == session_user:
                 users_books.append(b)
+
+    for shelf in user_bookshelves:
+        bookshelves.append(shelf)
+    # for shelf in user_bookshelves: 
+    #     print("Test")
+    #     print(shelf.id)
+    #     for books in users_books: 
+    #         print("Test2")
+    #         print(books["bookshelf"])
+            # if books["bookshelf"] == shelf.id:
+            #     print(books["bookshelf"])
+            #     bookshelf_name = user_bookshelves.bookshelf_name
 
     return render_template(
         "profile.html", bookshelves=user_bookshelves,
@@ -431,21 +439,18 @@ def search_book():
 
         for book in all_books:
             if book["createdBy"] == session_user:
-                # print(book["title"])
-                if search in book["title"]:
-                    print(book["title"])
+                users_books.append(book)
 
-        # for book in users_books:
-        #     if any(search in book for s in search):
-        #         searched_books.append(book)
-        for book in users_books:
-        #     print("First Test")
-            print(book)
-            print(type(book))
-        #     print("Second Test")
-        #     print(search)
-            if search in book:
-                searched_books.append(book)
+        for b in users_books:
+            if search in b["title"]:
+                book_title = list(mongo.db.books.find({"title": b["title"]}))
+                searched_books.append(book_title)
+            if search in b["author"]:
+                book_author = list(mongo.db.books.find({"author": b["author"]}))
+                searched_books.append(book_author)
+            if search in b["description"]:
+                book_description = list(mongo.db.books.find({"description": b["description"]}))
+                searched_books.append(book_description)
 
-
+        print(type(searched_books))
     return render_template("search-page.html", searched_books=searched_books, search=search)
