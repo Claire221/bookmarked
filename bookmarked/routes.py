@@ -430,35 +430,18 @@ def search_book():
     """
     if request.method == "POST":
         session_user = session["user"]
+        bookshelves = Bookshelves.query.filter(
+        Bookshelves.created_by == session_user).all()
         search = request.form.get("search")
+        search_books = list(mongo.db.books.find(
+            {"$text": {"$search": search}}))
+        user_books = []
 
-        all_books = list(mongo.db.books.find())
-        users_books = []
-        searched_books = []
-        bookshelf_names = []
+        for book in search_books:
+            if book["created_by"] == session_user:
+                user_books.append(book)
 
-        for book in all_books:
-            if book["createdBy"] == session_user:
-                users_books.append(book)
+        print(user_books)
 
-        for b in users_books:
-            if search in b["title"]:
-                book_title = mongo.db.books.find({"title": b["title"]})
-                searched_books.append(book_title)
-            if search in b["author"]:
-                book_author = mongo.db.books.find({"author": b["author"]})
-                searched_books.append(book_author)
-            if search in b["description"]:
-                book_description = mongo.db.books.find(
-                    {"description": b["description"]})
-                searched_books.append(book_description)
-
-        print(type(searched_books))
-        for x in searched_books:
-            print(x)
-            if x != None:
-                y = Bookshelves.query.filter(
-                    Bookshelves.id == x.bookshelf)
-                print(y)
     return render_template(
-        "search-page.html", searched_books=searched_books, search=search)
+        "search-page.html", user_books=user_books, search=search, bookshelves=bookshelves)
