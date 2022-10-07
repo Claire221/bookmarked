@@ -8,8 +8,8 @@
         <div class="section-containers">
             <h2 class="center-align">Book Search</h2>
             <div class="row">
-                {% if searched_books %}
-                    {% for book in searched_books %}
+                {% if user_books %}
+                    {% for book in user_books %}
                             <a href="{{ url_for('display_books', book_id=book._id) }}">
                             <div class="card col s12 m6 xl4 book-card-styles" style="background-color:{{ book.colour }}">
                                 <div class="card-content profile-card">
@@ -17,10 +17,14 @@
                                         <div class="book-card-titles">
                                             <span id="shelf-card-title" class="card-title activator book-card-titles grey-text text-darken-4 center-align">{{ book.title }} </span>
                                             <span id="shelf-card-title" class="card-title activator book-card-titles grey-text text-darken-4 center-align">{{ book.author }}</span>
-                                            {% if book.bookshelf != 0 %}
-                                                <span class="card-title book-card-titles grey-text text-darken-4 center-align">Bookshelf : {{ book.bookshelf }}</span>
+                                            {% if book.bookshelf == None %}
+                                                <p class="grey-text text-darken-4 center-align">No Bookshelf</p>
                                             {% else %}
-                                                <span class="card-title book-card-titles grey-text text-darken-4 center-align">Book isnt on a Bookshelf</span>
+                                                {% for shelf in bookshelves %}
+                                                    {% if shelf.id|int == book.bookshelf|int %}
+                                                        <p class="grey-text text-darken-4 center-align">Bookshelf: {{shelf.bookshelf_name}}</p>
+                                                    {% endif %}
+                                                {% endfor %}
                                             {% endif %}
                                         </div>
                                     </div>
