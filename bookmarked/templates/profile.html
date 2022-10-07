@@ -68,13 +68,15 @@
                             <div class="book-card-titles">
                                 <span id="shelf-card-title" class="card-title activator book-card-titles grey-text text-darken-4 center-align">{{ book.title }} </span>
                                 <span id="shelf-card-title" class="card-title activator book-card-titles grey-text text-darken-4 center-align">{{ book.author }}</span>
+                                {% if book.bookshelf == None %}
+                                    <p>No Bookshelf</p>
+                                {% else %}
                                     {% for shelf in bookshelves %}
-                                        {% if shelf.id == book.bookshelf %}
+                                        {% if shelf.id|int == book.bookshelf|int %}
                                             <p>Test {{shelf.bookshelf_name}}</p>
-                                        {% elif book.bookshelf == None %}
-                                            <p>No Bookshelf</p>
                                         {% endif %}
                                     {% endfor %}
+                                {% endif %}
                             </div>
                         </div>
                     </div>
