@@ -84,10 +84,10 @@ def profile_page():
 
     for shelf in user_bookshelves:
         bookshelves.append(shelf)
-    # for shelf in user_bookshelves: 
+    # for shelf in user_bookshelves:
     #     print("Test")
     #     print(shelf.id)
-    #     for books in users_books: 
+    #     for books in users_books:
     #         print("Test2")
     #         print(books["bookshelf"])
             # if books["bookshelf"] == shelf.id:
@@ -176,7 +176,6 @@ def sort_books(bookcase_id):
     bookshelf = Bookshelves.query.filter(
         Bookshelves.id == bookcase_id)
 
-
     books_list = list(mongo.db.books.find())
     users_books = []
     books_title = []
@@ -189,17 +188,17 @@ def sort_books(bookcase_id):
         if books["bookshelf"] == bookcase_id:
             books_title.append(books)
 
-
     return render_template(
         "books.html", bookshelves=bookshelf,
         books=books_title)
 
 
-@app.route("/test/<book_id>")
+@app.route("/book/<book_id>")
 def display_books(book_id):
     """
     Function to display books
     """
+
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
 
     return render_template("display_book.html", book=book)
@@ -210,8 +209,11 @@ def edit_book(book_id):
     """
     Function to edit a book
     """
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    if not book["created_by"] == session["user"]:
+        flash("You dont have permission to edit this book")
+        return redirect(url_for("display_books", book_id=book_id))
     if request.method == "POST":
-        book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
         genres = request.form.get("genre")
         genre = genres.split(", ")
         comments = []
@@ -232,7 +234,7 @@ def edit_book(book_id):
             {"$set": submit}
         )
         flash("Book Successfully Updated")
-    
+
     session_user = session["user"]
     bookshelves = Bookshelves.query.filter(
         Bookshelves.created_by == session_user).all()
@@ -241,7 +243,9 @@ def edit_book(book_id):
     book_genres = " ".join(str(book) for book in book["genre"])
 
     return render_template(
-        "edit_book.html", book=book, bookshelves=bookshelves, current_genres=book_genres)
+        "edit_book.html",
+        book=book, bookshelves=bookshelves,
+        current_genres=book_genres)
 
 
 @app.route("/comment/<book_id>", methods=["GET", "POST"])
@@ -278,13 +282,11 @@ def delete_comment(book_id, comment):
         {'_id': ObjectId(book_id)},
         {"$pull": {"comments": comment}}
     )
-    
-    updated_comments = []
 
+    updated_comments = []
 
     session_user = session["user"]
     return render_template("display_book.html", book=book)
-
 
 
 @app.route("/generate-book", methods=["GET", "POST"])
@@ -402,6 +404,7 @@ def tag_book():
     return render_template(
         "generated_book.html", book=chosen_book, tag=chosen_tag)
 
+
 @app.route("/generated-books", methods=["GET", "POST"])
 def random_book():
     """
@@ -436,6 +439,7 @@ def search_book():
         all_books = list(mongo.db.books.find())
         users_books = []
         searched_books = []
+        bookshelf_names = []
 
         for book in all_books:
             if book["createdBy"] == session_user:
@@ -443,14 +447,22 @@ def search_book():
 
         for b in users_books:
             if search in b["title"]:
-                book_title = list(mongo.db.books.find({"title": b["title"]}))
+                book_title = mongo.db.books.find({"title": b["title"]})
                 searched_books.append(book_title)
             if search in b["author"]:
-                book_author = list(mongo.db.books.find({"author": b["author"]}))
+                book_author = mongo.db.books.find({"author": b["author"]})
                 searched_books.append(book_author)
             if search in b["description"]:
-                book_description = list(mongo.db.books.find({"description": b["description"]}))
+                book_description = mongo.db.books.find(
+                    {"description": b["description"]})
                 searched_books.append(book_description)
 
         print(type(searched_books))
-    return render_template("search-page.html", searched_books=searched_books, search=search)
+        for x in searched_books:
+            print(x)
+            if x != None:
+                y = Bookshelves.query.filter(
+                    Bookshelves.id == x.bookshelf)
+                print(y)
+    return render_template(
+        "search-page.html", searched_books=searched_books, search=search)
