@@ -29,9 +29,13 @@
             <div class="row">
               <div class="input-field col s6 m6">
                 <select id="bookshelf" name="bookshelf" class="validate">
-                    <option value="" disabled selected>Add to bookcase</option>
+                    <option value="" disabled >Add to bookcase</option>
                     {% for bookshelf in bookshelves %}
+                      {% if bookshelf.id|int == book.bookshelf|int %}
+                      <option value="{{ bookshelf.id}}" selected>{{ bookshelf.bookshelf_name }}</option>
+                      {% else %}
                       <option value="{{ bookshelf.id}}">{{ bookshelf.bookshelf_name }}</option>
+                      {% endif %}
                     {% endfor %}
                 </select>
               </div>
@@ -46,7 +50,8 @@
           </div>
           <div class="row">
             <div class="input-field col s12 center-align">
-                <button type="submit" class="btn waves-effect waves-light review-btn">Edit book!</button>
+              <button type="reset" class="btn waves-effect waves-light review-btn" onclick="history.go(-1)">Cancel</button>
+              <button type="submit" class="btn waves-effect waves-light review-btn">Edit book!</button>
             </div>
           </div>
       </div>
