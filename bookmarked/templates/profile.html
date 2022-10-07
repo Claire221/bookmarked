@@ -8,8 +8,8 @@
         <div class="search-bar">
             <form method="POST" action="{{ url_for('search_book') }}">
                 <div class="input-field">
-                  <input id="search" type="search" type="submit" name="search">
-                  <label class="label-icon" for="search">Search</label>
+                  <input id="search" type="search" type="submit" name="search" class="search-box">
+                  <label class="label-icon" for="search"  class="search-box" class="search-box-label">Search</label>
                 </div>
               </form>
         </div>
@@ -33,7 +33,6 @@
                                 </div>
                                 <div class="card-btns-container">
                                     <a href="{{ url_for('delete_bookcase', bookshelf_id=bookshelf.id) }}" class="btn  card-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
-                                    <a href="#" class="btn  card-btn page-btn"><i class="fa-solid fa-pencil"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -69,11 +68,11 @@
                                 <span id="shelf-card-title" class="card-title activator book-card-titles grey-text text-darken-4 center-align">{{ book.title }} </span>
                                 <span id="shelf-card-title" class="card-title activator book-card-titles grey-text text-darken-4 center-align">{{ book.author }}</span>
                                 {% if book.bookshelf == None %}
-                                    <p>No Bookshelf</p>
+                                    <p class="grey-text text-darken-4 center-align">No Bookshelf</p>
                                 {% else %}
                                     {% for shelf in bookshelves %}
                                         {% if shelf.id|int == book.bookshelf|int %}
-                                            <p>Test {{shelf.bookshelf_name}}</p>
+                                            <p class="grey-text text-darken-4 center-align">Bookshelf: {{shelf.bookshelf_name}}</p>
                                         {% endif %}
                                     {% endfor %}
                                 {% endif %}
@@ -87,13 +86,12 @@
                     </div>
                 </div>
                 {% endfor %}
-                <!-- {% else %}
-                <p class="profile-paragraph">You have no saved books</p> -->
+                {% else %}
+                    <p class="profile-paragraph">You have no saved books</p>
                 {% endif %}
             </div>
         </a>
     </div>
-
     <a href="{{ url_for('add_book') }}" class="btn profile-btn page-btn">Add New Book</a>
 </section>
 
