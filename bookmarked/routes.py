@@ -44,7 +44,6 @@ def register():
         user = Users(
             username=request.form.get("username"),
             password=request.form.get("password")
-            # password=generate_password_hash(request.form.get("password"),salt_length=1)
         )
 
         db.session.add(user)
@@ -313,11 +312,9 @@ def generate_book():
     for genre in genres:
         if genre != "":
             if genre not in sorted_genres:
-            # if genre.capitalize() not in sorted_genres:
                 sorted_genres.append(genre)
 
     for g in sorted_genres:
-        print(g)
         genre_list.append(g.split(", "))
 
     return render_template(
@@ -447,8 +444,6 @@ def search_book():
         for book in search_books:
             if book["created_by"] == session_user:
                 user_books.append(book)
-
-        print(user_books)
 
     return render_template(
         "search-page.html", user_books=user_books, search=search, bookshelves=bookshelves)
