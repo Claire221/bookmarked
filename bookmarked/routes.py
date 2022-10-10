@@ -311,8 +311,8 @@ def generate_book():
 
     for genre in genres:
         if genre != "":
-            if genre not in sorted_genres:
-                sorted_genres.append(genre)
+            if genre.capitalize() not in sorted_genres:
+                sorted_genres.append(genre.capitalize())
 
     for g in sorted_genres:
         genre_list.append(g.split(", "))
@@ -327,6 +327,7 @@ def bookshelf_book():
     """
     Function to generate a book from Bookshelves
     """
+    session_user = session["user"]
     if request.method == "POST":
         bookshelf_id = request.form.get("bookshelf")
         chosen_bookshelf = Bookshelves.query.filter(
@@ -336,8 +337,9 @@ def bookshelf_book():
         bookshelf_books = []
 
         for book in books:
-            if book["bookshelf"] == bookshelf_id:
-                bookshelf_books.append(book)
+            if book["createdBy"] == session_user:
+                if book["bookshelf"] == bookshelf_id:
+                    bookshelf_books.append(book)
 
         if bookshelf_books:
             random_number = random.randint(0, len(bookshelf_books) - 1)
@@ -354,6 +356,7 @@ def author_book():
     """
     Function to generate a book from all Authors
     """
+    session_user = session["user"]
     if request.method == "POST":
         author = request.form.get("author")
 
@@ -361,8 +364,9 @@ def author_book():
         author_books = []
 
         for book in books:
-            if book["author"] == author:
-                author_books.append(book)
+            if book["createdBy"] == session_user:
+                if book["author"] == author:
+                    author_books.append(book)
 
         if len(author_books) > 0:
             random_number = random.randint(0, len(author_books) - 1)
@@ -383,6 +387,7 @@ def tag_book():
     """
     Function to generate a book from all Authors
     """
+    session_user = session["user"]
     if request.method == "POST":
         tag = request.form.get("genre")
         chosen_tag = tag
@@ -390,8 +395,11 @@ def tag_book():
         genre_books = []
 
         for b in books:
-            if tag in b["genre"]:
-                genre_books.append(b)
+            if b["createdBy"] == session_user:
+                if tag in b["genre"]:
+                    genre_books.append(b)
+
+        print(genre_books)
 
         if len(genre_books) > 0:
             random_number = random.randint(0, len(genre_books) - 1)
