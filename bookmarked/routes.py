@@ -212,7 +212,7 @@ def edit_book(book_id):
         return redirect(url_for("profile_page", book_id=book_id))
     if request.method == "POST":
         genres = request.form.get("genre")
-        genre = genres.split(", ")
+        genre = genres.split(" ")
         comments = []
         submit = {
             "title": request.form.get("book_title"),
@@ -297,6 +297,7 @@ def generate_book():
     books = list(mongo.db.books.find())
     authors = []
     genres = []
+    sorted_genres = []
     genre_list = []
     x = []
     for book in books:
@@ -304,18 +305,24 @@ def generate_book():
             if book["author"] not in authors:
                 authors.append(book["author"])
 
-    for book in books:
-        if book["createdBy"] == session_user:
-            if book["genre"] not in genres:
-                genres.extend(book["genre"])
+    for b in books:
+        if b["createdBy"] == session_user:
+            if b["genre"] not in genres:
+                genres.extend(b["genre"])
 
     for genre in genres:
-        if genre.capitalize() not in genre_list:
-            genre_list.append(genre.capitalize())
+        if genre != "":
+            if genre not in sorted_genres:
+            # if genre.capitalize() not in sorted_genres:
+                sorted_genres.append(genre)
+
+    for g in sorted_genres:
+        print(g)
+        genre_list.append(g.split(", "))
 
     return render_template(
         "generate_book.html", bookshelves=bookshelves,
-        authors=authors, books=books, genres=genre_list)
+        authors=authors, books=books, genres=sorted_genres)
 
 
 @app.route("/generated-bookshelf", methods=["GET", "POST"])
@@ -380,8 +387,8 @@ def tag_book():
     Function to generate a book from all Authors
     """
     if request.method == "POST":
-        tag = request.form.get("genre").lower()
-        chosen_tag = tag.capitalize()
+        tag = request.form.get("genre")
+        chosen_tag = tag
         books = list(mongo.db.books.find())
         genre_books = []
 
