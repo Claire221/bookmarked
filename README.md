@@ -131,7 +131,7 @@ Users bookshelves
 
 On the users profile its split up into three sections. One of the sections displays the users bookhelves, from here they are able to create new bookshelves, edit their already existing ones or delete an already existing bookshelf. 
 
-![Profile Bookshelves](bookmarked/static/img/bookshelves.jpg)
+![Profile Bookshelves](bookmarked/documentation/testing//img/bookshelf_delete_before.jpg)
 
 Generate Book
 
@@ -149,7 +149,7 @@ The last section on the users profile displays all of the books the user has inp
 
 Another way the user can view their bookshelves is to click on the bookshelf link in the navbar, this will quickly redirect them to a page displaying all of their bookshelves
 
-![Bookshelf Books](bookmarked/static/img/bookshelf.jpg)
+![Profile Bookshelves](bookmarked/documentation/testing//img/bookshelf_delete_before.jpg)
 
 #### Create Bookshelf Feature
 
