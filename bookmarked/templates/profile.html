@@ -6,7 +6,7 @@
         <h1 class="center-align">{{ user }}'s Profile</h1>
         <h2 class="center-align heading-sub-title">Read, Discover, Review</h2>
         <div class="search-bar">
-            <form method="POST" action="{{ url_for('search_book') }}">
+            <form method="POST" action="{{ url_for('search_book') }}" autocomplete="off">
                 <div class="input-field">
                   <input id="search" type="search" type="submit" name="search" class="search-box">
                   <label class="label-icon" for="search"  class="search-box" class="search-box-label">Search</label>
@@ -28,11 +28,11 @@
                                 <div class="card-content bookshelf-card-content center-align">
                                     <span id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align">{{ bookshelf.bookshelf_name}}</span>
                                     {% if bookshelf.bookshelf_description != '' %}
-                                        <p>{{ bookshelf.bookshelf_description }}</p>
+                                        <p class="grey-text text-darken-4 ">{{ bookshelf.bookshelf_description }}</p>
                                     {% endif %}
                                 </div>
                                 <div class="card-btns-container">
-                                    <a href="{{ url_for('delete_bookcase', bookshelf_id=bookshelf.id) }}" class="btn  card-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
+                                    <a href="{{ url_for('delete_bookcase', bookshelf_id=bookshelf.id) }}" class="btn card-btn page-btn" ><i class="fa-solid fa-trash delete-btn"></i></a>
                                 </div>
                             </div>
                         </div>
