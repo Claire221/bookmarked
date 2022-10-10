@@ -209,14 +209,12 @@ I have created a seperate document for the tests I conducted, it can be found [H
 ### Local Deployment
     document all the necessary steps someone else can take in order to make a local copy of your project, like cloning, forking, etc.
 
-### Content
-    list out any URLs or links where you might've borrowed a snippet of code, or element
-
 ### Media
-    list out any URLs for images/videos/audios you've borrowed from online (Markdown Table works best here!)
 
-### Acknowledgements
-    list out any acknowledgements you have, if any... tutor support? fellow Slack student help? spouse, loved one, family member, etc.
-​
+Throughout the website I used a variery of images and artworks.
+- Profile header background image - [Profile header background](https://images.unsplash.com/photo-1535905748047-14b2415c77d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1150&q=80)
+- Profile generate book section background - [generate book section background](https://images.unsplash.com/photo-1485322551133-3a4c27a9d925?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
+- Display book background - [Display book background](https://images.unsplash.com/photo-1515125520141-3e3b67bc0a88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80)
+
 ​
 ​​
