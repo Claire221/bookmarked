@@ -311,7 +311,7 @@ def generate_book():
 
     for genre in genres:
         if genre != "":
-            if genre.capitalize() not in sorted_genres:
+            if genre not in sorted_genres:
                 sorted_genres.append(genre.capitalize())
 
     for g in sorted_genres:
