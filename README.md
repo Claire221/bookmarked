@@ -204,10 +204,23 @@ Throughout the project I used a variety of technologies.
 I have created a seperate document for the tests I conducted, it can be found [Here](TESTING.md)
 
 ## Deployment
-    document all necessary steps you did in order to deploy this project (GitHub Pages, Heroku, etc.)
 
-### Local Deployment
-    document all the necessary steps someone else can take in order to make a local copy of your project, like cloning, forking, etc.
+The site is hosted on [Hiroku](https://dashboard.heroku.com/)
+
+To deploy on heroku you will need to create a requirements.txt and Procfile.
+- For the requirements.txt you need to include all the applications that are required to run the app.
+- The Procfile specifies what commands need to be executed by the app on startup.
+- With these files created you can then login or sign up to [Hiroku](https://dashboard.heroku.com/)
+- You will then need to select Create new app.
+- Heroku apps need to have unique names so select a name and then select your region.
+- Once the app has been created you can select the Deploy at the top of the page.
+- Scroll down to the Deployment methods and select Github.
+- You will then need to select your username and repository repo name, once you have selected them select Connect
+- Under Manual Deplop you want to select the branch you wish to deploy and hit Deploy Branch.
+- Once the app has been deployed you then need to go back to the top of the page and select Settings
+- Once in the settings menu you need to select Reveal Config Vars
+- You need to add in the values and keys for DATABASE_URL, IP, MONGO_DBNAME, MONGO_URI, PORT and SECRET_KEY
+- Once you have entered in your Config Vars you should be able to view the site by pressing Open app at the very top of the page
 
 ### Media
 
