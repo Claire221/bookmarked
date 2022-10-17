@@ -6,24 +6,28 @@
 <div class="section-containers bookshelf-container shadow">
     <div class="row">
         {% for bookshelf in bookshelves %}
-            <a href="{{ url_for('sort_books', bookcase_id=bookshelf.id) }}">
-                <div class="col s12 m5 l3 ">
-                    <div class="card bookshelf-card image-styles">
+            <div class="col s12 m5 l3 card">
+                <a href="{{ url_for('sort_books', bookcase_id=bookshelf.id) }}">
+                    <div class="bookshelf-card image-styles">
                         <div class="card-content bookshelf-card-content center-align">
-                            <p id="shelf-card-title" class="card-title activator grey-text text-darken-4 center-align bookcase-card-title">{{ bookshelf.bookshelf_name }}</p>
+                            <p id="shelf-card-title"
+                                class="card-title activator grey-text text-darken-4 center-align bookcase-card-title">
+                                {{ bookshelf.bookshelf_name }}</p>
                             {% if bookshelf.bookshelf_description != '' %}
-                                    <p class="bookshelf-card-description">{{ bookshelf.bookshelf_description }}</p>
+                            <p class="bookshelf-card-description">{{ bookshelf.bookshelf_description }}</p>
                             {% endif %}
                         </div>
-                        <div class="bookshelf-card-btns">
-                            <a href="{{ url_for('delete_bookcase', bookshelf_id=bookshelf.id) }}" class="btn bookshelf-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
-                        </div>
                     </div>
+                </a>
+                <div class="bookshelf-card-btns">
+                    <a href="{{ url_for('delete_bookcase', bookshelf_id=bookshelf.id) }}" class="btn bookshelf-btn page-btn"><i
+                            class="fa-solid fa-trash delete-btn"></i></a>
                 </div>
-            </a>
+            </div>
         {% endfor %}
     </div>
-    <a href="{{ url_for('add_bookcase') }}" class="btn create-bookshelf-btn page-btn">Create New Bookshelf</a>
+</div>
+<a href="{{ url_for('add_bookcase') }}" class="btn create-bookshelf-btn page-btn">Create New Bookshelf</a>
 </div>
 
 {% endblock %}

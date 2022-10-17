@@ -160,7 +160,7 @@ input#search.search-box {
 
 .bookshelf-card {
     height: 500px;
-    margin: 2% auto 1%;
+    margin: 2% auto;
     border-radius: 5px;
 }
 
@@ -176,7 +176,7 @@ input#search.search-box {
 
 .bookshelf-card-content {
     border: 2px solid #000;
-    height: 80%;
+    min-height: 90%;
     width: 80%;
     display: flex;
     justify-content: center;
@@ -187,7 +187,7 @@ input#search.search-box {
 
 .bookshelf-card-btns {
     width: 90%;
-    margin: 0 auto;
+    margin: 0 auto 4%;
     display: flex;
     justify-content: space-between;
 }
@@ -261,7 +261,7 @@ label.colour-picker-label {
 /* Book card styles */
 .book-card {
     margin: 1% auto;
-    height: 350px;
+    height: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -273,9 +273,6 @@ label.colour-picker-label {
     border: solid 2px #1d100b;
 }
 
-/* .book-card-content {
-    height: 60%;
-} */
 
 .book-card-btns {
     width: 90%;
