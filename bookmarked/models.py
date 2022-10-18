@@ -3,7 +3,7 @@ from bookmarked import db
 
 class Bookshelves(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    bookshelf_name = db.Column(db.String(25), unique=True, nullable=False)
+    bookshelf_name = db.Column(db.String(25), unique=False, nullable=False)
     bookshelf_description = db.Column(db.Text, nullable=False)
     created_by = db.Column(db.Text, nullable=False)
 
