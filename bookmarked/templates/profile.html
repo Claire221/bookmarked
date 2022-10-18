@@ -8,48 +8,46 @@
         <div class="search-bar">
             <form method="POST" action="{{ url_for('search_book') }}" autocomplete="off">
                 <div class="input-field">
-                  <input id="search" type="search" name="search" class="search-box">
-                  <label class="label-icon search-box search-box-label" for="search" >Search</label>
+                    <input id="search" type="search" name="search" class="search-box">
+                    <label class="label-icon search-box search-box-label" for="search">Search</label>
                 </div>
-              </form>
+            </form>
         </div>
     </div>
 </header>
 
 <section class="profile-section top-profile-section shadow">
-    <h2 class="center-align" >Your bookshelves</h2>
+    <h2 class="center-align">Your bookshelves</h2>
     <div class="section-containers">
         <div class="row profile-section-row">
             {% if bookshelves %}
-                {% for bookshelf in bookshelves %}
-                <div class="col s12 m5 l3 card">
-                    <a href="{{ url_for('sort_books', bookcase_id=bookshelf.id) }}">
-                        <div class="bookshelf-card image-styles">
-                            <div class="card-content bookshelf-card-content center-align">
-                                <p id="shelf-card-title"
-                                    class="card-title activator grey-text text-darken-4 center-align bookcase-card-title">
-                                    {{ bookshelf.bookshelf_name }}</p>
-                                {% if bookshelf.bookshelf_description != '' %}
-                                <p class="bookshelf-card-description">{{ bookshelf.bookshelf_description }}</p>
-                                {% endif %}
-                            </div>
+            {% for bookshelf in bookshelves %}
+            <div class="col s12 m5 l3 card">
+                <a href="{{ url_for('sort_books', bookcase_id=bookshelf.id) }}">
+                    <div class="bookshelf-card image-styles">
+                        <div class="card-content bookshelf-card-content center-align">
+                            <p class="card-title activator grey-text text-darken-4 center-align bookcase-card-title">
+                                {{ bookshelf.bookshelf_name }}</p>
+                            {% if bookshelf.bookshelf_description != '' %}
+                            <p class="bookshelf-card-description">{{ bookshelf.bookshelf_description }}</p>
+                            {% endif %}
                         </div>
-                    </a>
-                    <div class="bookshelf-card-btns">
-                        <a href="{{ url_for('delete_bookcase', bookshelf_id=bookshelf.id) }}" class="btn bookshelf-btn page-btn"><i
-                                class="fa-solid fa-trash delete-btn"></i></a>
                     </div>
+                </a>
+                <div class="bookshelf-card-btns">
+                    <a href="{{ url_for('delete_bookcase', bookshelf_id=bookshelf.id) }}"
+                        class="btn bookshelf-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
                 </div>
-                {% endfor %}
-                {% else %}
-                <p class="profile-paragraph">You dont have any bookshelves created</p>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p class="profile-paragraph">You dont have any bookshelves created</p>
             {% endif %}
         </div>
     </div>
-        <a href="{{ url_for('add_bookcase') }}" class="btn profile-btn page-btn">Create New Bookshelf</a>
-    </div>
+    <a href="{{ url_for('add_bookcase') }}" class="btn profile-btn page-btn">Create New Bookshelf</a>
 </section>
- 
+
 <section class="profile-section shadow generate-book-section ">
     <h2 class="center-align">Generate your next favourite book</h2>
     <h3 class="center-align">For When you cant decide what book to read next</h3>
@@ -62,34 +60,39 @@
         <h2 class="center-align">Your Books</h2>
         <div class="row">
             {% if books %}
-                {% for book in books %}
-                <div class="card col s12 m6 xl4 book-card-styles" style="background-color:{{ book.colour}}">
-                    <a href="{{ url_for('display_books', book_id=book._id) }}">
-                        <div class="card-titles">
-                            <div class="book-card-titles">
-                                <span id="shelf-card-title" class="card-title activator book-card-titles grey-text text-darken-4">{{ book.title }} </span>
-                                <span id="shelf-card-title" class="card-title activator book-card-titles grey-text text-darken-4">{{ book.author }}</span>
-                                {% if book.bookshelf == None %}
-                                    <p class="grey-text text-darken-4 center-align">No Bookshelf</p>
-                                {% else %}
-                                    {% for shelf in bookshelves %}
-                                        {% if shelf.id|int == book.bookshelf|int %}
-                                            <p class="grey-text text-darken-4 center-align">Bookshelf: {{shelf.bookshelf_name}}</p>
-                                        {% endif %}
-                                    {% endfor %}
-                                {% endif %}
-                            </div>
+            {% for book in books %}
+            <div class="card col s12 m6 xl4 book-card-styles" style="background-color:{{ book.colour}}">
+                <a href="{{ url_for('display_books', book_id=book._id) }}">
+                    <div class="card-titles">
+                        <div class="book-card-titles">
+                            <span class="card-title activator book-card-titles grey-text text-darken-4">{{ book.title }}
+                            </span>
+                            <span
+                                class="card-title activator book-card-titles grey-text text-darken-4">{{ book.author }}</span>
+                            {% if book.bookshelf == None %}
+                            <p class="grey-text text-darken-4 center-align">No Bookshelf</p>
+                            {% else %}
+                            {% for shelf in bookshelves %}
+                            {% if shelf.id|int == book.bookshelf|int %}
+                            <p class="grey-text text-darken-4 center-align">Bookshelf: {{shelf.bookshelf_name}}</p>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
                         </div>
-                    </a>
-                    <div class="card-btns-container profile-book-btns">
-                        <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn card-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
-                        <a href="{{ url_for('add_comment', book_id=book._id  )}}" class="btn book-card-btn page-btn"><i class="fa-solid fa-comment"></i></a>
-                        <a href="{{ url_for('edit_book', book_id=book._id  )}}" class="btn card-btn page-btn"><i class="fa-solid fa-pencil"></i></a>
                     </div>
+                </a>
+                <div class="card-btns-container profile-book-btns">
+                    <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn card-btn page-btn"><i
+                            class="fa-solid fa-trash delete-btn"></i></a>
+                    <a href="{{ url_for('add_comment', book_id=book._id  )}}" class="btn book-card-btn page-btn"><i
+                            class="fa-solid fa-comment"></i></a>
+                    <a href="{{ url_for('edit_book', book_id=book._id  )}}" class="btn card-btn page-btn"><i
+                            class="fa-solid fa-pencil"></i></a>
                 </div>
+            </div>
             {% endfor %}
             {% else %}
-                <p class="profile-paragraph">You have no saved books</p>
+            <p class="profile-paragraph">You have no saved books</p>
             {% endif %}
         </div>
     </div>

@@ -1,53 +1,56 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <section class="display-book-headers image-styles">
-        <h1 class="display-book-title">Your Book: {{ book.title }}</h1>
-        <h2 class="card-title ">Book Author: {{ book.author }}</h2>
-        <p class="book-description">Book Description:</p>
-            {% if book.description %}
-                <p class="book-description-paragraph">{{ book.description }}</p>
-            {% else %}
-                <p  class="book-description-paragraph">No Book Description Entered</p>
-            {% endif %}
-    </section>
-    <section class="add-comment-section">
-        <h2 class="form-header center-align">Add Book Comment</h2>
-            <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_comment', book_id=book._id) }}">
-                    </div class="row">
-                        <!-- Book Description -->
-                        <label for="book_comment">Add Book Comment</label>
-                        <textarea name="book_comment" id="" cols="20" rows="20" placeholder="Enter Comment.." class="textarea"></textarea>
-                        <!-- register button -->
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 center-align">
-                            <button type="" class="btn waves-effect waves-light review-btn page-btn">Add Comment!</button>
-                        </div>
-                    </div>
-            <form>
-    </section>
-
-    <section>
-        <div class="book-info-container">
-            <div class="book-info">
-                <p class="book-comment-title center-align">Your Book Comments</p>
-                    {% if book.comments %}
-                    <div class="book-comment-div">
-                        {% for comment in book.comments %}
-                            {% if comment != None %}
-                                <div class="comment-content shadow">
-                                    <p class="book-comment ">{{ comment }}</p>
-                                    <a href="{{url_for('delete_comment', book_id=book._id, comment=comment)}}" class="btn page-btn delete-comment-icon"><i class="fa-solid fa-trash delete-btn book-card-icon"></i></a>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    {% else %}
-                        <p  class="book-paragraph">No Comments added</p>
-                    {% endif %}
+<section class="display-book-headers image-styles">
+    <h1 class="display-book-title">Your Book: {{ book.title }}</h1>
+    <h2 class="card-title ">Book Author: {{ book.author }}</h2>
+    <p class="book-description">Book Description:</p>
+    {% if book.description %}
+        <p class="book-description-paragraph">{{ book.description }}</p>
+    {% else %}
+        <p class="book-description-paragraph">No Book Description Entered</p>
+    {% endif %}
+</section>
+<section class="add-comment-section">
+    <h2 class="form-header center-align">Add Book Comment</h2>
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_comment', book_id=book._id) }}">
+        <div class="row">
+            <!-- Book Description -->
+            <label for="book_comment">Add Book Comment</label>
+            <textarea name="book_comment" id="book_comment" cols="20" rows="20" placeholder="Enter Comment.."
+                class="textarea"></textarea>
+            <!-- register button -->
+        </div>
+        <div class="row">
+            <div class="input-field col s12 center-align">
+                <button type="submit" class="btn waves-effect waves-light review-btn page-btn">Add Comment!</button>
             </div>
         </div>
-    </section>
+    </form>
+</section>
+
+<section>
+    <div class="book-info-container">
+        <div class="book-info">
+            <p class="book-comment-title center-align">Your Book Comments</p>
+            {% if book.comments %}
+            <div class="book-comment-div">
+                {% for comment in book.comments %}
+                {% if comment != None %}
+                <div class="comment-content shadow">
+                    <p class="book-comment ">{{ comment }}</p>
+                    <a href="{{url_for('delete_comment', book_id=book._id, comment=comment)}}"
+                        class="btn page-btn delete-comment-icon"><i
+                            class="fa-solid fa-trash delete-btn book-card-icon"></i></a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="book-paragraph">No Comments added</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
 
 {% endblock %}
