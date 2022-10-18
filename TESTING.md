@@ -27,6 +27,7 @@ Once I confirmed they were working as expected I then went into the devtools and
 ### HTML Validation
 
 Once I had finished my website I ran each page throigh a HTML validator to ensure that the code was correct.
+![HTML Validator](bookmarked/documentation/testing/img/htmls_validator.jpg)
 
 ### CSS Validation
 
