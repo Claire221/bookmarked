@@ -3,7 +3,7 @@
 
     {% if bookshelf %}
         {% for shelf in bookshelf %}
-            <h1 class="center-align generated-book-title">Your Chosen Bookshelf is : {{ shelf.bookshelf_name }} </h1>
+        <h1 class="center-align generated-book-title">Your Chosen Bookshelf is : {{ shelf.bookshelf_name }} </h1>
         {% endfor %}
     {% elif authors %}
         <h1 class="center-align generated-book-title">Your Chosen Author is : {{ authors }}!</h1>
@@ -16,10 +16,10 @@
     {% if book %}
     <div class="container generated-book-card shadow">
         <div class="col s12 m4 xl4 ">
-            <h4 id="shelf-card-title" class="card-title grey-text text-darken-4 center-align generated-title">Your Generated book is: {{ book.title }}</h4>
+            <h4 class="card-title grey-text text-darken-4 center-align generated-title">Your Generated book is: {{ book.title }}</h4>
             <div class="card-content book-card-content generated-content">
                 <div class="card-titles">
-                    <p id="shelf-card-title" class="grey-text text-darken-4 center-align generated-author">Book Author: {{ book.author }}</p>
+                    <p class="grey-text text-darken-4 center-align generated-author">Book Author: {{ book.author }}</p>
                     <p class="grey-text text-darken-4 generated-info">Book Description</p>
                     {% if book.description %}
                         <p class="grey-text text-darken-4 generated-info">{{ book.description }}</p>
