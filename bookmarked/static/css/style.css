@@ -11,6 +11,15 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+body > footer {
+    position: sticky;
+    top: 100vh;
+}
+
+.container {
+    border: solid 2px red;
+}
+
 .section-containers {
     width: 95%;
     margin: 0 auto;
@@ -24,7 +33,8 @@ body {
 
 .form-btn {
     margin: 0 auto;
-    width: 30%;
+    width: 50%;
+    /* min-width: 30%; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,7 +84,7 @@ body {
 
 /* Login page styles */
 .login-container {
-    height: 60vh;
+    height: auto;
     width: 70vw;
     margin: 5% auto 0;
     border: solid 4px #3e2723;
@@ -86,6 +96,7 @@ body {
 }
 
 /* Sign-up Page Styles */
+
 .signup-card {
     border: solid 4px #3e2723;
 }
@@ -220,7 +231,7 @@ input#search.search-box {
 }
 
 .bookcase-card-title {
-    font-size: 4rem !important;
+    font-size: 3rem !important;
 }
 
 .bookshelf-card-description {
@@ -274,13 +285,10 @@ input#search.search-box {
 }
 
 /* Add Bookshelf Styles */
-.create-bookshelf {
-    height: 75vh;
-}
-
 .bookshelf-form {
     border: solid 4px #1d100b;
 }
+
 
 #bookshelf_name {
     margin-top: 2%;
@@ -343,6 +351,11 @@ label.colour-picker-label {
     font-size: 1rem;
     margin: 0;
     padding: 0;
+}
+
+/* Edit Book Styles */
+.edit-book-container {
+    border: solid 3px purple;
 }
 
 /* Book card styles */
@@ -539,6 +552,9 @@ label.colour-picker-label {
 }
 
 /* Generated book styles */
+#generate-book-container {
+    width: 90% !important;
+}
 h1.generated-book-title {
     font-size: 3.5rem ; 
 }
@@ -583,6 +599,7 @@ h1.generated-book-title {
     color: #6d4c41;
 }
 
+
 /* Media Queries *
 
 /* Signup Page Styles */
@@ -596,11 +613,19 @@ h1.generated-book-title {
     .colour-picker-div {
         min-width: 100%;
     }
+
+    .book-name-div {
+        width: 100% !important;
+    }
+
+    .book-titles {
+        border: solid 5px green;
+    }
 }
 
 @media only screen and (max-width: 1100px) {
-    .form-container {
-        width: 100vw;
+    .form-btn {
+        width: 50%;
     }
 
     .signup-names {
