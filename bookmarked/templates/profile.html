@@ -8,25 +8,25 @@
         <div class="search-bar">
             <form method="POST" action="{{ url_for('search_book') }}" autocomplete="off">
                 <div class="input-field">
-                    <input id="search" type="search" name="search" class="search-box">
-                    <label class="label-icon search-box search-box-label" for="search">Search</label>
+                    <input id="search" type="search" name="search" class="search-box" placeholder="search">
+                    <!-- <label class="label-icon search-box search-box-label" for="search">Search</label> -->
                 </div>
             </form>
         </div>
     </div>
 </header>
 
-<section class="profile-section top-profile-section shadow">
+<section class="profile-section top-profile-section">
     <h2 class="center-align">Your bookshelves</h2>
     <div class="section-containers">
         <div class="row profile-section-row">
             {% if bookshelves %}
             {% for bookshelf in bookshelves %}
-            <div class="col s12 m5 l3 card">
+            <div class="col s12 m5 l3 card  bookshelf-card-container image-styles">
                 <a href="{{ url_for('sort_books', bookcase_id=bookshelf.id) }}">
-                    <div class="bookshelf-card image-styles">
-                        <div class="card-content bookshelf-card-content center-align">
-                            <p class="card-title activator grey-text text-darken-4 center-align bookcase-card-title">
+                    <div class=" bookshelf-card image-styles">
+                        <div class="card-content brown lighten-5 bookshelf-card-content center-align">
+                            <p class="card-title grey-text text-darken-4 center-align bookcase-card-title">
                                 {{ bookshelf.bookshelf_name }}</p>
                             {% if bookshelf.bookshelf_description != '' %}
                             <p class="bookshelf-card-description">{{ bookshelf.bookshelf_description }}</p>
@@ -61,20 +61,20 @@
         <div class="row">
             {% if books %}
             {% for book in books %}
-            <div class="card col s12 m6 xl4 book-card-styles" style="background-color:{{ book.colour}}">
+            <div class="card col s12 m6 xl4 book-card-styles" style="background: linear-gradient(135deg, #fff 0%, #fff 61%, {{book.colour}} 61%, {{book.colour}} 100%);">
                 <a href="{{ url_for('display_books', book_id=book._id) }}">
                     <div class="card-titles">
-                        <div class="book-card-titles">
-                            <span class="card-title activator book-card-titles grey-text text-darken-4">{{ book.title }}
+                        <div class="book-card-titles brown-text text-darken-2">
+                            <span class="card-title activator book-card-titles">{{ book.title }}
                             </span>
                             <span
-                                class="card-title activator book-card-titles grey-text text-darken-4">{{ book.author }}</span>
+                                class="card-title activator book-card-titles">{{ book.author }}</span>
                             {% if book.bookshelf == None %}
                             <p class="grey-text text-darken-4 center-align">No Bookshelf</p>
                             {% else %}
                             {% for shelf in bookshelves %}
                             {% if shelf.id|int == book.bookshelf|int %}
-                            <p class="grey-text text-darken-4 center-align">Bookshelf: {{shelf.bookshelf_name}}</p>
+                            <p class="center-align">Bookshelf: {{shelf.bookshelf_name}}</p>
                             {% endif %}
                             {% endfor %}
                             {% endif %}

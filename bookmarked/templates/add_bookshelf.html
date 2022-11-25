@@ -1,28 +1,29 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="form-container">
+<div class="form-container create-bookshelf">
   <h1 class="form-header center-align">Add new Bookshelf</h1>
 
   <div class="row">
     <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_bookcase') }}">
-      <div class="card-panel">
+      <div class="card-panel bookshelf-form">
         <!-- Book Information -->
         <div class="row" name="genre">
           <div class="input-field col s6 m12">
             <input id="bookshelf_name" name="bookshelf_name" type="text" class="validate" required
               placeholder="Enter name for new bookshelf">
-            <label for="bookshelf_name">Bookshelf Name</label>
+            <label for="bookshelf_name" class="text-brown text-darken-2 bookshef-form-name">Bookshelf Name</label>
           </div>
         </div>
         <!-- Book Description -->
+        <label for="bookshelf_description" class="text-brown text-darken-2 bookshef-form-name">Bookshelf Description</label>
         <textarea name="bookshelf_description" id="bookshelf_description" cols="20" rows="20"
           placeholder="Enter bookshelf description.. (Optional)" class="textarea"></textarea>
         <!-- register button -->
       </div>
       <div class="row">
         <div class="input-field col s12 center-align">
-          <button type="submit" class="btn waves-effect waves-light review-btn page-btn">Create bookshelf!</button>
+          <button type="submit" class="btn waves-effect waves-light btn-large page-btn">Create bookshelf!</button>
         </div>
       </div>
     </form>
