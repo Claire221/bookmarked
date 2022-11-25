@@ -16,9 +16,6 @@ body > footer {
     top: 100vh;
 }
 
-.container {
-    border: solid 2px red;
-}
 
 .section-containers {
     width: 95%;
@@ -354,9 +351,6 @@ label.colour-picker-label {
 }
 
 /* Edit Book Styles */
-.edit-book-container {
-    border: solid 3px purple;
-}
 
 /* Book card styles */
 .book-card {
