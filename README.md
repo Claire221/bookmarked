@@ -136,7 +136,7 @@ Users bookshelves
 
 On the users profile its split up into three sections. One of the sections displays the users bookhelves, from here they are able to create new bookshelves, edit their already existing ones or delete an already existing bookshelf. 
 
-![Profile Bookshelves](bookmarked/documentation/testing//img/bookshelf_delete_before.jpg)
+![Profile Bookshelves](bookmarked/documentation/testing//img/bookshelf_delete_after.jpg)
 
 Generate Book
 
@@ -154,7 +154,7 @@ The last section on the users profile displays all of the books the user has inp
 
 Another way the user can view their bookshelves is to click on the bookshelf link in the navbar, this will quickly redirect them to a page displaying all of their bookshelves
 
-![Profile Bookshelves](bookmarked/documentation/testing//img/bookshelf_delete_before.jpg)
+![Profile Bookshelves](bookmarked/documentation/testing//img/bookshelf_delete_after.jpg)
 
 #### Create Bookshelf Feature
 
@@ -210,12 +210,35 @@ I have created a seperate document for the tests I conducted, it can be found [H
 
 ## Deployment
 
-The site is hosted on [Hiroku](https://dashboard.heroku.com/)
+#### Github
+
+1. To clone the repository, type the following command into your terminal:
+    - git clone https://github.com/Claire221/bookmarked
+2. Navigate from the cloned directory to your directory using the CD terminal command
+3. Create an env.py file in the root directory and set up the necessary environment variables. 
+    - At the top of the file type -  import os
+    - Create the MONGO_URI and SECRET_KEY variables
+    - Set the IP and PORT
+4. Install the requirements.txt file using the command: 'pip3 install -r requirements.txt'
+5. Navigate to MongoDB and create a databsae called "Bookmarked" and add the following collection:
+    - Books
+        - Title
+        - Author
+        - Genre
+        - Description
+        - Bookshelf
+        - Comments
+        - createdBy
+        - Colour
+6. Run the app using the command python3 app.py
+
+### Heroku 
+The site is hosted on [Heroku](https://dashboard.heroku.com/)
 
 To deploy on heroku you will need to create a requirements.txt and Procfile.
 - For the requirements.txt you need to include all the applications that are required to run the app.
 - The Procfile specifies what commands need to be executed by the app on startup.
-- With these files created you can then login or sign up to [Hiroku](https://dashboard.heroku.com/)
+- With these files created you can then login or sign up to [Heroku](https://dashboard.heroku.com/)
 - You will then need to select Create new app.
 - Heroku apps need to have unique names so select a name and then select your region.
 - Once the app has been created you can select the Deploy at the top of the page.
@@ -226,6 +249,7 @@ To deploy on heroku you will need to create a requirements.txt and Procfile.
 - Once in the settings menu you need to select Reveal Config Vars
 - You need to add in the values and keys for DATABASE_URL, IP, MONGO_DBNAME, MONGO_URI, PORT and SECRET_KEY
 - Once you have entered in your Config Vars you should be able to view the site by pressing Open app at the very top of the page
+
 
 ### Media
 
