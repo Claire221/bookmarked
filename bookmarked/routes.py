@@ -6,9 +6,16 @@ from bookmarked import app, db, mongo
 from bookmarked.models import Bookshelves, Users
 
 
+@app.errorhandler(404)
+def client_error(error):
+    return render_template("404.html"), 404
+
+
 @app.route("/")
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if session["user"]:
+        return redirect(url_for("profile_page", username=session["user"]))
     if request.method == "POST":
         existing_user = Users.query.filter(
             Users.username == request.form.get("username").lower()).all()
