@@ -109,7 +109,6 @@ def add_bookcase():
 
         flash("Bookcase Successfully Created")
         return redirect(url_for("show_shelves"))
-    
 
     return render_template("add_bookshelf.html")
 
