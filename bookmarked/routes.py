@@ -212,7 +212,6 @@ def edit_book(book_id):
     if request.method == "POST":
         genres = request.form.get("genre")
         genre = genres.split(" ")
-        comments = []
         submit = {
             "title": request.form.get("book_title"),
             "author": request.form.get("author"),
@@ -220,7 +219,6 @@ def edit_book(book_id):
             "description": request.form.get("book-description"),
             "createdBy": session["user"],
             "bookshelf": request.form.get("bookshelf"),
-            "comments": comments,
             "created_by": session["user"],
             "colour": request.form.get("colour")
         }
@@ -238,6 +236,8 @@ def edit_book(book_id):
 
     book_genres = " ".join(str(book) for book in book["genre"])
 
+    print("test")
+    print("test")
     return render_template(
         "edit_book.html",
         book=book, bookshelves=bookshelves,
@@ -443,7 +443,7 @@ def search_book():
     if request.method == "POST":
         session_user = session["user"]
         bookshelves = Bookshelves.query.filter(
-        Bookshelves.created_by == session_user).all()
+            Bookshelves.created_by == session_user).all()
         search = request.form.get("search")
         search_books = list(mongo.db.books.find(
             {"$text": {"$search": search}}))
@@ -454,4 +454,5 @@ def search_book():
                 user_books.append(book)
 
     return render_template(
-        "search-page.html", user_books=user_books, search=search, bookshelves=bookshelves)
+        "search-page.html", user_books=user_books,
+        search=search, bookshelves=bookshelves)
