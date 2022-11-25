@@ -12,12 +12,17 @@ For the website I want the design to be simple so that its easy for the user to 
 
 ### User Stories
  
+-	As a user I want to be able to create an account
+-   As a user i want to be able to log into my account
 -	As a user I want to be able to easily create books
--	As a user I want to be able to easily create bookshelves
--	As a user I want to be able to easily edit books
 -	As a user I want to be able to easily delete books
+-	As a user I want to be able to easily edit books
+-	As a user I want to be able to easily create bookshelves
 -	As a user I want to be able to easily delete bookshelves
 -	As a user I want to be able to add comments to my books
+-   As a user I want to be able to delete comments from my books
+-   As a user i want to be able to randomly generate a book from my collections
+-   As a user i want to be able to search through my books
 
 ### Colour Scheme
     
