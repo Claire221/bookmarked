@@ -14,7 +14,7 @@ def client_error(error):
 @app.route("/")
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    if session["user"]:
+    if "user" in session:
         return redirect(url_for("profile_page", username=session["user"]))
     if request.method == "POST":
         existing_user = Users.query.filter(
