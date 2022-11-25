@@ -27,7 +27,20 @@ Once I confirmed they were working as expected I then went into the devtools and
 ### HTML Validation
 
 Once I had finished my website I ran each page throigh a HTML validator to ensure that the code was correct.
-![HTML Validator](bookmarked/documentation/testing/img/htmls_validator.jpg)
+
+| Page                                  | Validation Result                                     |
+| :----:                                |    :----:                                                                              | 
+| Login Page Validator                  | ![Login Page HTML Validation](bookmarked/documentation/testing/img/login_page_validator.jpg) |
+| Signup Page Validator                 | ![Login Page HTML Validation](bookmarked/documentation/testing/img/signup_page_validator.jpg) |
+| Profile Page Validator                | ![Login Page HTML Validation](bookmarked/documentation/testing/img/home_page_validator.jpg) |
+| Bookshelf Page Validator              | ![Login Page HTML Validation](bookmarked/documentation/testing/img/bookshelf_page_validator.jpg) |
+| Add Bookshelf Page Validator          | ![Login Page HTML Validation](bookmarked/documentation/testing/img/add_bookshelf_page_validator.jpg) |
+| Book Page Validator                   | ![Login Page HTML Validation](bookmarked/documentation/testing/img/book_page_validator.jpg) |
+| Add Book Page Validator               | ![Login Page HTML Validation](bookmarked/documentation/testing/img/add_book_page_validator.jpg) |
+| Book Generator Page Validator         | ![Login Page HTML Validation](bookmarked/documentation/testing/img/book_generate_page_validator.jpg) |
+| Book Generator Results Page Validator | ![Login Page HTML Validation](bookmarked/documentation/testing/img/book_generator_result_page_validator.jpg) |
+
+
 
 ### CSS Validation
 
@@ -39,71 +52,80 @@ I ran my CSS through a validator to ensure that it was correct. It passed the va
 I also ran my Python code through a PEP8 Validator to make sure that it was PEP8 compliant 
 ![PEP8 Validator](bookmarked/documentation/testing/img/python_validation.jpg)
 
+
 ## User Story Testing
 
 Once I had finished the app I decided to go through and test each element to make sure they were working correctly.
 
-### Account Creation
+| User Story:                                               | As a user I want to be able to create an account                              |        | 
+| :----:                                                    | :----:                                                                        | :----: |
+|Expected Outcome                                           | ScreenShot                                                                    | Result |
+|Show any errors if user leaves out inputs in form          |![login error](bookmarked/documentation/testing/img/login_error.jpg)           | Pass   |
+|If user has filled out form correctly inputs will be green |![login correct](bookmarked/documentation/testing/img/login_correct.jpg)       | Pass   |
+|Redirect user to profile after creating account            |![accountcreated](bookmarked/documentation/testing/img/account_created.jpg)    | Pass   |
 
-First I checked that users could create accounts successfully
-![Account Creation](bookmarked/documentation/testing/img/signup_before.jpg)
-![Account Creation](bookmarked/documentation/testing/img/signup_after.jpg)
+| User Story:                                               | As a user i want to be able to log into my account                            |        | 
+| :----:                                                    | :----:                                                                        | :----: |
+|Expected Outcome                                           | ScreenShot                                                                    | Result |
+|Display message if user enters wrong passwor/username      |![incorrect login](bookmarked/documentation/testing/img/incorrect_login.jpg)   | Pass   |
+|Display welcome message if user logs in correctly          |![correct login](bookmarked/documentation/testing/img/correct_login.jpg)       | Pass   |
 
-### Create Bookshelf
+| User Story:                                                | As a user i want to be able to log into my account                                     |        | 
+| :----:                                                     | :----:                                                                                 | :----: |
+|Expected Outcome                                            | ScreenShot                                                                             | Result |
+|Show an error if user leaves out inputs in form             |![add book error](bookmarked/documentation/testing/img/add_book_error.jpg)              | Pass   |
+|Display message when book is created to notify user         |![add book successful](bookmarked/documentation/testing/img/add_book_successful.jpg)    | Pass   |
 
-I then checked the create bookshelf function
-![Bookshelf Creation](bookmarked/documentation/testing/img/add_bookshelf_before.jpg)
-![Bookshelf Creation](bookmarked/documentation/testing/img/add_bookshelf2.jpg)
-![Bookshelf Creation](bookmarked/documentation/testing/img/add_bookshelf.jpg)
+| User Story:                                                | As a user I want to be able to easily delete books                                  |        | 
+| :----:                                                     | :----:                                                                              | :----: |
+|Expected Outcome                                            | ScreenShot                                                                          | Result |
+|Book is removed from books displayed books                  |![delete book before](bookmarked/documentation/testing/img/delete_book_before.jpg)   | Pass   |
+|                                                            |![delete book after](bookmarked/documentation/testing/img/delete_book_after.jpg)     | Pass   |
+|Display message notifying user book gas been removed         |![delete book before](bookmarked/documentation/testing/img/book_deleted.jpg)         | Pass   |
 
-### Delete Bookshelf
+| User Story:                                                | As a user I want to be able to easily edit books                                    |        | 
+| :----:                                                     | :----:                                                                              | :----: |
+|Expected Outcome                                            | ScreenShot                                                                          | Result |
+|Display message notifying user book as been edited          |![successful edit](bookmarked/documentation/testing/img/successful_edit.jpg)         | Pass   |
+|Update book with user edits                                 |![show edit](bookmarked/documentation/testing/img/show_edit.jpg)                     | Pass   |
 
-I then wanted to test that the delete bookshelf feature deleted the bookshelf successfully.
-![Delete Bookshelf](bookmarked/documentation/testing/img/bookshelf_delete_before.jpg)
-![Delete Bookshelf](bookmarked/documentation/testing/img/bookshelf_delete_after.jpg)
+| User Story:                                                | As a user I want to be able to easily create bookshelves                            |        | 
+| :----:                                                     | :----:                                                                              | :----: |
+|Expected Outcome                                            | ScreenShot                                                                          | Result |
+|Show an error if user leaves out inputs in form             |![bookcase created](bookmarked/documentation/testing/img/bookcase_created.jpg)       | Pass   |
+|Display new bookcase                                        |![bookcase created](bookmarked/documentation/testing/img/bookcase_created.jpg)       | Pass   |
 
-### Delete Bookshelf - Not user who created it
+| User Story:                                                | As a user I want to be able to easily delete bookshelves                              |        | 
+| :----:                                                     | :----:                                                                                | :----: |
+|Expected Outcome                                            | ScreenShot                                                                            | Result |
+|Book is removed from bookshelf  displayed bookshelves       |![bookcase created](bookmarked/documentation/testing/img/bookshelf_delete_message.jpg) | Pass   |
+|Display message notifying user bookshelf has been removed   |![bookcase created](bookmarked/documentation/testing/img/bookshelf_delete_after.jpg)   | Pass   |
 
-### Create Book
+| User Story:                                                | As a user I want to be able to add comments to my books                               |        | 
+| :----:                                                     | :----:                                                                                | :----: |
+|Expected Outcome                                            | ScreenShot                                                                            | Result |
+|Display message notifying user comment has been added       |![bookcase created](bookmarked/documentation/testing/img/comment_added.jpg)            | Pass   |
+|Display users comment                                       |![bookcase created](bookmarked/documentation/testing/img/comment_displayed.jpg)        | Pass   |
 
-I wanted to test that users could successfuly add books so I created a few test books.
+| User Story:                                                | As a user I want to be able to delete comments from my books                          |        | 
+| :----:                                                     | :----:                                                                                | :----: |
+|Expected Outcome                                            | ScreenShot                                                                            | Result |
+|Display message notifying user comment has been deleted     |![bookcase created](bookmarked/documentation/testing/img/comment_delete.jpg)           | Pass   |
+|Remove comment from page                                    |![bookcase created](bookmarked/documentation/testing/img/comment_delete_display.jpg)   | Pass   |
 
-![Add Book](bookmarked/documentation/testing/img/add_book_before.jpg)
-![Add Book](bookmarked/documentation/testing/img/add_book_before2.jpg)
-![Add Book](bookmarked/documentation/testing/img/add_book_after.jpg)
+| User Story:                                                | As a user i want to be able to randomly generate a book from my collections           |        | 
+| :----:                                                     | :----:                                                                                | :----: |
+|Expected Outcome                                            | ScreenShot                                                                            | Result |
+|Display forms with book generations options                 |![bookcase created](bookmarked/documentation/testing/img/generate_book.jpg)            | Pass   |
+|If no books are found display message to user               |![bookcase created](bookmarked/documentation/testing/img/generate_error.jpg)           | Pass   |
+|Display generated book                                      |![bookcase created](bookmarked/documentation/testing/img/generate_result.jpg)          | Pass   |
 
-### Delete Book
+| User Story:                                                | As a user i want to be able to search through my books                                |        | 
+| :----:                                                     | :----:                                                                                | :----: |
+|Expected Outcome                                            | ScreenShot                                                                            | Result |
+|Display message if no books were found                      |![bookcase created](bookmarked/documentation/testing/img/search_error.jpg)             | Pass   |
+|Display search results                                      |![bookcase created](bookmarked/documentation/testing/img/search_results.jpg)           | Pass   |
 
-I wanted to test that users could successfuly delete a book so I created a test book that I could test the function on.
-![Delete Book](bookmarked/documentation/testing/img/delete_book_before.jpg)
-![Delete Book](bookmarked/documentation/testing/img/delete_book_after.jpg)
-
-### Edit Book
-
-The users have the option to edit books to update the title, description, colour ect so I wandted to check that this works.
-![Edit Book](bookmarked/documentation/testing/img/edit_book_before.jpg)
-![Edit Book](bookmarked/documentation/testing/img/edit_book_after.jpg)
-
-### Generate Book From Bookshelves 
-
-There is also a feature where users can generate a random book based on different conditions so I wanted to test that these were all working correctly. I started by testing the bookshelf generation function
-
-![Bookshelf Generator ](bookmarked/documentation/testing/img/bookshelf_generator_before.jpg)
-![Bookshelf Generator ](bookmarked/documentation/testing/img/bookshelf_generator_after.jpg)
-
-### Generate Book From Authors
-
-I then tested the generate from authors function.
-![Author Generator ](bookmarked/documentation/testing/img/author_generator_before.jpg)
-![Author Generator ](bookmarked/documentation/testing/img/author_generator_after.jpg)
-
-### Generate Book From Tags
-
-### Generate Book From All Books
-
-Finally I tested the generate from all the users books function.
-![Library Generator](bookmarked/documentation/testing/img/random_generator_before.jpg)
-![Library Generator](bookmarked/documentation/testing/img/random_generator_after.jpg)
 
 ## Unfixed Bugs
-    list out any unfinished bugs you might have, where applicable... if none, don't just put "I have no bugs"... put something like: "There are no remaining bugs that I am aware of."
+There are no remaining bugs that I am aware of.
