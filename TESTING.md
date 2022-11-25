@@ -53,7 +53,7 @@ I also ran my Python code through a PEP8 Validator to make sure that it was PEP8
 ![PEP8 Validator](bookmarked/documentation/testing/img/python_validation.jpg)
 
 
-## User Story Testing
+### User Story Testing
 
 Once I had finished the app I decided to go through and test each element to make sure they were working correctly.
 
@@ -125,6 +125,18 @@ Once I had finished the app I decided to go through and test each element to mak
 |Expected Outcome                                            | ScreenShot                                                                            | Result |
 |Display message if no books were found                      |![bookcase created](bookmarked/documentation/testing/img/search_error.jpg)             | Pass   |
 |Display search results                                      |![bookcase created](bookmarked/documentation/testing/img/search_results.jpg)           | Pass   |
+
+### Manual Testing
+
+| Test                   | Expected Outcome                                                                         | Result   | 
+| :----:                 |  :----:                                                                                  | :----:   |
+| Brand redired          | Redirects user to profile page when they click on teh brand name in navbar               | Pass     |
+| Nav Hover              | Navbar link background change when user hovers over link                                 | Pass     |
+| Nav Link - Profile     | Navbar profile link directs user to profile page                                         | Pass     |
+| Nav Link - bookshelves | Navbar bookshelf link directs user to bookshelves page                                   | Pass     |
+| Nav Link - Log Out     | Navbar log out link logs user out of their account                                       | Pass     |
+| Buttons hover effect   | All buttons throughout the page display a hover effect when user hovers over them        | Pass     |
+| Buttons focus effect   | All buttons throughout the page display a focus effect when user focuses on them         | Pass     |
 
 
 ## Unfixed Bugs
