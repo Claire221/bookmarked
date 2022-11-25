@@ -2,17 +2,17 @@
 {% block content %}
 
 <section class="display-book-headers image-styles">
-    <h1 class="display-book-title">Your Book: {{ book.title }}</h1>
-    <h2 class="card-title ">Book Author: {{ book.author }}</h2>
-    <p class="book-description">Book Description:</p>
+    <h1 class="display-book-title brown-text text-lighten-5">Your Book: {{ book.title }}</h1>
+    <h2 class="card-title brown-text text-lighten-5">Book Author: {{ book.author }}</h2>
+    <p class="book-description brown-text text-lighten-5">Book Description:</p>
     {% if book.description %}
-        <p class="book-description-paragraph">{{ book.description }}</p>
+        <p class="book-description-paragraph brown-text text-lighten-5">{{ book.description }}</p>
     {% else %}
-        <p class="book-description-paragraph">No Book Description Entered</p>
+        <p class="book-description-paragraph brown-text text-lighten-5">No Book Description Entered</p>
     {% endif %}
 </section>
-<section class="add-comment-section">
-    <h2 class="form-header center-align">Add Book Comment</h2>
+<section class="container add-comment-section">
+    <h2 class="form-header center-align ">Add Book Comment</h2>
     <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_comment', book_id=book._id) }}">
         <div class="row">
             <!-- Book Description -->

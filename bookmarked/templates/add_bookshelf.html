@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="form-container create-bookshelf">
+<div class=" container">
   <h1 class="form-header center-align">Add new Bookshelf</h1>
 
-  <div class="row">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('add_bookcase') }}">
+  <div class="row create-bookshelf">
+    <form class="col s12 m10 offset-m1" method="POST" action="{{ url_for('add_bookcase') }}">
       <div class="card-panel bookshelf-form">
         <!-- Book Information -->
-        <div class="row" name="genre">
-          <div class="input-field col s6 m12">
+        <div class="row">
+          <div class="input-field col s6 m12 lg-12 book-name-div">
             <input id="bookshelf_name" name="bookshelf_name" type="text" class="validate" required
               placeholder="Enter name for new bookshelf">
             <label for="bookshelf_name" class="text-brown text-darken-2 bookshef-form-name">Bookshelf Name</label>
@@ -29,6 +29,5 @@
     </form>
   </div>
 </div>
-
 
 {% endblock %}
