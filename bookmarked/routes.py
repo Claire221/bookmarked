@@ -106,7 +106,10 @@ def add_bookcase():
         )
         db.session.add(bookshelf)
         db.session.commit()
+
+        flash("Bookcase Successfully Created")
         return redirect(url_for("show_shelves"))
+    
 
     return render_template("add_bookshelf.html")
 
@@ -130,6 +133,7 @@ def delete_bookcase(bookshelf_id):
 
     db.session.delete(bookcase)
     db.session.commit()
+    flash("Bookcase Successfully Deleted")
     return redirect(url_for("profile_page"))
 
 
@@ -166,7 +170,7 @@ def delete_book(book_id):
     Function to delete the book
     """
     mongo.db.books.delete_one({"_id": ObjectId(book_id)})
-
+    flash("Book Successfully Deleted")
     return redirect(url_for("profile_page"))
 
 
@@ -287,6 +291,7 @@ def delete_comment(book_id, comment):
 
     updated_comments = []
 
+    flash("Comment Successfully Deleted")
     session_user = session["user"]
     return render_template("display_book.html", book=book)
 
