@@ -81,7 +81,7 @@ Once I had finished the app I decided to go through and test each element to mak
 |Expected Outcome                                            | ScreenShot                                                                          | Result |
 |Book is removed from books displayed books                  |![delete book before](bookmarked/documentation/testing/img/delete_book_before.jpg)   | Pass   |
 |                                                            |![delete book after](bookmarked/documentation/testing/img/delete_book_after.jpg)     | Pass   |
-|Display message notifying user book gas been removed         |![delete book before](bookmarked/documentation/testing/img/book_deleted.jpg)         | Pass   |
+|Display message notifying user book gas been removed        |![delete book message](bookmarked/documentation/testing/img/book_deleted.jpg)        | Pass   |
 
 | User Story:                                                | As a user I want to be able to easily edit books                                    |        | 
 | :----:                                                     | :----:                                                                              | :----: |
@@ -92,39 +92,39 @@ Once I had finished the app I decided to go through and test each element to mak
 | User Story:                                                | As a user I want to be able to easily create bookshelves                            |        | 
 | :----:                                                     | :----:                                                                              | :----: |
 |Expected Outcome                                            | ScreenShot                                                                          | Result |
-|Show an error if user leaves out inputs in form             |![bookcase created](bookmarked/documentation/testing/img/bookcase_created.jpg)       | Pass   |
+|Show an error if user leaves out inputs in form             |![bookcase Error](bookmarked/documentation/testing/img/bookcase_created.jpg)         | Pass   |
 |Display new bookcase                                        |![bookcase created](bookmarked/documentation/testing/img/bookcase_created.jpg)       | Pass   |
 
-| User Story:                                                | As a user I want to be able to easily delete bookshelves                              |        | 
-| :----:                                                     | :----:                                                                                | :----: |
-|Expected Outcome                                            | ScreenShot                                                                            | Result |
-|Book is removed from bookshelf  displayed bookshelves       |![bookcase created](bookmarked/documentation/testing/img/bookshelf_delete_message.jpg) | Pass   |
-|Display message notifying user bookshelf has been removed   |![bookcase created](bookmarked/documentation/testing/img/bookshelf_delete_after.jpg)   | Pass   |
+| User Story:                                                | As a user I want to be able to easily delete bookshelves                                      |        | 
+| :----:                                                     | :----:                                                                                        | :----: |
+|Expected Outcome                                            | ScreenShot                                                                                    | Result |
+|Book is removed from bookshelf  displayed bookshelves       |![bookcase deleted](bookmarked/documentation/testing/img/bookshelf_delete_message.jpg)         | Pass   |
+|Display message notifying user bookshelf has been removed   |![bookcase deleted message](bookmarked/documentation/testing/img/bookshelf_delete_after.jpg)   | Pass   |
 
 | User Story:                                                | As a user I want to be able to add comments to my books                               |        | 
 | :----:                                                     | :----:                                                                                | :----: |
 |Expected Outcome                                            | ScreenShot                                                                            | Result |
-|Display message notifying user comment has been added       |![bookcase created](bookmarked/documentation/testing/img/comment_added.jpg)            | Pass   |
-|Display users comment                                       |![bookcase created](bookmarked/documentation/testing/img/comment_displayed.jpg)        | Pass   |
+|Display message notifying user comment has been added       |![Comment message](bookmarked/documentation/testing/img/comment_added.jpg)             | Pass   |
+|Display users comment                                       |![Display commnet](bookmarked/documentation/testing/img/comment_displayed.jpg)         | Pass   |
 
 | User Story:                                                | As a user I want to be able to delete comments from my books                          |        | 
 | :----:                                                     | :----:                                                                                | :----: |
 |Expected Outcome                                            | ScreenShot                                                                            | Result |
-|Display message notifying user comment has been deleted     |![bookcase created](bookmarked/documentation/testing/img/comment_delete.jpg)           | Pass   |
-|Remove comment from page                                    |![bookcase created](bookmarked/documentation/testing/img/comment_delete_display.jpg)   | Pass   |
+|Display message notifying user comment has been deleted     |![Comment deleted message](bookmarked/documentation/testing/img/comment_delete.jpg)    | Pass   |
+|Remove comment from page                                    |![Comment deleted ](bookmarked/documentation/testing/img/comment_delete_display.jpg)   | Pass   |
 
-| User Story:                                                | As a user i want to be able to randomly generate a book from my collections           |        | 
-| :----:                                                     | :----:                                                                                | :----: |
-|Expected Outcome                                            | ScreenShot                                                                            | Result |
-|Display forms with book generations options                 |![bookcase created](bookmarked/documentation/testing/img/generate_book.jpg)            | Pass   |
-|If no books are found display message to user               |![bookcase created](bookmarked/documentation/testing/img/generate_error.jpg)           | Pass   |
-|Display generated book                                      |![bookcase created](bookmarked/documentation/testing/img/generate_result.jpg)          | Pass   |
+| User Story:                                                | As a user i want to be able to randomly generate a book from my collections                 |        | 
+| :----:                                                     | :----:                                                                                      | :----: |
+|Expected Outcome                                            | ScreenShot                                                                                  | Result |
+|Display forms with book generations options                 |![book generation form](bookmarked/documentation/testing/img/generate_book.jpg)              | Pass   |
+|If no books are found display message to user               |![book generation error](bookmarked/documentation/testing/img/generate_error.jpg)            | Pass   |
+|Display generated book                                      |![display generated book](bookmarked/documentation/testing/img/generate_result.jpg)          | Pass   |
 
 | User Story:                                                | As a user i want to be able to search through my books                                |        | 
 | :----:                                                     | :----:                                                                                | :----: |
 |Expected Outcome                                            | ScreenShot                                                                            | Result |
-|Display message if no books were found                      |![bookcase created](bookmarked/documentation/testing/img/search_error.jpg)             | Pass   |
-|Display search results                                      |![bookcase created](bookmarked/documentation/testing/img/search_results.jpg)           | Pass   |
+|Display message if no books were found                      |![search error](bookmarked/documentation/testing/img/search_error.jpg)                 | Pass   |
+|Display search results                                      |![search results](bookmarked/documentation/testing/img/search_results.jpg)             | Pass   |
 
 ### Manual Testing
 
@@ -138,6 +138,31 @@ Once I had finished the app I decided to go through and test each element to mak
 | Buttons hover effect   | All buttons throughout the page display a hover effect when user hovers over them        | Pass     |
 | Buttons focus effect   | All buttons throughout the page display a focus effect when user focuses on them         | Pass     |
 
+
+### Defensive Programming
+
+Throughout the project I used defensive programing to stop users being able to delete/edit books that they didnt create.
+
+### Delete a bookshelf
+
+![Delete Bookshelf](bookmarked/documentation/testing/img/delete_bookshelf.jpg)    
+
+When someone trys to delete a bookshelf the function first checks that they were the person who created it, if they were not then a flash message appears notifying the user they dont have permission to delete that book. 
+
+### Edit a Book
+
+![Edit Book](bookmarked/documentation/testing/img/edit_book.jpg)    
+
+When someone trys to edit a book the function checks that they were the person who created it, if they were not then a flash message appears notifying the user they dont have permission to edit that book and it will redirect them to their profile.
+
+describe the code you've implemented to block users from accessing/editing/deleting other people's content. Show screenshots what happens if you try to brute-force to a page that you should've belong.
+
+### Page Error
+
+![Page Error](bookmarked/documentation/testing/img/error.jpg)    
+![Page Error](bookmarked/documentation/testing/img/404_error.jpg)    
+
+I have implemented some defensive programing incase someone tries to access a link that doesnt exist, it directs them to a page explaining that the page they are looking for doesnt exists and then provides them a link to return to their profile page.
 
 ## Unfixed Bugs
 There are no remaining bugs that I am aware of.
