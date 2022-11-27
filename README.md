@@ -208,7 +208,7 @@ Throughout the project I used a variety of technologies.
 - I used Hiroku to host my website [Hiroku Website](https://dashboard.heroku.com/)
 
 ## Data Schema and Relationships
-![Data schema and relationships](bookmarked/documentation/testing/img/search_results.jpg) 
+![Data schema and relationships](bookmarked/documentation/testing/img/relational_database.jpg) 
 
 The app useses two databased one in MongoDB and the other in PostgreSQL.
 
