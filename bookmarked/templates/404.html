@@ -6,13 +6,11 @@
 <div class="container-75">
     <div class="center-align">
         <div class="row">
-            <div class="col s12">
-                <h2>
-                    Oops!<br>
-                    Something went wrong.<br>
-                    Let's take you
-                    <a href="{{ url_for('login') }}" class="blue-text">back home</a>
-                </h2>
+            <div class="col s12 page-error">
+                <h3> Oops! Looks like someone has checked out this page and not returned it.</h3>
+                <p>Lets return you to<a href="{{ url_for('login') }}" class="brown-text">Your Library</a></p>
+
+                <p class="page-error-last">Think of the late fees! <i class="fa-regular fa-face-surprise"></i></p>
             </div>
         </div>
     </div>
