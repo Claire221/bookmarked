@@ -1,6 +1,9 @@
 # Bookmarked
 
-Bookmarked is a digital library for users to upload and organize their books. I decided to create Bookmarked because I personally have a lot of books, too many books to fit on my bookshelves so I end up giving some away or lending them to friends or family to read resulting in me forgetting what books I have owned or read. To fix this I wanted to create a website where I could add all my books so I can keep track of them all even if I don’t physically have them in my possession. I also wanted to create an option to create Bookshelves so that I could organize them such has have Fantasy books grouped together or have a digital TBR (To be read list) to keep track of all the books I want to read in the future. Finally I wanted to have a feature that would generate a book for me, because I buy books at a faster rate than I can read them it can become overwhelming trying to chose which one to read next. I wanted to be able to generate a book from some parameters such as from a specific author or bookshelf or just generate a book based on my whole library. 
+Bookmarked is a digital library for users to keep a digital footprint of what books they have owned and read. It allows users to create digital version of their books which they can then organize onto custom bookshelves. 
+
+## App Purpose
+I decided to create Bookmarked because I personally have a lot of books, too many books to fit on my bookshelves so I end up giving some away or lending them to friends or family to read resulting in me forgetting what books I have owned or read. To fix this I wanted to create a website where I could add all my books so I can keep track of them all even if I don’t physically have them in my possession. I also wanted to create an option to create Bookshelves so that I could organize them such has have Fantasy books grouped together or have a digital TBR (To be read list) to keep track of all the books I want to read in the future. Finally I wanted to have a feature that would generate a book for me, because I buy books at a faster rate than I can read them it can become overwhelming trying to chose which one to read next. I wanted to be able to generate a book from some parameters such as from a specific author or bookshelf or just generate a book based on my whole library.
 
 ![Responsive Image](bookmarked/static/img/responsive.jpg)
 
@@ -203,6 +206,22 @@ Throughout the project I used a variety of technologies.
 - I used Jinja as a templating language [Jinja Website](https://jinja.palletsprojects.com/en/3.1.x/)
 - I used PSQL for one of the databases [PSQL Website](https://www.postgresql.org/)
 - I used Hiroku to host my website [Hiroku Website](https://dashboard.heroku.com/)
+
+## Data Schema and Relationships
+![Data schema and relationships](bookmarked/documentation/testing/img/search_results.jpg) 
+
+The app useses two databased one in MongoDB and the other in PostgreSQL.
+
+The PostgreSQL database holds the bookshelf and user account information while the PostgreSQL database holds the books information. 
+
+For the bookshelf information is stores a record of a unique id so each bookcase can be called upon aswell as a the bookshelf name and bookshelf description. It also stores the username of the user who created it.
+
+For the Username information it stores a unique id and also the username and password the user used when they created their account. 
+
+The books databse stores a unique ID so that each book can be called upon as well as a book title, author, genre, description, the bookshelf id of the bookshelf the book is assigned to, comments, created by and colour. 
+
+The bookshelf PostgreSQL databse and the Books MongoDB database are related as the books database has to be aware of the information on the bookshelf database in order to work. 
+The books database needs both the bookshelf_id and createdBy information from the bookshelf PostgreSQL database as it uses this information when displaying the books to the user. This information is also used so that only the person who created the books can delete or edit them. 
 
 ## Testing
 
