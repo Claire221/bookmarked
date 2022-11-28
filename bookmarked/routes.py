@@ -280,7 +280,7 @@ def delete_comment(book_id, comment):
     """
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     if not book["created_by"] == session["user"]:
-        flash("You dont have permission to edit this book")
+        flash("You dont have permission to delete this comment")
         return redirect(url_for("profile_page", book_id=book_id))
 
     mongo.db.books.update_one(
@@ -292,7 +292,7 @@ def delete_comment(book_id, comment):
 
     flash("Comment Successfully Deleted")
     session_user = session["user"]
-    return render_template("display_book.html", book=book)
+    return redirect(url_for("add_comment", book_id=book_id))
 
 
 @app.route("/generate-book", methods=["GET", "POST"])
