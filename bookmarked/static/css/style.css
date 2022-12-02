@@ -601,6 +601,37 @@ h1.generated-book-title {
     font-size: 1.75rem;
 }
 
+/* Model styles */
+.modal {
+    text-align: center;
+    border: solid 7px #6d4c41;
+    font-size: 1.5rem;
+}
+
+.modal h4{
+    font-size: 1.75rem;
+}
+
+.model-title {
+    font-weight: bold;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-footer a {
+    font-size: 1.5rem !important;
+}
+
+.modal-footer a:hover, 
+.modal-footer a:focus {
+    color: #8d6e63;
+    text-decoration: underline;
+}
+
+
 /* Media Queries *
 
 /* Signup Page Styles */
@@ -657,6 +688,8 @@ h1.generated-book-title {
         display: flex;
         justify-content: center;
         align-items: center;
+
+        
     }
 
     h1.generated-book-title {

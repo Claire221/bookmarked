@@ -19,8 +19,23 @@
                 </div>
             </a>
             <div class="bookshelf-card-btns">
-                <a href="{{ url_for('delete_bookcase', bookshelf_id=bookshelf.id) }}"
-                    class="btn bookshelf-btn page-btn"><i class="fa-solid fa-trash delete-btn"></i></a>
+                <a href="#delete-modal-{{ bookshelf.id }}" class="btn bookshelf-btn page-btn modal-trigger"><i
+                        class="fa-solid fa-trash delete-btn"></i></a>
+
+                <!-- delete modal -->
+                <div id="delete-modal-{{ bookshelf.id }}" class="modal">
+                    <div class="modal-content  brown-text text-darken-1">
+                        <h4>Delete Bookshelf</h4>
+                        <p>Are you sure you want to delete this bookshelf?</p>
+                        <p class="model-title">{{ bookshelf.bookshelf_name }}</p>
+                        <p>This action is permanent and cannot be undone!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="modal-close waves-effect btn-flat">No</a>
+                        <a href="{{ url_for('delete_bookcase', bookshelf_id=bookshelf.id) }}"
+                            class="waves-effect btn-flat">Yes</a>
+                    </div>
+                </div>
             </div>
         </div>
         {% endfor %}
