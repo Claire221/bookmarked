@@ -229,45 +229,104 @@ I have created a seperate document for the tests I conducted, it can be found [H
 
 ## Deployment
 
-#### Github
+The live application can be found here [Heroku](https://bookmarked-app.herokuapp.com).
 
-1. To clone the repository, type the following command into your terminal:
-    - git clone https://github.com/Claire221/bookmarked
-2. Navigate from the cloned directory to your directory using the CD terminal command
-3. Create an env.py file in the root directory and set up the necessary environment variables. 
-    - At the top of the file type -  import os
-    - Create the MONGO_URI and SECRET_KEY variables
-    - Set the IP and PORT
-4. Install the requirements.txt file using the command: 'pip3 install -r requirements.txt'
-5. Navigate to MongoDB and create a databsae called "Bookmarked" and add the following collection:
-    - Books
-        - Title
-        - Author
-        - Genre
-        - Description
-        - Bookshelf
-        - Comments
-        - createdBy
-        - Colour
-6. Run the app using the command python3 app.py
+### Heroku
 
-### Heroku 
-The site is hosted on [Heroku](https://dashboard.heroku.com/)
+This project uses [Heroku](https://www.heroku.com), a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud.
 
-To deploy on heroku you will need to create a requirements.txt and Procfile.
-- For the requirements.txt you need to include all the applications that are required to run the app.
-- The Procfile specifies what commands need to be executed by the app on startup.
-- With these files created you can then login or sign up to [Heroku](https://dashboard.heroku.com/)
-- You will then need to select Create new app.
-- Heroku apps need to have unique names so select a name and then select your region.
-- Once the app has been created you can select the Deploy at the top of the page.
-- Scroll down to the Deployment methods and select Github.
-- You will then need to select your username and repository repo name, once you have selected them select Connect
-- Under Manual Deplop you want to select the branch you wish to deploy and hit Deploy Branch.
-- Once the app has been deployed you then need to go back to the top of the page and select Settings
-- Once in the settings menu you need to select Reveal Config Vars
-- You need to add in the values and keys for DATABASE_URL, IP, MONGO_DBNAME, MONGO_URI, PORT and SECRET_KEY
-- Once you have entered in your Config Vars you should be able to view the site by pressing Open app at the very top of the page
+Deployment steps are as follows, after account setup:
+
+- Select *New* in the top-right corner of your Heroku Dashboard, and select *Create new app* from the dropdown menu.
+- Your app name must be unique, and then choose a region closest to you (EU or USA), and finally, select *Create App*.
+- From the new app *Settings*, click *Reveal Config Vars*, and set the following key/value pairs:
+  - `IP` 0.0.0.0
+  - `PORT` 5000
+  - `MONGO_URI` (insert your own MongoDB URI key here). To get the `MONGO_URI`, follow the steps outlined below.
+
+### MongoDB
+
+You will need to sign-up for a [MongoDB](https://www.mongodb.com/) account.
+
+The name of the database on Mongo should be called **Bookmarked**.
+
+The only collection needed for this project is called **Books**.
+
+Click on the cluster created for the project.
+
+Click on the _Connect_ button.
+
+Click _Connect Your Application_.
+
+Copy the connection string and ensure to replace `<password>` with your own password.
+
+Paste this string into the env.py file and also Heroku config var as the value for the `MONGO_URI` key.
+
+  - `MONGO_DBNAME` (insert your own MongoDB DB Name key here). The `MONGO_DBNAME` is the name given to the database created within the cluster on the MongoDB website as shown in the screenshot below.
+
+  - `DATABASE_URL` (this comes from the _Resources_ tab, you can get your own Postgres Database using the Free Hobby Tier)
+    - Click on the _Resources_ tab.
+    - Search for Postgres in the 'Add-ons' search bar.
+    - Select Heroku Postgres as shown in the screenshot below.
+
+  - `SECRET_KEY` (this can be any random secret key)
+
+Heroku needs two additional files in order to deploy properly.
+- requirements.txt
+- Procfile
+
+You can install this project's requirements (where applicable) using: `pip3 install -r requirements.txt`. If you have your own packages that have been installed, then the requirements file needs updated using: `pip3 freeze --local > requirements.txt`
+
+The Procfile can be created with the following command: `echo web: python run.py > Procfile`
+
+For Heroku deployment, follow these steps to connect your GitHub repository to the newly created app:
+
+Either:
+- Connect Heroku and GitHub.
+- Then select "Automatic Deployment" from the Heroku app.
+- Click the _Deploy Branch_ button.
+
+Or:
+- In the Terminal/CLI, connect to Heroku using this command: `heroku login -i`
+- Set the remote for Heroku: `heroku git:remote -a <app_name>` (replace app_name with your app, without the angle-brackets)
+- After performing the standard Git `add`, `commit`, and `push` to GitHub, you can now type: `git push heroku main`
+
+The frontend terminal should now be connected and deployed to Heroku.
+
+### Local Deployment
+
+*Gitpod* IDE was used to write the code for this project.
+
+You can clone the repository by following these steps:
+
+1. Go to the [GitHub repository](https://github.com/Claire221/bookmarked) 
+2. Locate the Code button above the list of files and click it 
+3. Select if you prefer to clone using HTTPS, SSH, or GitHub CLI and click the copy button to copy the URL to your clipboard
+4. Open Git Bash or Terminal
+5. Change the current working directory to the one where you want the cloned directory
+6. In your IDE Terminal, type the following command to clone my repository:
+	- `git clone https://github.com/Claire221/bookmarked.git`
+7. Press Enter to create your local clone.
+
+You can install this project's requirements (where applicable) using: `pip3 install -r requirements.txt`.
+
+Create an `env.py` file, and add the following environment variables:
+
+```python
+import os
+
+os.environ.setdefault("IP", "0.0.0.0")
+os.environ.setdefault("PORT", "5000")
+os.environ.setdefault("MONGO_URI", "insert your own MongoDB URI key here")
+os.environ.setdefault("MONGO_DBNAME", "insert your own MongoDB DB Name key here")
+os.environ.setdefault("DATABASE_URL", "from the Resources tab on Heroku")
+os.environ.setdefault("SECRET_KEY", "this can be any random secret key")
+os.environ.setdefault("DEVELOPMENT", "set to True in local environment, but False on deployment")
+```
+
+Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Claire221/bookmarked)
 
 
 ### Media
