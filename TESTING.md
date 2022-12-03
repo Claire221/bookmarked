@@ -50,7 +50,12 @@ I ran my CSS through a validator to ensure that it was correct. It passed the va
 ### PEP8 Validation 
 
 I also ran my Python code through a PEP8 Validator to make sure that it was PEP8 compliant 
-![PEP8 Validator](bookmarked/documentation/testing/img/python_validation.jpg)
+
+| Page                                  | Validation Result                                     |
+| :----:                                |    :----:                                                                              | 
+| app.py Python Validation    | ![app.py Python Validation](bookmarked/documentation/testing/img/python_validator_01.jpg) |
+| models.py Python Validation | ![models.py Python Validation](bookmarked/documentation/testing/img/python_validator_02.jpg) |
+| routes.py Python Validation | ![routes.py Python Validation](bookmarked/documentation/testing/img/python_validator_03.jpg) |
 
 
 ### User Story Testing
